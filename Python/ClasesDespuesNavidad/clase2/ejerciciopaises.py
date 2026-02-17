@@ -1,0 +1,17 @@
+paises = {
+"India": 1451,
+"China": 1419,
+"EE.UU": 345,
+"Indonesia": 283
+}
+
+while True:
+    pais = input("País (-1 para terminar): ")
+    if pais == "-1":
+        break
+
+    poblacion = int(input("Población: "))
+    paises[pais] = poblacion
+
+for pais in sorted(paises, key=paises.get, reverse=True):
+    print(pais, paises[pais])
