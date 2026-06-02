@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test de Informática - ASIR</title>
+    <title>Plataforma de Tests - ASIR</title>
     <style>
         body { 
             font-family: 'Segoe UI', Arial, sans-serif; 
@@ -36,6 +36,17 @@
             line-height: 1.5;
             margin-bottom: 20px;
         }
+        select {
+            width: 100%;
+            padding: 12px;
+            background: #2a2a2a;
+            color: white;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 25px;
+            cursor: pointer;
+        }
         button { 
             display: block; 
             width: 100%; 
@@ -55,7 +66,6 @@
             border-color: #0056b3;
             transform: translateX(5px);
         }
-        /* Estilos para Feedback instantáneo (Modo Práctica) */
         button.correcto {
             background: #155724 !important;
             border-color: #28a745 !important;
@@ -75,18 +85,17 @@
         .btn-siguiente:hover {
             background: #0056b3;
         }
-        /* Pantalla de Inicio y Resultado */
         .menu-box, .resultado-box {
             text-align: center;
             padding: 10px;
         }
         .menu-box h1 {
             color: #007bff;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
         .menu-box p {
             color: #aaa;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         .btn-modo {
             text-align: center;
@@ -94,8 +103,8 @@
             font-size: 18px;
             background: #252d3a;
             border-color: #007bff;
-            margin: 20px 0;
-            padding: 20px;
+            margin: 15px 0;
+            padding: 18px;
         }
         .btn-modo:hover {
             background: #007bff;
@@ -130,10 +139,18 @@
 
 <div class="card" id="main-container">
     <div class="menu-box">
-        <h1>Test de Informática ASIR</h1>
-        <p>Selecciona cómo quieres realizar el cuestionario:</p>
-        <button class="btn-modo" onclick="comenzarTest('practica')">📖 MODO PRÁCTICA<br><span style="font-size:12px; font-weight:normal; color:#ccc;">Verás si aciertas o fallas en cada pregunta al instante.</span></button>
-        <button class="btn-modo" onclick="comenzarTest('examen')">📝 MODO EXAMEN<br><span style="font-size:12px; font-weight:normal; color:#ccc;">Responderás del tirón y verás la nota final en un recuadro.</span></button>
+        <h1>Plataforma de Cuestionarios</h1>
+        <p>Prepara tus exámenes de ASIR</p>
+        
+        <label for="selector-test" style="display:block; text-align:left; margin-bottom:8px; color:#ccc; font-size:14px;">1. Elige el tema del test:</label>
+        <select id="selector-test">
+            <option value="informatica_54">💻 Test 1: Informática General (60 preguntas)</option>
+            <option value="placas">🔌 Test 2: Placas Base y Componentes (50 preguntas)</option>
+        </select>
+
+        <p style="text-align:left; margin-bottom:8px; color:#ccc; font-size:14px;">2. Elige el modo de juego:</p>
+        <button class="btn-modo" onclick="comenzarTest('practica')">📖 MODO PRÁCTICA<br><span style="font-size:12px; font-weight:normal; color:#ccc;">Verás correcciones en verde/rojo tras cada pregunta.</span></button>
+        <button class="btn-modo" onclick="comenzarTest('examen')">📝 MODO EXAMEN<br><span style="font-size:12px; font-weight:normal; color:#ccc;">Sin pistas. Descubrirás tu puntuación total al final.</span></button>
     </div>
 </div>
 
@@ -141,10 +158,10 @@
     let preguntas = [];
     let indiceActual = 0;
     let aciertos = 0;
-    let modoSeleccionado = ''; // 'practica' o 'examen'
-    let respondido = false; // Bloqueo para evitar doble clic en modo práctica
+    let modoSeleccionado = ''; 
+    let respondido = false; 
+    let archivoJSON = '';
 
-    // Guardar la estructura del juego para meterla dinámicamente
     const estructuraJuegoHTML = `
         <div class="progress-bar">
             <span id="modo-texto">Modo</span>
@@ -158,16 +175,26 @@
     function comenzarTest(modo) {
         modoSeleccionado = modo;
         
-        // Cambiar la pantalla del menú por la del test
+        // Obtener cuál de los dos tests se ha elegido en el desplegable
+        const testElegido = document.getElementById('selector-test').value;
+        archivoJSON = `preguntas_${testElegido}.json`;
+
+        // Renderizar interfaz del juego
         document.getElementById('main-container').innerHTML = estructuraJuegoHTML;
         document.getElementById('modo-texto').innerText = modo === 'practica' ? '📖 Modo Práctica' : '📝 Modo Examen';
 
-        // Cargar las preguntas del JSON
-        fetch('preguntas_informatica_54.json')
-            .then(res => res.json())
+        // Hacer la petición del archivo correcto
+        fetch(archivoJSON)
+            .then(res => {
+                if(!res.ok) throw new Error();
+                return res.json();
+            })
             .then(data => {
-                preguntas = data.sort(() => Math.random() - 0.5); // Mezclar aleatoriamente
+                preguntas = data.sort(() => Math.random() - 0.5); // Mezclar
                 mostrarPregunta();
+            })
+            .catch(err => {
+                document.getElementById('pregunta').innerText = `❌ Error: No se ha podido cargar el archivo "${archivoJSON}". Asegúrate de haberlo guardado en tu repositorio con ese nombre exacto.`;
             });
     }
 
@@ -179,7 +206,7 @@
         }
 
         document.getElementById('progreso').innerText = `Pregunta ${indiceActual + 1} de ${preguntas.length}`;
-        document.getElementById('wrapper-siguiente').innerHTML = ''; // Limpiar botón Siguiente si lo hubiera
+        document.getElementById('wrapper-siguiente').innerHTML = ''; 
 
         let p = preguntas[indiceActual];
         document.getElementById('pregunta').innerText = p.pregunta;
@@ -198,37 +225,30 @@
     }
 
     function procesarRespuesta(botonSeleccionado, letraElegida, letraCorrecta) {
-        if (respondido && modoSeleccionado === 'practica') return; // Evita clicks repetidos en modo práctica
+        if (respondido && modoSeleccionado === 'practica') return; 
 
         let esCorrecto = (letraElegida === letraCorrecta.toUpperCase());
-        
-        if (esCorrecto) {
-            aciertos++;
-        }
+        if (esCorrecto) aciertos++;
 
         if (modoSeleccionado === 'examen') {
-            // Modo Examen: Pasa a la siguiente pregunta en silencio
             indiceActual++;
             mostrarPregunta();
         } else {
-            // Modo Práctica: Mostrar respuestas correcta/incorrecta visualmente
             respondido = true;
             let botones = document.querySelectorAll('#opciones button');
             
             botones.forEach(b => {
-                b.disabled = true; // Desactivar todos los botones temporalmente
+                b.disabled = true; 
                 let letraBoton = b.innerText.trim().charAt(0).toUpperCase();
-                
                 if (letraBoton === letraCorrecta.toUpperCase()) {
-                    b.classList.add('correcto'); // Pintar la correcta de verde
+                    b.classList.add('correcto'); 
                 }
             });
 
             if (!esCorrecto) {
-                botonSeleccionado.classList.add('incorrecto'); // Si falló, pintar su elección de rojo
+                botonSeleccionado.classList.add('incorrecto'); 
             }
 
-            // Crear dinámicamente un botón para avanzar cuando el usuario esté listo
             let btnSiguiente = document.createElement('button');
             btnSiguiente.className = 'btn-siguiente';
             btnSiguiente.innerText = 'Siguiente Pregunta ➡️';
@@ -243,13 +263,13 @@
     function mostrarResultadoFinal() {
         const contenedor = document.getElementById('main-container');
         let porcentaje = Math.round((aciertos / preguntas.length) * 100);
-        let mensajeMotivacional = porcentaje >= 50 ? "¡Enhorabuena! Has aprobado el examen. 🎉" : "Te falta un empujón. ¡Sigue repasando! 📚";
+        let mensajeMotivacional = porcentaje >= 50 ? "¡Enhorabuena! Has aprobado el test. 🎉" : "Te falta un empujón. ¡Sigue repasando! 📚";
 
         contenedor.innerHTML = `
             <div class="resultado-box">
                 <h3>¡Test Finalizado!</h3>
-                <p>Modo completado: <strong>${modoSeleccionado === 'practica' ? 'Práctica' : 'Examen'}</strong></p>
-                <div class="puntuacion">Tu puntuación total ha sido: ${aciertos} / ${preguntas.length}</div>
+                <p>Tu puntuación total ha sido:</p>
+                <div class="puntuacion">${aciertos} / ${preguntas.length}</div>
                 <p>Porcentaje de aciertos: <strong>${porcentaje}%</strong></p>
                 <p>${mensajeMotivacional}</p>
                 <button class="btn-reiniciar" onclick="window.location.reload()">Volver al Menú</button>
