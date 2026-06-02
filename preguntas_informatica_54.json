@@ -1,1 +1,595 @@
-
+[
+  {
+    "id": 1,
+    "pregunta": "La memoria SRAM:",
+    "opciones": [
+      "No precisa de refresco",
+      "Es más lenta que la DRAM",
+      "Es más barata que la DRAM"
+    ],
+    "correcta": 0
+  },
+  {
+    "id": 2,
+    "pregunta": "Los hilos (threads) son elementos:",
+    "opciones": [
+      "de hardware",
+      "de software",
+      "integrados en los núcleos (cores)",
+      "b) y c) son correctas"
+    ],
+    "correcta": 3
+  },
+  {
+    "id": 3,
+    "pregunta": "Ordena de mayor a menor tamaño:",
+    "opciones": [
+      "caché L1, L2, L3",
+      "caché L1, L2, LLC",
+      "caché LLC, L2, L3",
+      "caché L3, L2, L1"
+    ],
+    "correcta": 3
+  },
+  {
+    "id": 4,
+    "pregunta": "Antes de leer memoria principal, la CPU consulta:",
+    "opciones": [
+      "L1,L2,L3",
+      "LLC,L2,L3",
+      "LLC,L2,L1",
+      "L3,L2,L1"
+    ],
+    "correcta": 0
+  },
+  {
+    "id": 5,
+    "pregunta": "APU es:",
+    "opciones": [
+      "CPU con GPU integrada",
+      "GPU con CPU integrada",
+      "Tecnología Intel",
+      "GPU dedicada"
+    ],
+    "correcta": 0
+  },
+  {
+    "id": 6,
+    "pregunta": "Pregunta 6 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 7,
+    "pregunta": "Pregunta 7 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 8,
+    "pregunta": "Pregunta 8 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 9,
+    "pregunta": "Pregunta 9 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 10,
+    "pregunta": "Pregunta 10 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 11,
+    "pregunta": "Pregunta 11 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 12,
+    "pregunta": "Pregunta 12 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 13,
+    "pregunta": "Pregunta 13 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 14,
+    "pregunta": "Pregunta 14 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 15,
+    "pregunta": "Pregunta 15 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 16,
+    "pregunta": "Pregunta 16 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 17,
+    "pregunta": "Pregunta 17 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 18,
+    "pregunta": "Pregunta 18 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 19,
+    "pregunta": "Pregunta 19 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 20,
+    "pregunta": "Pregunta 20 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 21,
+    "pregunta": "Pregunta 21 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 22,
+    "pregunta": "Pregunta 22 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 23,
+    "pregunta": "Pregunta 23 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 24,
+    "pregunta": "Pregunta 24 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 25,
+    "pregunta": "Pregunta 25 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 26,
+    "pregunta": "Pregunta 26 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 27,
+    "pregunta": "Pregunta 27 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 28,
+    "pregunta": "Pregunta 28 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 29,
+    "pregunta": "Pregunta 29 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 30,
+    "pregunta": "Pregunta 30 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 31,
+    "pregunta": "Pregunta 31 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 32,
+    "pregunta": "Pregunta 32 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 33,
+    "pregunta": "Pregunta 33 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 34,
+    "pregunta": "Pregunta 34 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 35,
+    "pregunta": "Pregunta 35 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 36,
+    "pregunta": "Pregunta 36 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 37,
+    "pregunta": "Pregunta 37 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 38,
+    "pregunta": "Pregunta 38 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 39,
+    "pregunta": "Pregunta 39 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 40,
+    "pregunta": "Pregunta 40 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 41,
+    "pregunta": "Pregunta 41 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 42,
+    "pregunta": "Pregunta 42 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 43,
+    "pregunta": "Pregunta 43 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 44,
+    "pregunta": "Pregunta 44 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 45,
+    "pregunta": "Pregunta 45 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 46,
+    "pregunta": "Pregunta 46 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 47,
+    "pregunta": "Pregunta 47 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 48,
+    "pregunta": "Pregunta 48 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 49,
+    "pregunta": "Pregunta 49 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 50,
+    "pregunta": "Pregunta 50 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 51,
+    "pregunta": "Pregunta 51 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 52,
+    "pregunta": "Pregunta 52 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 53,
+    "pregunta": "Pregunta 53 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  },
+  {
+    "id": 54,
+    "pregunta": "Pregunta 54 (copiar enunciado original aquí)",
+    "opciones": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "correcta": null
+  }
+]
