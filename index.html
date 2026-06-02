@@ -28,7 +28,8 @@
             font-size: 14px;
             color: #aaa;
             margin-bottom: 15px;
-            text-align: right;
+            display: flex;
+            justify-content: space-between;
         }
         h2 {
             font-size: 20px;
@@ -49,19 +50,55 @@
             font-size: 16px; 
             transition: all 0.2s ease;
         }
-        button:hover { 
+        button:hover:not(:disabled) { 
             background: #007bff; 
             border-color: #0056b3;
             transform: translateX(5px);
         }
-        /* Recuadro de resultado final */
-        .resultado-box {
-            background: #252d3a;
-            border: 2px solid #007bff;
-            border-radius: 8px;
-            padding: 25px;
+        /* Estilos para Feedback instantáneo (Modo Práctica) */
+        button.correcto {
+            background: #155724 !important;
+            border-color: #28a745 !important;
+            color: #d4edda !important;
+        }
+        button.incorrecto {
+            background: #721c24 !important;
+            border-color: #dc3545 !important;
+            color: #f8d7da !important;
+        }
+        .btn-siguiente {
+            background: #007bff;
             text-align: center;
-            margin-top: 10px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .btn-siguiente:hover {
+            background: #0056b3;
+        }
+        /* Pantalla de Inicio y Resultado */
+        .menu-box, .resultado-box {
+            text-align: center;
+            padding: 10px;
+        }
+        .menu-box h1 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .menu-box p {
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+        .btn-modo {
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            background: #252d3a;
+            border-color: #007bff;
+            margin: 20px 0;
+            padding: 20px;
+        }
+        .btn-modo:hover {
+            background: #007bff;
         }
         .resultado-box h3 {
             margin: 0 0 15px 0;
@@ -82,42 +119,67 @@
             display: inline-block;
             width: auto;
             padding: 10px 25px;
+            margin-top: 15px;
         }
         .btn-reiniciar:hover {
             background: #218838;
-            transform: none;
         }
     </style>
 </head>
 <body>
 
-<div class="card" id="test-container">
-    <div class="progress-bar" id="progreso">Pregunta 0 de 0</div>
-    <h2 id="pregunta">Cargando preguntas...</h2>
-    <div id="opciones"></div>
+<div class="card" id="main-container">
+    <div class="menu-box">
+        <h1>Test de Informática ASIR</h1>
+        <p>Selecciona cómo quieres realizar el cuestionario:</p>
+        <button class="btn-modo" onclick="comenzarTest('practica')">📖 MODO PRÁCTICA<br><span style="font-size:12px; font-weight:normal; color:#ccc;">Verás si aciertas o fallas en cada pregunta al instante.</span></button>
+        <button class="btn-modo" onclick="comenzarTest('examen')">📝 MODO EXAMEN<br><span style="font-size:12px; font-weight:normal; color:#ccc;">Responderás del tirón y verás la nota final en un recuadro.</span></button>
+    </div>
 </div>
 
 <script>
     let preguntas = [];
     let indiceActual = 0;
     let aciertos = 0;
+    let modoSeleccionado = ''; // 'practica' o 'examen'
+    let respondido = false; // Bloqueo para evitar doble clic en modo práctica
 
-    // Cargar el JSON desde tu repositorio
-    fetch('preguntas_informatica_54.json')
-        .then(res => res.json())
-        .then(data => {
-            preguntas = data.sort(() => Math.random() - 0.5); // Mezclar preguntas de forma aleatoria
-            mostrarPregunta();
-        });
+    // Guardar la estructura del juego para meterla dinámicamente
+    const estructuraJuegoHTML = `
+        <div class="progress-bar">
+            <span id="modo-texto">Modo</span>
+            <span id="progreso">Pregunta 0 de 0</span>
+        </div>
+        <h2 id="pregunta">Cargando pregunta...</h2>
+        <div id="opciones"></div>
+        <div id="wrapper-siguiente"></div>
+    `;
+
+    function comenzarTest(modo) {
+        modoSeleccionado = modo;
+        
+        // Cambiar la pantalla del menú por la del test
+        document.getElementById('main-container').innerHTML = estructuraJuegoHTML;
+        document.getElementById('modo-texto').innerText = modo === 'practica' ? '📖 Modo Práctica' : '📝 Modo Examen';
+
+        // Cargar las preguntas del JSON
+        fetch('preguntas_informatica_54.json')
+            .then(res => res.json())
+            .then(data => {
+                preguntas = data.sort(() => Math.random() - 0.5); // Mezclar aleatoriamente
+                mostrarPregunta();
+            });
+    }
 
     function mostrarPregunta() {
+        respondido = false;
         if (indiceActual >= preguntas.length) {
             mostrarResultadoFinal();
             return;
         }
 
-        // Actualizar contador de progreso
         document.getElementById('progreso').innerText = `Pregunta ${indiceActual + 1} de ${preguntas.length}`;
+        document.getElementById('wrapper-siguiente').innerHTML = ''; // Limpiar botón Siguiente si lo hubiera
 
         let p = preguntas[indiceActual];
         document.getElementById('pregunta').innerText = p.pregunta;
@@ -128,29 +190,73 @@
         p.opciones.forEach(opcion => {
             let boton = document.createElement('button');
             boton.innerText = opcion;
-            
-            // Extraer la primera letra limpia (ej: "A") para validar
             let letra = opcion.trim().charAt(0).toUpperCase(); 
             
-            boton.onclick = () => verificarRespuesta(letra, p.respuesta_correcta);
+            boton.onclick = () => procesarRespuesta(boton, letra, p.respuesta_correcta);
             opcionesDiv.appendChild(boton);
         });
     }
 
-    function verificarRespuesta(elegida, correcta) {
-        // Guarda el acierto en silencio sin ventanas flotantes (alert)
-        if (elegida === correcta.toUpperCase()) {
+    function procesarRespuesta(botonSeleccionado, letraElegida, letraCorrecta) {
+        if (respondido && modoSeleccionado === 'practica') return; // Evita clicks repetidos en modo práctica
+
+        let esCorrecto = (letraElegida === letraCorrecta.toUpperCase());
+        
+        if (esCorrecto) {
             aciertos++;
         }
-        
-        // Pasa directamente a la siguiente pregunta
-        indiceActual++;
-        mostrarPregunta();
+
+        if (modoSeleccionado === 'examen') {
+            // Modo Examen: Pasa a la siguiente pregunta en silencio
+            indiceActual++;
+            mostrarPregunta();
+        } else {
+            // Modo Práctica: Mostrar respuestas correcta/incorrecta visualmente
+            respondido = true;
+            let botones = document.querySelectorAll('#opciones button');
+            
+            botones.forEach(b => {
+                b.disabled = true; // Desactivar todos los botones temporalmente
+                let letraBoton = b.innerText.trim().charAt(0).toUpperCase();
+                
+                if (letraBoton === letraCorrecta.toUpperCase()) {
+                    b.classList.add('correcto'); // Pintar la correcta de verde
+                }
+            });
+
+            if (!esCorrecto) {
+                botonSeleccionado.classList.add('incorrecto'); // Si falló, pintar su elección de rojo
+            }
+
+            // Crear dinámicamente un botón para avanzar cuando el usuario esté listo
+            let btnSiguiente = document.createElement('button');
+            btnSiguiente.className = 'btn-siguiente';
+            btnSiguiente.innerText = 'Siguiente Pregunta ➡️';
+            btnSiguiente.onclick = () => {
+                indiceActual++;
+                mostrarPregunta();
+            };
+            document.getElementById('wrapper-siguiente').appendChild(btnSiguiente);
+        }
     }
 
     function mostrarResultadoFinal() {
-        const contenedor = document.getElementById('test-container');
-        
-        // Calcular porcentaje de aciertos
+        const contenedor = document.getElementById('main-container');
         let porcentaje = Math.round((aciertos / preguntas.length) * 100);
-        let mensajeMens
+        let mensajeMotivacional = porcentaje >= 50 ? "¡Enhorabuena! Has aprobado el examen. 🎉" : "Te falta un empujón. ¡Sigue repasando! 📚";
+
+        contenedor.innerHTML = `
+            <div class="resultado-box">
+                <h3>¡Test Finalizado!</h3>
+                <p>Modo completado: <strong>${modoSeleccionado === 'practica' ? 'Práctica' : 'Examen'}</strong></p>
+                <div class="puntuacion">Tu puntuación total ha sido: ${aciertos} / ${preguntas.length}</div>
+                <p>Porcentaje de aciertos: <strong>${porcentaje}%</strong></p>
+                <p>${mensajeMotivacional}</p>
+                <button class="btn-reiniciar" onclick="window.location.reload()">Volver al Menú</button>
+            </div>
+        `;
+    }
+</script>
+
+</body>
+</html>
