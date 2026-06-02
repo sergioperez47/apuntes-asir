@@ -3,21 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test de Informática</title>
+    <title>Test de Informática - ASIR</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #121212; color: #ffffff; padding: 20px; display: flex; justify-content: center; }
-        .card { background: #1e1e1e; padding: 20px; border-radius: 8px; max-width: 500px; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        button { display: block; width: 100%; margin: 10px 0; padding: 10px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; text-align: left; font-size: 16px; }
-        button:hover { background: #0056b3; }
-        #resultado { font-weight: bold; margin-top: 15px; font-size: 18px; }
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background-color: #121212; 
+            color: #ffffff; 
+            padding: 20px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            min-height: 90vh;
+            margin: 0;
+        }
+        .card { 
+            background: #1e1e1e; 
+            padding: 30px; 
+            border-radius: 12px; 
+            max-width: 600px; 
+            width: 100%; 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5); 
+        }
+        .progress-bar {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 15px;
+            text-align: right;
+        }
+        h2 {
+            font-size: 20px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        button { 
+            display: block; 
+            width: 100%; 
+            margin: 12px 0; 
+            padding: 14px; 
+            background: #2a2a2a; 
+            color: white; 
+            border: 2px solid #3a3a3a; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            text-align: left; 
+            font-size: 16px; 
+            transition: all 0.2s ease;
+        }
+        button:hover { 
+            background: #007bff; 
+            border-color: #0056b3;
+            transform: translateX(5px);
+        }
+        /* Recuadro de resultado final */
+        .resultado-box {
+            background: #252d3a;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .resultado-box h3 {
+            margin: 0 0 15px 0;
+            color: #007bff;
+            font-size: 24px;
+        }
+        .puntuacion {
+            font-size: 32px;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+        .btn-reiniciar {
+            background: #28a745;
+            border: none;
+            text-align: center;
+            font-weight: bold;
+            display: inline-block;
+            width: auto;
+            padding: 10px 25px;
+        }
+        .btn-reiniciar:hover {
+            background: #218838;
+            transform: none;
+        }
     </style>
 </head>
 <body>
 
-<div class="card">
+<div class="card" id="test-container">
+    <div class="progress-bar" id="progreso">Pregunta 0 de 0</div>
     <h2 id="pregunta">Cargando preguntas...</h2>
     <div id="opciones"></div>
-    <div id="resultado"></div>
 </div>
 
 <script>
@@ -25,21 +102,22 @@
     let indiceActual = 0;
     let aciertos = 0;
 
-    // Cargar el JSON desde tu propio repositorio
+    // Cargar el JSON desde tu repositorio
     fetch('preguntas_informatica_54.json')
         .then(res => res.json())
         .then(data => {
-            preguntas = data.sort(() => Math.random() - 0.5); // Mezclar preguntas
+            preguntas = data.sort(() => Math.random() - 0.5); // Mezclar preguntas de forma aleatoria
             mostrarPregunta();
         });
 
     function mostrarPregunta() {
-        document.getElementById('resultado').innerText = '';
         if (indiceActual >= preguntas.length) {
-            document.getElementById('pregunta').innerText = "¡Test Completado!";
-            document.getElementById('opciones').innerHTML = `Tu puntuación es: ${aciertos} de ${preguntas.length}`;
+            mostrarResultadoFinal();
             return;
         }
+
+        // Actualizar contador de progreso
+        document.getElementById('progreso').innerText = `Pregunta ${indiceActual + 1} de ${preguntas.length}`;
 
         let p = preguntas[indiceActual];
         document.getElementById('pregunta').innerText = p.pregunta;
@@ -50,24 +128,29 @@
         p.opciones.forEach(opcion => {
             let boton = document.createElement('button');
             boton.innerText = opcion;
-            // Extrae la letra (A, B, C, D) del inicio de la opción
-            let letra = opcion.charAt(0).toUpperCase(); 
+            
+            // Extraer la primera letra limpia (ej: "A") para validar
+            let letra = opcion.trim().charAt(0).toUpperCase(); 
+            
             boton.onclick = () => verificarRespuesta(letra, p.respuesta_correcta);
             opcionesDiv.appendChild(boton);
         });
     }
 
     function verificarRespuesta(elegida, correcta) {
-        if (elegida === correcta) {
+        // Guarda el acierto en silencio sin ventanas flotantes (alert)
+        if (elegida === correcta.toUpperCase()) {
             aciertos++;
-            alert("¡Correcto! 🎉");
-        } else {
-            alert(`Incorrecto ❌. La respuesta correcta era la ${correcta}`);
         }
+        
+        // Pasa directamente a la siguiente pregunta
         indiceActual++;
         mostrarPregunta();
     }
-</script>
 
-</body>
-</html>
+    function mostrarResultadoFinal() {
+        const contenedor = document.getElementById('test-container');
+        
+        // Calcular porcentaje de aciertos
+        let porcentaje = Math.round((aciertos / preguntas.length) * 100);
+        let mensajeMens
