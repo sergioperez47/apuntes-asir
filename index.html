@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma de Tests - ASIR</title>
+    <title>Plataforma de Cuestionarios - ASIR</title>
     <style>
         body { 
             font-family: 'Segoe UI', Arial, sans-serif; 
@@ -44,9 +44,57 @@
             border: 2px solid #007bff;
             border-radius: 8px;
             font-size: 16px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             cursor: pointer;
         }
+        /* Contenedor del interruptor Aleatorio */
+        .random-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #252d3a;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #3a3a3a;
+            margin-bottom: 25px;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #444;
+            transition: .3s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #007bff;
+        }
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+
         button { 
             display: block; 
             width: 100%; 
@@ -148,6 +196,14 @@
             <option value="placas">🔌 Test 2: Placas Base y Componentes (50 preguntas)</option>
         </select>
 
+        <div class="random-container">
+            <span style="font-size: 15px; color:#fff; font-weight: 500;">🎲 Desordenar preguntas (Modo Random)</span>
+            <label class="switch">
+                <input type="checkbox" id="check-random" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+
         <p style="text-align:left; margin-bottom:8px; color:#ccc; font-size:14px;">2. Elige el modo de juego:</p>
         <button class="btn-modo" onclick="comenzarTest('practica')">📖 MODO PRÁCTICA<br><span style="font-size:12px; font-weight:normal; color:#ccc;">Verás correcciones en verde/rojo tras cada pregunta.</span></button>
         <button class="btn-modo" onclick="comenzarTest('examen')">📝 MODO EXAMEN<br><span style="font-size:12px; font-weight:normal; color:#ccc;">Sin pistas. Descubrirás tu puntuación total al final.</span></button>
@@ -175,22 +231,25 @@
     function comenzarTest(modo) {
         modoSeleccionado = modo;
         
-        // Obtener cuál de los dos tests se ha elegido en el desplegable
         const testElegido = document.getElementById('selector-test').value;
+        const esRandom = document.getElementById('check-random').checked; // Saber si el botón random está activado
         archivoJSON = `preguntas_${testElegido}.json`;
 
-        // Renderizar interfaz del juego
         document.getElementById('main-container').innerHTML = estructuraJuegoHTML;
         document.getElementById('modo-texto').innerText = modo === 'practica' ? '📖 Modo Práctica' : '📝 Modo Examen';
 
-        // Hacer la petición del archivo correcto
         fetch(archivoJSON)
             .then(res => {
                 if(!res.ok) throw new Error();
                 return res.json();
             })
             .then(data => {
-                preguntas = data.sort(() => Math.random() - 0.5); // Mezclar
+                // Si está activado, las desordena; si no, las deja tal cual vienen del JSON (1, 2, 3...)
+                if (esRandom) {
+                    preguntas = data.sort(() => Math.random() - 0.5);
+                } else {
+                    preguntas = data;
+                }
                 mostrarPregunta();
             })
             .catch(err => {
