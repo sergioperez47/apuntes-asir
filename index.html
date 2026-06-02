@@ -11,6 +11,7 @@
             color: #ffffff; 
             padding: 20px; 
             display: flex; 
+            flex-direction: column;
             justify-content: center; 
             align-items: center;
             min-height: 90vh;
@@ -23,6 +24,7 @@
             max-width: 600px; 
             width: 100%; 
             box-shadow: 0 6px 20px rgba(0,0,0,0.5); 
+            box-sizing: border-box;
         }
         .progress-bar {
             font-size: 14px;
@@ -47,7 +49,6 @@
             margin-bottom: 20px;
             cursor: pointer;
         }
-        /* Contenedor del interruptor Aleatorio */
         .random-container {
             display: flex;
             align-items: center;
@@ -64,128 +65,84 @@
             width: 50px;
             height: 26px;
         }
-        .switch input { 
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
+        .switch input { opacity: 0; width: 0; height: 0; }
         .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #444;
-            transition: .3s;
-            border-radius: 34px;
+            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #444; transition: .3s; border-radius: 34px;
         }
         .slider:before {
-            position: absolute;
-            content: "";
-            height: 18px;
-            width: 18px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .3s;
-            border-radius: 50%;
+            position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 4px;
+            background-color: white; transition: .3s; border-radius: 50%;
         }
-        input:checked + .slider {
-            background-color: #007bff;
-        }
-        input:checked + .slider:before {
-            transform: translateX(24px);
-        }
+        input:checked + .slider { background-color: #007bff; }
+        input:checked + .slider:before { transform: translateX(24px); }
 
         button { 
-            display: block; 
-            width: 100%; 
-            margin: 12px 0; 
-            padding: 14px; 
-            background: #2a2a2a; 
-            color: white; 
-            border: 2px solid #3a3a3a; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            text-align: left; 
-            font-size: 16px; 
+            display: block; width: 100%; margin: 12px 0; padding: 14px; 
+            background: #2a2a2a; color: white; border: 2px solid #3a3a3a; 
+            border-radius: 8px; cursor: pointer; text-align: left; font-size: 16px; 
             transition: all 0.2s ease;
         }
         button:hover:not(:disabled) { 
-            background: #007bff; 
-            border-color: #0056b3;
-            transform: translateX(5px);
+            background: #007bff; border-color: #0056b3; transform: translateX(5px);
         }
-        button.correcto {
-            background: #155724 !important;
-            border-color: #28a745 !important;
-            color: #d4edda !important;
+        button.correcto { background: #155724 !important; border-color: #28a745 !important; color: #d4edda !important; }
+        button.incorrecto { background: #721c24 !important; border-color: #dc3545 !important; color: #f8d7da !important; }
+        
+        .btn-siguiente { background: #007bff; text-align: center; font-weight: bold; margin-top: 20px; }
+        .btn-siguiente:hover { background: #0056b3; }
+        
+        .menu-box, .resultado-box { text-align: center; padding: 10px; }
+        .menu-box h1 { color: #007bff; margin-bottom: 5px; }
+        .menu-box p { color: #aaa; margin-bottom: 20px; }
+        
+        .btn-modo { text-align: center; font-weight: bold; font-size: 18px; background: #252d3a; border-color: #007bff; margin: 15px 0; padding: 18px; }
+        .btn-modo:hover { background: #007bff; }
+        
+        .resultado-box h3 { margin: 0 0 15px 0; color: #007bff; font-size: 24px; }
+        .puntuacion { font-size: 32px; font-weight: bold; color: #28a745; margin-bottom: 15px; }
+        
+        .btn-reiniciar { background: #28a745; border: none; text-align: center; font-weight: bold; display: inline-block; width: auto; padding: 10px 25px; margin-top: 15px; }
+        .btn-reiniciar:hover { background: #218838; }
+
+        /* Estilos del Historial */
+        .history-card {
+            margin-top: 25px;
+            background: #1e1e1e;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+            box-sizing: border-box;
         }
-        button.incorrecto {
-            background: #721c24 !important;
-            border-color: #dc3545 !important;
-            color: #f8d7da !important;
+        .history-card h2 { margin-top: 0; color: #007bff; font-size: 18px; display: flex; justify-content: space-between; align-items: center;}
+        .btn-borrar-historial {
+            background: #dc3545; border: none; padding: 6px 12px; font-size: 12px; color: white; border-radius: 4px; cursor: pointer; width: auto; margin: 0; text-align: center;
         }
-        .btn-siguiente {
-            background: #007bff;
-            text-align: center;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        .btn-siguiente:hover {
-            background: #0056b3;
-        }
-        .menu-box, .resultado-box {
-            text-align: center;
-            padding: 10px;
-        }
-        .menu-box h1 {
-            color: #007bff;
-            margin-bottom: 5px;
-        }
-        .menu-box p {
-            color: #aaa;
-            margin-bottom: 20px;
-        }
-        .btn-modo {
-            text-align: center;
-            font-weight: bold;
-            font-size: 18px;
+        .btn-borrar-historial:hover { background: #bd2130; }
+        .history-list { max-height: 200px; overflow-y: auto; padding-right: 5px; }
+        .history-item {
             background: #252d3a;
-            border-color: #007bff;
-            margin: 15px 0;
-            padding: 18px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid #3a3a3a;
         }
-        .btn-modo:hover {
-            background: #007bff;
-        }
-        .resultado-box h3 {
-            margin: 0 0 15px 0;
-            color: #007bff;
-            font-size: 24px;
-        }
-        .puntuacion {
-            font-size: 32px;
-            font-weight: bold;
-            color: #28a745;
-            margin-bottom: 15px;
-        }
-        .btn-reiniciar {
-            background: #28a745;
-            border: none;
-            text-align: center;
-            font-weight: bold;
-            display: inline-block;
-            width: auto;
-            padding: 10px 25px;
-            margin-top: 15px;
-        }
-        .btn-reiniciar:hover {
-            background: #218838;
-        }
+        .history-item.aprobado { border-left-color: #28a745; }
+        .history-item.suspenso { border-left-color: #dc3545; }
+        .history-meta { color: #aaa; font-size: 11px; }
+        .history-score { font-weight: bold; font-size: 15px; }
     </style>
 </head>
 <body>
 
 <div class="card" id="main-container">
+    <!-- Pantalla de Selección Principal -->
     <div class="menu-box">
         <h1>Plataforma de Cuestionarios</h1>
         <p>Prepara tus exámenes de ASIR</p>
@@ -210,6 +167,17 @@
     </div>
 </div>
 
+<!-- Bloque visual del Historial -->
+<div class="history-card" id="history-container">
+    <h2>
+        📊 Historial de Intentos
+        <button class="btn-borrar-historial" onclick="borrarHistorial()">Borrar todo</button>
+    </h2>
+    <div class="history-list" id="lista-historial">
+        <!-- Los intentos se cargarán dinámicamente aquí -->
+    </div>
+</div>
+
 <script>
     let preguntas = [];
     let indiceActual = 0;
@@ -217,6 +185,7 @@
     let modoSeleccionado = ''; 
     let respondido = false; 
     let archivoJSON = '';
+    let nombreTestVisual = '';
 
     const estructuraJuegoHTML = `
         <div class="progress-bar">
@@ -228,38 +197,40 @@
         <div id="wrapper-siguiente"></div>
     `;
 
+    // Cargar historial al iniciar la página
+    document.addEventListener("DOMContentLoaded", actualizarHistorialVisual);
+
     function comenzarTest(modo) {
         modoSeleccionado = modo;
         
-        const testElegido = document.getElementById('selector-test').value;
-        const esRandom = document.getElementById('check-random').checked; // Saber si el botón random está activado
+        const selector = document.getElementById('selector-test');
+        const testElegido = selector.value;
+        nombreTestVisual = selector.options[selector.selectedIndex].text.split(':')[0].trim(); // Extrae "💻 Test 1" o "🔌 Test 2"
+        
+        const esRandom = document.getElementById('check-random').checked;
         archivoJSON = `preguntas_${testElegido}.json`;
+
+        // Ocultar la tarjeta del historial mientras juegas para que no estorbe
+        document.getElementById('history-container').style.display = 'none';
 
         document.getElementById('main-container').innerHTML = estructuraJuegoHTML;
         document.getElementById('modo-texto').innerText = modo === 'practica' ? '📖 Modo Práctica' : '📝 Modo Examen';
 
         fetch(archivoJSON)
-            .then(res => {
-                if(!res.ok) throw new Error();
-                return res.json();
-            })
+            .then(res => { if(!res.ok) throw new Error(); return res.json(); })
             .then(data => {
-                // Si está activado, las desordena; si no, las deja tal cual vienen del JSON (1, 2, 3...)
-                if (esRandom) {
-                    preguntas = data.sort(() => Math.random() - 0.5);
-                } else {
-                    preguntas = data;
-                }
+                preguntas = esRandom ? data.sort(() => Math.random() - 0.5) : data;
                 mostrarPregunta();
             })
             .catch(err => {
-                document.getElementById('pregunta').innerText = `❌ Error: No se ha podido cargar el archivo "${archivoJSON}". Asegúrate de haberlo guardado en tu repositorio con ese nombre exacto.`;
+                document.getElementById('pregunta').innerText = `❌ Error: No se ha podido cargar el archivo "${archivoJSON}".`;
             });
     }
 
     function mostrarPregunta() {
         respondido = false;
         if (indiceActual >= preguntas.length) {
+            guardarIntento(); // Guardar antes de renderizar la nota final
             mostrarResultadoFinal();
             return;
         }
@@ -277,7 +248,6 @@
             let boton = document.createElement('button');
             boton.innerText = opcion;
             let letra = opcion.trim().charAt(0).toUpperCase(); 
-            
             boton.onclick = () => procesarRespuesta(boton, letra, p.respuesta_correcta);
             opcionesDiv.appendChild(boton);
         });
@@ -299,23 +269,70 @@
             botones.forEach(b => {
                 b.disabled = true; 
                 let letraBoton = b.innerText.trim().charAt(0).toUpperCase();
-                if (letraBoton === letraCorrecta.toUpperCase()) {
-                    b.classList.add('correcto'); 
-                }
+                if (letraBoton === letraCorrecta.toUpperCase()) b.classList.add('correcto'); 
             });
 
-            if (!esCorrecto) {
-                botonSeleccionado.classList.add('incorrecto'); 
-            }
+            if (!esCorrecto) botonSeleccionado.classList.add('incorrecto'); 
 
             let btnSiguiente = document.createElement('button');
             btnSiguiente.className = 'btn-siguiente';
             btnSiguiente.innerText = 'Siguiente Pregunta ➡️';
-            btnSiguiente.onclick = () => {
-                indiceActual++;
-                mostrarPregunta();
-            };
+            btnSiguiente.onclick = () => { indiceActual++; mostrarPregunta(); };
             document.getElementById('wrapper-siguiente').appendChild(btnSiguiente);
+        }
+    }
+
+    // 💾 GUARDAR EN LOCALSTORAGE
+    function guardarIntento() {
+        let porcentaje = Math.round((aciertos / preguntas.length) * 100);
+        let ahora = new Date();
+        let fechaFormateada = ahora.toLocaleDateString() + ' - ' + ahora.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
+        let nuevoIntento = {
+            test: nombreTestVisual,
+            modo: modoSeleccionado === 'practica' ? 'Práctica' : 'Examen',
+            nota: `${aciertos}/${preguntas.length}`,
+            aprobado: porcentaje >= 50,
+            fecha: fechaFormateada
+        };
+
+        // Leer historial antiguo o crear array vacío si es el primero
+        let historial = JSON.parse(localStorage.getItem('historial_asir')) || [];
+        historial.unshift(nuevoIntento); // Añadir arriba del todo
+        localStorage.setItem('historial_asir', JSON.stringify(historial));
+    }
+
+    // 🔄 REFRESCAR LA LISTA VISUAL
+    function actualizarHistorialVisual() {
+        let historial = JSON.parse(localStorage.getItem('historial_asir')) || [];
+        let lista = document.getElementById('lista-historial');
+        lista.innerHTML = '';
+
+        if (historial.length === 0) {
+            lista.innerHTML = `<p style="color:#aaa; font-size:13px; margin:10px 0;">Aún no tienes intentos guardados. ¡Empieza un test!</p>`;
+            return;
+        }
+
+        historial.forEach(item => {
+            let div = document.createElement('div');
+            div.className = `history-item ${item.aprobado ? 'aprobado' : 'suspenso'}`;
+            div.innerHTML = `
+                <div>
+                    <strong>${item.test}</strong> (${item.modo})<br>
+                    <span class="history-meta">${item.fecha}</span>
+                </div>
+                <div class="history-score" style="color: ${item.aprobado ? '#28a745' : '#dc3545'}">
+                    ${item.nota}
+                </div>
+            `;
+            lista.appendChild(div);
+        });
+    }
+
+    function borrarHistorial() {
+        if(confirm("¿Seguro que quieres borrar todo tu historial de intentos?")) {
+            localStorage.removeItem('historial_asir');
+            actualizarHistorialVisual();
         }
     }
 
