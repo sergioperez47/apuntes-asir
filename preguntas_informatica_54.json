@@ -1,595 +1,302 @@
 [
   {
-    "id": 1,
-    "pregunta": "La memoria SRAM:",
-    "opciones": [
-      "No precisa de refresco",
-      "Es más lenta que la DRAM",
-      "Es más barata que la DRAM"
-    ],
-    "correcta": 0
+    "pregunta": "1. La memoria SRAM:",
+    "opciones": ["A) No precisa de refresco", "B) Es más lenta que la DRAM", "C) Es más barata que la DRAM"],
+    "respuesta_correcta": "A"
   },
   {
-    "id": 2,
-    "pregunta": "Los hilos (threads) son elementos:",
-    "opciones": [
-      "de hardware",
-      "de software",
-      "integrados en los núcleos (cores)",
-      "b) y c) son correctas"
-    ],
-    "correcta": 3
+    "pregunta": "2. Los hilos (threads) son elementos:",
+    "opciones": ["A) de hardware", "B) de software", "C) integrados en los núcleos (cores)", "D) b) y c) son correctas (Nota: núcleos virtuales o lógicos)"],
+    "respuesta_correcta": "D"
   },
   {
-    "id": 3,
-    "pregunta": "Ordena de mayor a menor tamaño:",
-    "opciones": [
-      "caché L1, L2, L3",
-      "caché L1, L2, LLC",
-      "caché LLC, L2, L3",
-      "caché L3, L2, L1"
-    ],
-    "correcta": 3
+    "pregunta": "3. Ordena de mayor a menor tamaño:",
+    "opciones": ["A) caché L1, caché L2, caché L3", "B) caché L1, caché L2, caché LLC", "C) caché LLC, caché L2, caché L3", "D) caché L3, caché L2, caché L1"],
+    "respuesta_correcta": "D"
   },
   {
-    "id": 4,
-    "pregunta": "Antes de leer memoria principal, la CPU consulta:",
-    "opciones": [
-      "L1,L2,L3",
-      "LLC,L2,L3",
-      "LLC,L2,L1",
-      "L3,L2,L1"
-    ],
-    "correcta": 0
+    "pregunta": "4. Antes de abordar la lectura de la memoria principal, la CPU consulta en orden:",
+    "opciones": ["A) caché L1, caché L2, caché L3", "B) caché LLC, caché L2, caché L3", "C) caché LLC, caché L2, caché L1", "D) caché L3, caché L2, caché L1"],
+    "respuesta_correcta": "A"
   },
   {
-    "id": 5,
-    "pregunta": "APU es:",
-    "opciones": [
-      "CPU con GPU integrada",
-      "GPU con CPU integrada",
-      "Tecnología Intel",
-      "GPU dedicada"
-    ],
-    "correcta": 0
+    "pregunta": "5. APU es:",
+    "opciones": ["A) Una CPU con GPU integrada", "B) Una GPU con CPU integrada", "C) Una tecnología de Intel", "D) Una GPU dedicada"],
+    "respuesta_correcta": "A"
   },
   {
-    "id": 6,
-    "pregunta": "Pregunta 6 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "6. Qué caché es compartida por todos los núcleos del procesador:",
+    "opciones": ["A) L1", "B) L2", "C) L3", "D) L1 y L2"],
+    "respuesta_correcta": "C"
   },
   {
-    "id": 7,
-    "pregunta": "Pregunta 7 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "7. Para esta nomenclatura de procesador: Intel Core i9-12900F sabemos que su generación es:",
+    "opciones": ["A) 1", "B) 12", "C) 9", "D) F"],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 8,
-    "pregunta": "Pregunta 8 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "8. Para esta nomenclatura de procesador: Intel Core i9-12900F sabemos que su línea de producto es:",
+    "opciones": ["A) 1", "B) 12", "C) i9 (o 9)", "D) F"],
+    "respuesta_correcta": "C"
   },
   {
-    "id": 9,
-    "pregunta": "Pregunta 9 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "9. Tecnología en orden histórico:",
+    "opciones": ["A) DDR, SDR", "B) SIMM, DIMM", "C) DDR5, DDR4"],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 10,
-    "pregunta": "Pregunta 10 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "10. DDR5 y DDR4 presentan el mismo número de pines:",
+    "opciones": ["A) Verdadero", "B) Falso"],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 11,
-    "pregunta": "Pregunta 11 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "11. Qué nivel de caché separa datos de instrucciones:",
+    "opciones": ["A) L1", "B) L2", "C) L3", "D) L2 y L3"],
+    "respuesta_correcta": "A"
   },
   {
-    "id": 12,
-    "pregunta": "Pregunta 12 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "12. Número de pines o contactos para un módulo de memoria DIMM DDR3:",
+    "opciones": ["A) 288", "B) 184", "C) 240", "D) 168"],
+    "respuesta_correcta": "C"
   },
   {
-    "id": 13,
-    "pregunta": "Pregunta 13 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "13. Comando para Linux especializado en la memoria interna:",
+    "opciones": ["A) free", "B) lshw", "C) cpu-x"],
+    "respuesta_correcta": "A"
   },
   {
-    "id": 14,
-    "pregunta": "Pregunta 14 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "14. Respecto al ASCII de 7 bits, también conocido como ASCII básico u original, sabemos que:",
+    "opciones": ["A) Da lugar a un juego de 256 caracteres.", "B) Implementa 32 caracteres de control.", "C) Sólo representa caracteres alfabéticos y numéricos.", "D) Ninguna de las otras respuestas es correcta."],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 15,
-    "pregunta": "Pregunta 15 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "15. Por el bus de datos viajan:",
+    "opciones": ["A) Las señales de control.", "B) Los datos que manejan los programas.", "C) Las instrucciones de los programas.", "D) b) y c) son ciertas"],
+    "respuesta_correcta": "D"
   },
   {
-    "id": 16,
-    "pregunta": "Pregunta 16 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "16. El firmware puede ser catalogado como:",
+    "opciones": ["A) Software", "B) Hardware", "C) Un híbrido entre software y hardware", "D) Una tecnología en decadencia"],
+    "respuesta_correcta": "C"
   },
   {
-    "id": 17,
-    "pregunta": "Pregunta 17 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "17. Cómo se llama el software que sirve para realizar ajustes en el seno del BIOS:",
+    "opciones": ["A) Setup", "B) ROM", "C) POST", "D) CMOS"],
+    "respuesta_correcta": "A"
   },
   {
-    "id": 18,
-    "pregunta": "Pregunta 18 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "18. DIMM sin buffer o registro:",
+    "opciones": ["A) UDIMM", "B) RDIMM", "C) UDIMM y RDIMM"],
+    "respuesta_correcta": "A"
   },
   {
-    "id": 19,
-    "pregunta": "Pregunta 19 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "19. 122 P-bits (Petabits) equivalen a:",
+    "opciones": ["A) 122 * 2^50 bits", "B) 122 * 10^15 bits", "C) 2^47 bits", "D) Ninguna de las opciones es exacta (Nota: Peta = 2^50 en binario o 10^15 en SI)"],
+    "respuesta_correcta": "A"
   },
   {
-    "id": 20,
-    "pregunta": "Pregunta 20 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "20. En Latin-1 el código octal del símbolo “Y” es 131. ¿Qué código tiene asociado el símbolo “N”?",
+    "opciones": ["A) 79 (base 10)", "B) 4D (base 16)", "C) 4E (base 16)", "D) 77 (base 10)"],
+    "respuesta_correcta": "C"
   },
   {
-    "id": 21,
-    "pregunta": "Pregunta 21 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "21. El bus del sistema:",
+    "opciones": ["A) Es más lento que el bus de expansión.", "B) Es más rápido que el bus local al procesador.", "C) Comunica el procesador y la memoria primaria.", "D) Es más accesible (para el técnico) que el bus de expansión."],
+    "respuesta_correcta": "C"
   },
   {
-    "id": 22,
-    "pregunta": "Pregunta 22 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "22. La -f r e c u e n c i a- de la memoria se suele medir en:",
+    "opciones": ["A) GHz", "B) MHz", "C) KHz", "D) THz"],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 23,
-    "pregunta": "Pregunta 23 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "23. Pasar el valor octal 364 a binario:",
+    "opciones": ["A) 1110100", "B) 11111100", "C) 11101100", "D) 11110100"],
+    "respuesta_correcta": "D"
   },
   {
-    "id": 24,
-    "pregunta": "Pregunta 24 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "24. En la tabla ASCII los caracteres no imprimibles ocupan las posiciones hexadecimales 00 a 1F.",
+    "opciones": ["A) Falso", "B) Verdadero"],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 25,
-    "pregunta": "Pregunta 25 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "25. Cuántos bits se precisan para codificar “AMOR” (sin las comillas) en ISO-8859-1:",
+    "opciones": ["A) 4", "B) 11", "C) 32", "D) 28"],
+    "respuesta_correcta": "C"
   },
   {
-    "id": 26,
-    "pregunta": "Pregunta 26 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "26. ¿Cómo se llama al proceso que, en el arranque del ordenador, comprueba el estado del hardware?",
+    "opciones": ["A) MBR", "B) POST", "C) CMOS", "D) BIOS"],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 27,
-    "pregunta": "Pregunta 27 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "27. Variantes típicas de UNICODE:",
+    "opciones": ["A) UTF-8, UTF-16", "B) UTF-16, UTF-32, UTF-64", "C) UTF-8, UTF-16, UTF-32", "D) UTF-16, UTF-32"],
+    "respuesta_correcta": "C"
   },
   {
-    "id": 28,
-    "pregunta": "Pregunta 28 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "28. Un nombre alternativo para la memoria auxiliar sería:",
+    "opciones": ["A) Memoria central", "B) Memoria externa", "C) Memoria RAM", "D) Memoria interna"],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 29,
-    "pregunta": "Pregunta 29 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "29. Ubicación de los drivers:",
+    "opciones": ["A) Sistema Operativo", "B) Firmware", "C) Sistema Operativo y Firmware"],
+    "respuesta_correcta": "C"
   },
   {
-    "id": 30,
-    "pregunta": "Pregunta 30 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "30. Uno de los siguientes periféricos es de Entrada-Salida:",
+    "opciones": ["A) Impresora", "B) Disco duro", "C) Pantalla", "D) Escáner"],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 31,
-    "pregunta": "Pregunta 31 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "31. En UTF-8 la longitud de representación es:",
+    "opciones": ["A) Entre 1 y 4 bytes", "B) 4 bytes", "C) 32 bits", "D) 2 o 4 bytes"],
+    "respuesta_correcta": "A"
   },
   {
-    "id": 32,
-    "pregunta": "Pregunta 32 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "32. Si lanzamos el comando ascii -o el caracter de control DEL aparecerá codificado del siguiente modo:",
+    "opciones": ["A) 177", "B) 127", "C) 7F"],
+    "respuesta_correcta": "A"
   },
   {
-    "id": 33,
-    "pregunta": "Pregunta 33 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "33. Latin-9 es un código de representación de longitud:",
+    "opciones": ["A) 7 bits", "B) 9 bits", "C) Equivalente a Latin-1 (8 bits)"],
+    "respuesta_correcta": "C"
   },
   {
-    "id": 34,
-    "pregunta": "Pregunta 34 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "34. Sabiendo que “A” tiene asignado el código 41 en ASCII-hexadecimal, a “F” le corresponderá el código octal 106:",
+    "opciones": ["A) Verdadero", "B) Falso"],
+    "respuesta_correcta": "A"
   },
   {
-    "id": 35,
-    "pregunta": "Pregunta 35 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "35. Ordena los buses, de menor a mayor velocidad:",
+    "opciones": ["A) Sistema, Local, Expansión", "B) Expansión, Local, Sistema", "C) Expansión, Sistema, Local", "D) Local, Sistema, Expansión"],
+    "respuesta_correcta": "C"
   },
   {
-    "id": 36,
-    "pregunta": "Pregunta 36 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "36. En el contexto de los procesadores, 1 Hz es:",
+    "opciones": ["A) 10 ciclos por segundo", "B) 1 ciclo por segundo", "C) 100 ciclos por segundo", "D) 1 instrucción-máquina por segundo"],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 37,
-    "pregunta": "Pregunta 37 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "37. Intel® Core™ i9 processor 14900K 36M Cache. ¿A qué nivel se refiere?",
+    "opciones": ["A) L2", "B) LLC (Intel Smart Cache / L3)", "C) L1"],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 38,
-    "pregunta": "Pregunta 38 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "38. En los procesadores tipo APU, la memoria de vídeo utiliza (está integrada en) el propio procesador:",
+    "opciones": ["A) Verdadero", "B) Falso"],
+    "respuesta_correcta": "A"
   },
   {
-    "id": 39,
-    "pregunta": "Pregunta 39 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "39. Memoria ROM que admite reprogramación (regrabado) por medios eléctricos/ultravioleta:",
+    "opciones": ["A) PROM", "B) EPROM"],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 40,
-    "pregunta": "Pregunta 40 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "40. Por OUTPUT entendemos:",
+    "opciones": ["A) El envío de información hacia los periféricos.", "B) El envío de información hacia el computador.", "C) El envío de información con origen en los periféricos."],
+    "respuesta_correcta": "A"
   },
   {
-    "id": 41,
-    "pregunta": "Pregunta 41 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "41. 1 GB contiene 2^31 nibbles.",
+    "opciones": ["A) Verdadero", "B) Falso", "C) Falta información para hacer el cálculo"],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 42,
-    "pregunta": "Pregunta 42 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "42. Intel® Core™ i9 processor 14900K 36M Cache, la capacidad se refiere al nivel:",
+    "opciones": ["A) L2", "B) LLC", "C) L1"],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 43,
-    "pregunta": "Pregunta 43 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "43. En ausencia de corriente las memorias ROM no pierden la información almacenada:",
+    "opciones": ["A) Verdadero", "B) Falso"],
+    "respuesta_correcta": "A"
   },
   {
-    "id": 44,
-    "pregunta": "Pregunta 44 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "44. En el procesador i9-14900K, la caché L2 por núcleo/total tiene un tamaño de:",
+    "opciones": ["A) 32 Megabytes", "B) 8 Megabits", "C) 7 Megabytes", "D) Falta información para saberlo en base a la publicidad"],
+    "respuesta_correcta": "D"
   },
   {
-    "id": 45,
-    "pregunta": "Pregunta 45 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "45. En la nomenclatura i9-14900K, el sufijo es:",
+    "opciones": ["A) 14", "B) K", "C) 900", "D) Ninguna es correcta"],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 46,
-    "pregunta": "Pregunta 46 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "46. Memoria con posibilidad de regrabado (reprogramación):",
+    "opciones": ["A) PROM", "B) EPROM"],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 47,
-    "pregunta": "Pregunta 47 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "47. Ordena de mayor a menor tiempo de acceso (más lenta a más rápida):",
+    "opciones": ["A) Caché L1, Caché L2, Caché L3", "B) Caché L3, Caché L2, Cache L1", "C) Caché L3, Caché L2, Caché LLC"],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 48,
-    "pregunta": "Pregunta 48 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "48. Convertir a octal el hexadecimal 189:",
+    "opciones": ["A) 620", "B) 611", "C) 612", "D) 621"],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 49,
-    "pregunta": "Pregunta 49 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "49. Qué juego de caracteres no incluye el símbolo del euro:",
+    "opciones": ["A) LATIN-9", "B) ISO-8859-1", "C) ISO-8859-15"],
+    "respuesta_correcta": "B"
   },
   {
-    "id": 50,
-    "pregunta": "Pregunta 50 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "50. 122 Pb (Petabits) equivalen a:",
+    "opciones": ["A) 122 * 2^50 bits", "B) 2^57 bytes", "C) 2^47 bits", "D) 2^46 bits"],
+    "respuesta_correcta": "A"
   },
   {
-    "id": 51,
-    "pregunta": "Pregunta 51 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "51. El carácter de control RETORNO DE CARRO (CR) tiene el valor decimal:",
+    "opciones": ["A) 10", "B) 11", "C) 12", "D) 13"],
+    "respuesta_correcta": "D"
   },
   {
-    "id": 52,
-    "pregunta": "Pregunta 52 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "52. Ordena los buses, de menor a mayor longitud física habitual:",
+    "opciones": ["A) Sistema, Local, Expansión", "B) Expansión, Local, Sistema", "C) Expansión, Sistema, Local", "D) Local, Sistema, Expansión"],
+    "respuesta_correcta": "D"
   },
   {
-    "id": 53,
-    "pregunta": "Pregunta 53 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "53. Número de pines o contactos para un módulo de memoria DIMM DDR3:",
+    "opciones": ["A) 288", "B) 184", "C) 240", "D) 168"],
+    "respuesta_correcta": "C"
   },
   {
-    "id": 54,
-    "pregunta": "Pregunta 54 (copiar enunciado original aquí)",
-    "opciones": [
-      "a",
-      "b",
-      "c",
-      "d"
-    ],
-    "correcta": null
+    "pregunta": "54. Ordena de menor a mayor precio por megabyte:",
+    "opciones": ["A) Caché L3, Caché L2, Cache L1", "B) Caché L3, Caché L2, Caché LLC", "C) Caché L1, Caché L2, Caché L3"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "55. Marca la afirmación cierta:",
+    "opciones": ["A) El esquema UTF-16 emplea un máximo de 32 bits", "B) El esquema UTF-32 emplea un máximo de 32 bits", "C) El esquema UTF-16 emplea un máximo de 16 bits", "D) El esquema UTF-8 emplea un máximo de 16 bits"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "56. Un nombre alternativo para la memoria auxiliar es:",
+    "opciones": ["A) Memoria central", "B) Memoria de almacenamiento masivo", "C) Memoria periférica", "D) b) y c) son correctas"],
+    "respuesta_correcta": "D"
+  },
+  {
+    "pregunta": "57. El bus del sistema:",
+    "opciones": ["A) Comunica el procesador y la memoria primaria", "B) Es más accesible (para el técnico) que el bus de expansión", "C) Es más lento que el bus de expansión", "D) Es más rápido que el bus local al procesador"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "58. DIMM sin buffer incorporado:",
+    "opciones": ["A) UDIMM", "B) RDIMM", "C) UDIMM y RDIMM"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "59. Intel® Core™ i7-2600. 8M Cache, up to 4 GHz, deducimos que la frecuencia puede alcanzar el siguiente valor:",
+    "opciones": ["A) 4x10^9 ciclos/segundo", "B) 4x10^6 ciclos/segundo", "C) 400000000 ciclos/segundo", "D) 4x2^20 ciclos/segundo"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "60. Con el comando ascii podemos:",
+    "opciones": ["A) Revisar la tabla ASCII en binario", "B) Consultar un carácter por su número", "C) Consultar el número a partir de un carácter", "D) b) y c) son correctas", "E) a), b) y c) son correctas"],
+    "respuesta_correcta": "D"
   }
 ]
