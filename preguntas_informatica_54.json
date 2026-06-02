@@ -1,1 +1,23 @@
-
+[
+  {
+    "id": 1,
+    "pregunta": "La memoria SRAM:",
+    "opciones": [
+      "No precisa de refresco",
+      "Es más lenta que la DRAM",
+      "Es más barata que la DRAM"
+    ],
+    "correcta": 0
+  },
+  {
+    "id": 2,
+    "pregunta": "Los hilos (threads) son elementos:",
+    "opciones": [
+      "de hardware",
+      "de software",
+      "integrados en los núcleos (cores)",
+      "b) y c) son correctas"
+    ],
+    "correcta": 3
+  }
+]
