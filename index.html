@@ -32,6 +32,7 @@
             margin-bottom: 15px;
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
         h2 {
             font-size: 20px;
@@ -105,16 +106,27 @@
         .btn-reiniciar { background: #28a745; border: none; text-align: center; font-weight: bold; display: inline-block; width: auto; padding: 10px 25px; margin-top: 15px; }
         .btn-reiniciar:hover { background: #218838; }
 
+        /* Botón de pausa en cabecera */
+        .btn-pausa {
+            background: #3a3a3a; border: 1px solid #555; font-size: 12px; color: #ccc;
+            padding: 5px 10px; border-radius: 6px; cursor: pointer; width: auto; margin: 0; text-align: center;
+        }
+        .btn-pausa:hover { background: #dc3545; color: white; border-color: #dc3545; }
+
+        /* Tarjeta de continuación de test guardado */
+        .resume-box {
+            background: #252d3a; border: 2px dashed #007bff; border-radius: 8px;
+            padding: 15px; margin-bottom: 25px; text-align: center;
+        }
+        .btn-continuar {
+            background: #007bff; border-color: #0056b3; text-align: center; font-weight: bold; font-size: 16px;
+        }
+
         /* Estilos del Historial */
         .history-card {
-            margin-top: 25px;
-            background: #1e1e1e;
-            border-radius: 12px;
-            max-width: 600px;
-            width: 100%;
-            padding: 20px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-            box-sizing: border-box;
+            margin-top: 25px; background: #1e1e1e; border-radius: 12px;
+            max-width: 600px; width: 100%; padding: 20px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5); box-sizing: border-box;
         }
         .history-card h2 { margin-top: 0; color: #007bff; font-size: 18px; display: flex; justify-content: space-between; align-items: center;}
         .btn-borrar-historial {
@@ -123,15 +135,8 @@
         .btn-borrar-historial:hover { background: #bd2130; }
         .history-list { max-height: 200px; overflow-y: auto; padding-right: 5px; }
         .history-item {
-            background: #252d3a;
-            padding: 10px 12px;
-            border-radius: 6px;
-            margin-bottom: 8px;
-            font-size: 13px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-left: 4px solid #3a3a3a;
+            background: #252d3a; padding: 10px 12px; border-radius: 6px; margin-bottom: 8px; font-size: 13px;
+            display: flex; justify-content: space-between; align-items: center; border-left: 4px solid #3a3a3a;
         }
         .history-item.aprobado { border-left-color: #28a745; }
         .history-item.suspenso { border-left-color: #dc3545; }
@@ -147,6 +152,9 @@
         <h1>Plataforma de Cuestionarios</h1>
         <p>Prepara tus exámenes de ASIR</p>
         
+        <!-- Bloque de continuación si existe test guardado -->
+        <div id="wrapper-continuar"></div>
+
         <label for="selector-test" style="display:block; text-align:left; margin-bottom:8px; color:#ccc; font-size:14px;">1. Elige el tema del test:</label>
         <select id="selector-test">
             <option value="informatica_54">💻 Test 1: Informática General (60 preguntas)</option>
@@ -173,9 +181,7 @@
         📊 Historial de Intentos
         <button class="btn-borrar-historial" onclick="borrarHistorial()">Borrar todo</button>
     </h2>
-    <div class="history-list" id="lista-historial">
-        <!-- Los intentos se cargarán dinámicamente aquí -->
-    </div>
+    <div class="history-list" id="lista-historial"></div>
 </div>
 
 <script>
@@ -191,30 +197,46 @@
         <div class="progress-bar">
             <span id="modo-texto">Modo</span>
             <span id="progreso">Pregunta 0 de 0</span>
+            <button class="btn-pausa" onclick="pausarYSalir()">⏸️ Pausar y Salir</button>
         </div>
         <h2 id="pregunta">Cargando pregunta...</h2>
         <div id="opciones"></div>
         <div id="wrapper-siguiente"></div>
     `;
 
-    // Cargar historial al iniciar la página
-    document.addEventListener("DOMContentLoaded", actualizarHistorialVisual);
+    document.addEventListener("DOMContentLoaded", () => {
+        actualizarHistorialVisual();
+        comprobarTestPausado();
+    });
+
+    function comprobarTestPausado() {
+        const guardado = JSON.parse(localStorage.getItem('test_pausado_asir'));
+        const contenedor = document.getElementById('wrapper-continuar');
+        if (!contenedor) return;
+
+        if (guardado) {
+            contenedor.innerHTML = `
+                <div class="resume-box">
+                    <p style="margin: 0 0 10px 0; font-size: 14px; color:#007bff;"><strong>¡Tienes una sesión guardada!</strong></p>
+                    <p style="margin: 0 0 15px 0; font-size: 13px; color:#ccc;">${guardado.nombreTest} (${guardado.modo}) - En la pregunta ${guardado.indiceActual + 1}</p>
+                    <button class="btn-continuar" onclick="cargarTestPausado()">▶️ Continuar Test</button>
+                </div>
+            `;
+        } else {
+            contenedor.innerHTML = '';
+        }
+    }
 
     function comenzarTest(modo) {
         modoSeleccionado = modo;
-        
         const selector = document.getElementById('selector-test');
         const testElegido = selector.value;
-        nombreTestVisual = selector.options[selector.selectedIndex].text.split(':')[0].trim(); // Extrae "💻 Test 1" o "🔌 Test 2"
+        nombreTestVisual = selector.options[selector.selectedIndex].text.split(':')[0].trim();
         
         const esRandom = document.getElementById('check-random').checked;
         archivoJSON = `preguntas_${testElegido}.json`;
 
-        // Ocultar la tarjeta del historial mientras juegas para que no estorbe
-        document.getElementById('history-container').style.display = 'none';
-
-        document.getElementById('main-container').innerHTML = estructuraJuegoHTML;
-        document.getElementById('modo-texto').innerText = modo === 'practica' ? '📖 Modo Práctica' : '📝 Modo Examen';
+        inicializarInterfazJuego();
 
         fetch(archivoJSON)
             .then(res => { if(!res.ok) throw new Error(); return res.json(); })
@@ -227,10 +249,17 @@
             });
     }
 
+    function inicializarInterfazJuego() {
+        document.getElementById('history-container').style.display = 'none';
+        document.getElementById('main-container').innerHTML = estructuraJuegoHTML;
+        document.getElementById('modo-texto').innerText = modoSeleccionado === 'practica' ? '📖 Práctica' : '📝 Examen';
+    }
+
     function mostrarPregunta() {
         respondido = false;
         if (indiceActual >= preguntas.length) {
-            guardarIntento(); // Guardar antes de renderizar la nota final
+            guardarIntento(); 
+            localStorage.removeItem('test_pausado_asir'); // El test terminó, se limpia la pausa
             mostrarResultadoFinal();
             return;
         }
@@ -282,7 +311,36 @@
         }
     }
 
-    // 💾 GUARDAR EN LOCALSTORAGE
+    // ⏸️ FUNCIÓN DE PAUSA
+    function pausarYSalir() {
+        if (confirm("¿Quieres pausar el test actual y volver al menú principal? Guardaremos tu progreso.")) {
+            let datosPausa = {
+                preguntas: preguntas,
+                indiceActual: indiceActual,
+                aciertos: aciertos,
+                modoSeleccionado: modoSeleccionado,
+                nombreTest: nombreTestVisual
+            };
+            localStorage.setItem('test_pausado_asir', JSON.stringify(datosPausa));
+            window.location.reload(); // Recarga para volver al menú
+        }
+    }
+
+    // ▶️ REANUDAR TEST
+    function cargarTestPausado() {
+        const guardado = JSON.parse(localStorage.getItem('test_pausado_asir'));
+        if (!guardado) return;
+
+        preguntas = guardado.preguntas;
+        indiceActual = guardado.indiceActual;
+        aciertos = guardado.aciertos;
+        modoSeleccionado = guardado.modoSeleccionado;
+        nombreTestVisual = guardado.nombreTest;
+
+        inicializarInterfazJuego();
+        mostrarPregunta();
+    }
+
     function guardarIntento() {
         let porcentaje = Math.round((aciertos / preguntas.length) * 100);
         let ahora = new Date();
@@ -296,20 +354,19 @@
             fecha: fechaFormateada
         };
 
-        // Leer historial antiguo o crear array vacío si es el primero
         let historial = JSON.parse(localStorage.getItem('historial_asir')) || [];
-        historial.unshift(nuevoIntento); // Añadir arriba del todo
+        historial.unshift(nuevoIntento);
         localStorage.setItem('historial_asir', JSON.stringify(historial));
     }
 
-    // 🔄 REFRESCAR LA LISTA VISUAL
     function actualizarHistorialVisual() {
         let historial = JSON.parse(localStorage.getItem('historial_asir')) || [];
         let lista = document.getElementById('lista-historial');
+        if(!lista) return;
         lista.innerHTML = '';
 
         if (historial.length === 0) {
-            lista.innerHTML = `<p style="color:#aaa; font-size:13px; margin:10px 0;">Aún no tienes intentos guardados. ¡Empieza un test!</p>`;
+            lista.innerHTML = `<p style="color:#aaa; font-size:13px; margin:10px 0;">Aún no tienes intentos guardados.</p>`;
             return;
         }
 
