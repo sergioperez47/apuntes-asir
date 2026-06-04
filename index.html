@@ -90,8 +90,16 @@
         button.correcto { background: #155724 !important; border-color: #28a745 !important; color: #d4edda !important; }
         button.incorrecto { background: #721c24 !important; border-color: #dc3545 !important; color: #f8d7da !important; }
         
-        .btn-siguiente { background: #007bff; text-align: center; font-weight: bold; margin-top: 20px; }
+        /* Botonera inferior de navegación */
+        .navigation-wrapper {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .btn-siguiente { background: #007bff; text-align: center; font-weight: bold; margin: 0; }
         .btn-siguiente:hover { background: #0056b3; }
+        .btn-anterior { background: #444; border-color: #555; text-align: center; font-weight: bold; margin: 0; }
+        .btn-anterior:hover { background: #555; }
         
         .menu-box, .resultado-box { text-align: center; padding: 10px; }
         .menu-box h1 { color: #007bff; margin-bottom: 5px; }
@@ -182,12 +190,14 @@
 <script>
     let preguntas = [];
     let indiceActual = 0;
-    let aciertos = 0;
     let modoSeleccionado = ''; 
-    let respondido = false; 
     let archivoJSON = '';
     let nombreTestVisual = '';
     let esRandomGlobal = true;
+
+    // Estructuras para controlar el estado de respuestas de cada pregunta
+    let respuestasUsuario = {}; // Guarda qué texto seleccionó el usuario en cada índice: { 0: "Texto", 1: "Texto" }
+    let opcionesMezcladasPorPregunta = {}; // Guarda el orden mezclado de las respuestas para que no cambien al volver atrás
 
     const estructuraJuegoHTML = `
         <div class="progress-bar">
@@ -197,7 +207,7 @@
         </div>
         <h2 id="pregunta">Cargando pregunta...</h2>
         <div id="opciones"></div>
-        <div id="wrapper-siguiente"></div>
+        <div id="wrapper-navegacion" class="navigation-wrapper"></div>
     `;
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -205,17 +215,13 @@
         comprobarTestPausado();
     });
 
-    // Filtro para eliminar duplicados del JSON basado en el texto de la pregunta
     function eliminarDuplicados(listaPreguntas) {
         const vistas = new Set();
         return listaPreguntas.filter(item => {
-            // Limpiamos espacios raros y pasamos a minúsculas para comparar con precisión
             const preguntaLimpia = item.pregunta.trim().toLowerCase();
-            if (vistas.has(preguntaLimpia)) {
-                return false; // Si ya existe, se descarta
-            }
+            if (vistas.has(preguntaLimpia)) return false;
             vistas.add(preguntaLimpia);
-            return true; // Si es nueva, se guarda
+            return true;
         });
     }
 
@@ -246,14 +252,16 @@
         esRandomGlobal = document.getElementById('check-random').checked;
         archivoJSON = `preguntas_${testElegido}.json`;
 
+        respuestasUsuario = {};
+        opcionesMezcladasPorPregunta = {};
+        indiceActual = 0;
+
         inicializarInterfazJuego();
 
         fetch(archivoJSON)
             .then(res => { if(!res.ok) throw new Error(); return res.json(); })
             .then(data => {
-                // 🛡️ AQUÍ FILTRAMOS LAS REPETIDAS ANTES DE EMPEZAR El TEST
                 let preguntasUnicas = eliminarDuplicados(data);
-                
                 preguntas = esRandomGlobal ? preguntasUnicas.sort(() => Math.random() - 0.5) : preguntasUnicas;
                 mostrarPregunta();
             })
@@ -269,16 +277,14 @@
     }
 
     function mostrarPregunta() {
-        respondido = false;
         if (indiceActual >= preguntas.length) {
-            guardarIntento(); 
-            localStorage.removeItem('test_pausado_asir');
-            mostrarResultadoFinal();
+            finalizarYCalcularTest();
             return;
         }
 
         document.getElementById('progreso').innerText = `Pregunta ${indiceActual + 1} de ${preguntas.length}`;
-        document.getElementById('wrapper-siguiente').innerHTML = ''; 
+        const wrapperNav = document.getElementById('wrapper-navegacion');
+        wrapperNav.innerHTML = ''; 
 
         let p = preguntas[indiceActual];
         document.getElementById('pregunta').innerText = p.pregunta;
@@ -286,60 +292,132 @@
         let opcionesDiv = document.getElementById('opciones');
         opcionesDiv.innerHTML = '';
         
-        let opcionesAmostrar = [...p.opciones];
-        if (esRandomGlobal) {
-            opcionesAmostrar.sort(() => Math.random() - 0.5);
+        // Mantener el orden de las respuestas fijo si volvemos atrás en la misma pregunta
+        if (!opcionesMezcladasPorPregunta[indiceActual]) {
+            let opcionesAmostrar = [...p.opciones];
+            if (esRandomGlobal) {
+                opcionesAmostrar.sort(() => Math.random() - 0.5);
+            }
+            opcionesMezcladasPorPregunta[indiceActual] = opcionesAmostrar;
         }
-        
-        opcionesAmostrar.forEach(opcion => {
+
+        let opcionesActuales = opcionesMezcladasPorPregunta[indiceActual];
+        let yaRespondida = respuestasUsuario[indiceActual] !== undefined;
+
+        // Buscar texto correcto original
+        let indiceCorrectoOriginal = p.respuesta_correcta.toUpperCase().charCodeAt(0) - 65;
+        let textoCorrectoReal = p.opciones[indiceCorrectoOriginal];
+
+        opcionesActuales.forEach(opcion => {
             let boton = document.createElement('button');
             boton.innerText = opcion;
-            boton.onclick = () => procesarRespuesta(boton, opcion, p.opciones, p.respuesta_correcta);
+            
+            if (yaRespondida) {
+                boton.disabled = true;
+                // En modo práctica, pintamos visualmente cómo quedó la pregunta
+                if (modoSeleccionado === 'practica') {
+                    if (opcion === textoCorrectoReal) boton.classList.add('correcto');
+                    if (opcion === respuestasUsuario[indiceActual] && opcion !== textoCorrectoReal) {
+                        boton.classList.add('incorrecto');
+                    }
+                } else {
+                    // En modo examen, solo marcamos en azul cuál dejó seleccionada
+                    if (opcion === respuestasUsuario[indiceActual]) {
+                        boton.style.background = '#007bff';
+                        boton.style.borderColor = '#0056b3';
+                    }
+                }
+            } else {
+                boton.onclick = () => registrarRespuesta(boton, opcion, textoCorrectoReal);
+            }
             opcionesDiv.appendChild(boton);
         });
+
+        // 🛠️ RENDERIZAR BOTONES DE NAVEGACIÓN (Anterior / Siguiente)
+        if (indiceActual > 0) {
+            let btnAnterior = document.createElement('button');
+            btnAnterior.className = 'btn-anterior';
+            btnAnterior.innerText = '⬅️ Anterior';
+            btnAnterior.onclick = () => {
+                indiceActual--;
+                mostrarPregunta();
+            };
+            wrapperNav.appendChild(btnAnterior);
+        }
+
+        // Si ya está respondida o estamos en modo examen, permitimos avanzar o saltar pregunta
+        if (yaRespondida || modoSeleccionado === 'examen') {
+            let btnSiguiente = document.createElement('button');
+            btnSiguiente.className = 'btn-siguiente';
+            btnSiguiente.innerText = indiceActual === preguntas.length - 1 ? '🏁 Finalizar' : 'Siguiente ➡️';
+            btnSiguiente.onclick = () => {
+                indiceActual++;
+                mostrarPregunta();
+            };
+            wrapperNav.appendChild(btnSiguiente);
+        }
     }
 
-    function procesarRespuesta(botonSeleccionado, textoOpcionSeleccionada, listaOriginalOpciones, letraCorrectaOriginal) {
-        if (respondido && modoSeleccionado === 'practica') return; 
-
-        let indiceCorrecto = letraCorrectaOriginal.toUpperCase().charCodeAt(0) - 65; 
-        let textoCorrectoReal = listaOriginalOpciones[indiceCorrecto];
-
-        let esCorrecto = (textoOpcionSeleccionada === textoCorrectoReal);
-        if (esCorrecto) aciertos++;
+    function registrarRespuesta(botonSeleccionado, opcionTexto, textoCorrectoReal) {
+        respuestasUsuario[indiceActual] = opcionTexto;
 
         if (modoSeleccionado === 'examen') {
+            // Avanza directo en modo examen
             indiceActual++;
             mostrarPregunta();
         } else {
-            respondido = true;
+            // Modo Práctica: bloquea y muestra corrección al instante
             let botones = document.querySelectorAll('#opciones button');
-            
             botones.forEach(b => {
-                b.disabled = true; 
-                if (b.innerText === textoCorrectoReal) {
-                    b.classList.add('correcto'); 
-                }
+                b.disabled = true;
+                if (b.innerText === textoCorrectoReal) b.classList.add('correcto');
             });
 
-            if (!esCorrecto) {
-                botonSeleccionado.classList.add('incorrecto'); 
+            if (opcionTexto !== textoCorrectoReal) {
+                botonSeleccionado.classList.add('incorrecto');
             }
+
+            // Añadir botón de siguiente tras responder en práctica
+            const wrapperNav = document.getElementById('wrapper-navegacion');
+            
+            // Limpiar si ya había un botón "Siguiente" previo para evitar duplicados
+            const btnSigExistente = wrapperNav.querySelector('.btn-siguiente');
+            if (btnSigExistente) btnSigExistente.remove();
 
             let btnSiguiente = document.createElement('button');
             btnSiguiente.className = 'btn-siguiente';
-            btnSiguiente.innerText = 'Siguiente Pregunta ➡️';
-            btnSiguiente.onclick = () => { indiceActual++; mostrarPregunta(); };
-            document.getElementById('wrapper-siguiente').appendChild(btnSiguiente);
+            btnSiguiente.innerText = indiceActual === preguntas.length - 1 ? '🏁 Finalizar' : 'Siguiente ➡️';
+            btnSiguiente.onclick = () => {
+                indiceActual++;
+                mostrarPregunta();
+            };
+            wrapperNav.appendChild(btnSiguiente);
         }
     }
 
+    function finalizarYCalcularTest() {
+        let aciertosTotales = 0;
+
+        preguntas.forEach((p, idx) => {
+            let indiceCorrectoOriginal = p.respuesta_correcta.toUpperCase().charCodeAt(0) - 65;
+            let textoCorrectoReal = p.opciones[indiceCorrectoOriginal];
+            if (respuestasUsuario[idx] === textoCorrectoReal) {
+                aciertosTotales++;
+            }
+        });
+
+        guardarIntento(aciertosTotales);
+        localStorage.removeItem('test_pausado_asir');
+        mostrarResultadoFinal(aciertosTotales);
+    }
+
     function pausarYSalir() {
-        if (confirm("¿Quieres pausar el test actual y volver al menú principal? Guardaremos tu progreso.")) {
+        if (confirm("¿Quieres pausar el test actual y volver al menú principal?")) {
             let datosPausa = {
                 preguntas: preguntas,
                 indiceActual: indiceActual,
-                aciertos: aciertos,
+                respuestasUsuario: respuestasUsuario,
+                opcionesMezcladasPorPregunta: opcionesMezcladasPorPregunta,
                 modoSeleccionado: modoSeleccionado,
                 nombreTest: nombreTestVisual,
                 esRandomGlobal: esRandomGlobal
@@ -355,7 +433,8 @@
 
         preguntas = guardado.preguntas;
         indiceActual = guardado.indiceActual;
-        aciertos = guardado.aciertos;
+        respuestasUsuario = guardado.respuestasUsuario || {};
+        opcionesMezcladasPorPregunta = guardado.opcionesMezcladasPorPregunta || {};
         modoSeleccionado = guardado.modoSeleccionado;
         nombreTestVisual = guardado.nombreTest;
         esRandomGlobal = guardado.esRandomGlobal !== undefined ? guardado.esRandomGlobal : true;
@@ -364,7 +443,7 @@
         mostrarPregunta();
     }
 
-    function guardarIntento() {
+    function guardarIntento(aciertos) {
         let porcentaje = Math.round((aciertos / preguntas.length) * 100);
         let ahora = new Date();
         let fechaFormateada = ahora.toLocaleDateString() + ' - ' + ahora.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
@@ -416,7 +495,7 @@
         }
     }
 
-    function mostrarResultadoFinal() {
+    function mostrarResultadoFinal(aciertos) {
         const contenedor = document.getElementById('main-container');
         let porcentaje = Math.round((aciertos / preguntas.length) * 100);
         let mensajeMotivacional = porcentaje >= 50 ? "¡Enhorabuena! Has aprobado el test. 🎉" : "Te falta un empujón. ¡Sigue repasando! 📚";
