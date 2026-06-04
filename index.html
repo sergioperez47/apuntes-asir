@@ -153,8 +153,8 @@
 
         <label for="selector-test" style="display:block; text-align:left; margin-bottom:8px; color:#ccc; font-size:14px;">1. Elige el tema del test:</label>
         <select id="selector-test">
-            <option value="informatica_54">💻 Test 1: Informática General (60 preguntas)</option>
-            <option value="placas">🔌 Test 2: Placas Base y Componentes (50 preguntas)</option>
+            <option value="informatica_54">💻 Test 1: Informática General</option>
+            <option value="placas">🔌 Test 2: Placas Base y Componentes</option>
         </select>
 
         <div class="random-container">
@@ -187,7 +187,7 @@
     let respondido = false; 
     let archivoJSON = '';
     let nombreTestVisual = '';
-    let esRandomGlobal = true; // Controla si desordenamos también las respuestas
+    let esRandomGlobal = true;
 
     const estructuraJuegoHTML = `
         <div class="progress-bar">
@@ -204,6 +204,20 @@
         actualizarHistorialVisual();
         comprobarTestPausado();
     });
+
+    // Filtro para eliminar duplicados del JSON basado en el texto de la pregunta
+    function eliminarDuplicados(listaPreguntas) {
+        const vistas = new Set();
+        return listaPreguntas.filter(item => {
+            // Limpiamos espacios raros y pasamos a minúsculas para comparar con precisión
+            const preguntaLimpia = item.pregunta.trim().toLowerCase();
+            if (vistas.has(preguntaLimpia)) {
+                return false; // Si ya existe, se descarta
+            }
+            vistas.add(preguntaLimpia);
+            return true; // Si es nueva, se guarda
+        });
+    }
 
     function comprobarTestPausado() {
         const guardado = JSON.parse(localStorage.getItem('test_pausado_asir'));
@@ -227,7 +241,7 @@
         modoSeleccionado = modo;
         const selector = document.getElementById('selector-test');
         const testElegido = selector.value;
-        nombreTestVisual = selector.options[selector.selectedIndex].text.split(':')[0].trim();
+        nombreTestVisual = selector.options[selector.selectedIndex].text.trim();
         
         esRandomGlobal = document.getElementById('check-random').checked;
         archivoJSON = `preguntas_${testElegido}.json`;
@@ -237,7 +251,10 @@
         fetch(archivoJSON)
             .then(res => { if(!res.ok) throw new Error(); return res.json(); })
             .then(data => {
-                preguntas = esRandomGlobal ? data.sort(() => Math.random() - 0.5) : data;
+                // 🛡️ AQUÍ FILTRAMOS LAS REPETIDAS ANTES DE EMPEZAR El TEST
+                let preguntasUnicas = eliminarDuplicados(data);
+                
+                preguntas = esRandomGlobal ? preguntasUnicas.sort(() => Math.random() - 0.5) : preguntasUnicas;
                 mostrarPregunta();
             })
             .catch(err => {
@@ -269,7 +286,6 @@
         let opcionesDiv = document.getElementById('opciones');
         opcionesDiv.innerHTML = '';
         
-        // 🔀 CLAVE AQUÍ: Copiar las opciones originales y mezclarlas si el modo Random está activo
         let opcionesAmostrar = [...p.opciones];
         if (esRandomGlobal) {
             opcionesAmostrar.sort(() => Math.random() - 0.5);
@@ -278,8 +294,6 @@
         opcionesAmostrar.forEach(opcion => {
             let boton = document.createElement('button');
             boton.innerText = opcion;
-            
-            // Evaluamos la respuesta buscando el texto original que coincide con la clave correcta
             boton.onclick = () => procesarRespuesta(boton, opcion, p.opciones, p.respuesta_correcta);
             opcionesDiv.appendChild(boton);
         });
@@ -288,8 +302,7 @@
     function procesarRespuesta(botonSeleccionado, textoOpcionSeleccionada, listaOriginalOpciones, letraCorrectaOriginal) {
         if (respondido && modoSeleccionado === 'practica') return; 
 
-        // Encontrar cuál es el texto real de la respuesta correcta usando la lista original del JSON
-        let indiceCorrecto = letraCorrectaOriginal.toUpperCase().charCodeAt(0) - 65; // A=0, B=1, C=2, D=3
+        let indiceCorrecto = letraCorrectaOriginal.toUpperCase().charCodeAt(0) - 65; 
         let textoCorrectoReal = listaOriginalOpciones[indiceCorrecto];
 
         let esCorrecto = (textoOpcionSeleccionada === textoCorrectoReal);
@@ -305,12 +318,12 @@
             botones.forEach(b => {
                 b.disabled = true; 
                 if (b.innerText === textoCorrectoReal) {
-                    b.classList.add('correcto'); // Pintar de verde la opción que tenga el texto correcto
+                    b.classList.add('correcto'); 
                 }
             });
 
             if (!esCorrecto) {
-                botonSeleccionado.classList.add('incorrecto'); // Pintar de rojo la que elegiste mal
+                botonSeleccionado.classList.add('incorrecto'); 
             }
 
             let btnSiguiente = document.createElement('button');
