@@ -140,3 +140,104 @@
     "respuesta_correcta": "B"
   },
   {
+    "pregunta": "29. Ubicación de los drivers:",
+    "opciones": ["A) Sistema Operativo", "B) Firmware", "C) Sistema Operativo y Firmware"],
+    "respuesta_correcta": "C"
+  },
+  {
+    "pregunta": "30. Uno de los siguientes periféricos es de Entrada-Salida:",
+    "opciones": ["A) Impresora", "B) Disco duro", "C) Pantalla", "D) Escáner"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "31. En UTF-8 la longitud de representation es:",
+    "opciones": ["A) Entre 1 y 4 bytes", "B) 4 bytes", "C) 32 bits", "D) 2 o 4 bytes"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "32. Si lanzamos el comando ascii -o el caracter de control DEL aparecerá codificado del siguiente modo:",
+    "opciones": ["A) 177", "B) 127", "C) 7F"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "33. Latin-9 es un código de representación de longitud:",
+    "opciones": ["A) 7 bits", "B) 9 bits", "C) Equivalente a Latin-1 (8 bits)"],
+    "respuesta_correcta": "C"
+  },
+  {
+    "pregunta": "34. Sabiendo que “A” tiene asignado el código 41 en ASCII-hexadecimal, a “F” le corresponderá el código octal 106:",
+    "opciones": ["A) Verdadero", "B) Falso"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "35. Ordena los buses, de menor a mayor velocidad:",
+    "opciones": ["A) Sistema, Local, Expansión", "B) Expansión, Local, Sistema", "C) Expansión, Sistema, Local", "D) Local, Sistema, Expansión"],
+    "respuesta_correcta": "C"
+  },
+  {
+    "pregunta": "36. En el contexto de los procesadores, 1 Hz es:",
+    "opciones": ["A) 10 ciclos por segundo", "B) 1 ciclo por segundo", "C) 100 ciclos por segundo", "D) 1 instrucción-máquina por segundo"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "37. Intel® Core™ i9 processor 14900K 36M Cache. ¿A qué nivel se refiere?",
+    "opciones": ["A) L2", "B) LLC (Intel Smart Cache / L3)", "C) L1"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "38. En los procesadores tipo APU, la memoria de vídeo utiliza (está integrada en) el propio procesador:",
+    "opciones": ["A) Verdadero", "B) Falso"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "39. Memoria ROM que admite reprogramación (regrabado) por medios eléctricos/ultravioleta:",
+    "opciones": ["A) PROM", "B) EPROM"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "40. Por OUTPUT entendemos:",
+    "opciones": ["A) El envío de información hacia los periféricos.", "B) El envío de información hacia el computador.", "C) El envío de información con origen en los periféricos."],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "41. 1 GB contiene 2^31 nibbles.",
+    "opciones": ["A) Verdadero", "B) Falso", "C) Falta información para hacer el cálculo"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "42. En ausencia de corriente las memorias ROM no pierden la información almacenada:",
+    "opciones": ["A) Verdadero", "B) Falso"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "43. En el procesador i9-14900K, la caché L2 por núcleo/total tiene un tamaño de:",
+    "opciones": ["A) 32 Megabytes", "B) 8 Megabits", "C) 7 Megabytes", "D) Falta información para saberlo en base a la publicidad"],
+    "respuesta_correcta": "D"
+  },
+  {
+    "pregunta": "44. En la nomenclatura i9-14900K, el sufijo es:",
+    "opciones": ["A) 14", "B) K", "C) 900", "D) Ninguna es correcta"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "45. Ordena de mayor a menor tiempo de acceso (más lenta a más rápida):",
+    "opciones": ["A) Caché L1, Caché L2, Caché L3", "B) Caché L3, Caché L2, Cache L1", "C) Caché L3, Caché L2, Caché LLC"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "46. Convertir a octal el hexadecimal 189:",
+    "opciones": ["A) 620", "B) 611", "C) 612", "D) 621"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "47. Qué juego de caracteres no incluye el símbolo del euro:",
+    "opciones": ["A) LATIN-9", "B) ISO-8859-1", "C) ISO-8859-15"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "48. 122 Pb (Petabits) equivalen a:",
+    "opciones": ["A) 122 * 2^50 bits", "B) 2^57 bytes", "C) 2^47 bits", "D) 2^46 bits"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "49. El carácter de control RETORNO DE CARRO (CR) tiene el valor decimal
