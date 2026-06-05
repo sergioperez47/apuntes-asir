@@ -251,8 +251,9 @@
         
         esRandomGlobal = document.getElementById('check-random').checked;
         
-        // Anti-caché dinámico integrado para evitar problemas en GitHub Pages
-        archivoJSON = `preguntas_${testElegido}.json?v=${Date.now()}`;
+        // Asignación limpia del nombre del archivo y ruta relativa explícita para el fetch
+        archivoJSON = `preguntas_${testElegido}.json`;
+        const urlConAntiCache = `./preguntas_${testElegido}.json?nocache=${Date.now()}`;
 
         respuestasUsuario = {};
         opcionesMezcladasPorPregunta = {};
@@ -260,7 +261,7 @@
 
         inicializarInterfazJuego();
 
-        fetch(archivoJSON)
+        fetch(urlConAntiCache)
             .then(res => { if(!res.ok) throw new Error(); return res.json(); })
             .then(data => {
                 let preguntasUnicas = eliminarDuplicados(data);
@@ -268,16 +269,14 @@
                 mostrarPregunta();
             })
             .catch(err => {
-                document.getElementById('pregunta').innerText = `❌ Error: No se ha podido cargar el archivo de preguntas correspondientes a "${testElegido}". Revisa que el JSON exista en tu repositorio de GitHub.`;
+                document.getElementById('pregunta').innerText = `❌ Error: No se ha podido cargar el archivo "${archivoJSON}". Revisa que el archivo exista en la raíz de tu repositorio de GitHub.`;
             });
     }
 
     function obtenerTextoCorrecto(preguntaObjeto) {
-        // Enfoque robusto: Busca la opción cuyo prefijo coincida con la letra correcta (ej: "A)")
         let letraCorrecta = preguntaObjeto.respuesta_correcta.trim().toUpperCase();
         let opcionEncontrada = preguntaObjeto.opciones.find(opc => opc.trim().toUpperCase().startsWith(letraCorrecta));
         
-        // Backup por si los JSON no tienen formato "A)": cae en el cálculo de índice tradicional
         if (!opcionEncontrada) {
             let idx = letraCorrecta.charCodeAt(0) - 65;
             opcionEncontrada = preguntaObjeto.opciones[idx];
