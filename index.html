@@ -195,9 +195,8 @@
     let nombreTestVisual = '';
     let esRandomGlobal = true;
 
-    // Estructuras para controlar el estado de respuestas de cada pregunta
-    let respuestasUsuario = {}; // Guarda qué texto seleccionó el usuario en cada índice: { 0: "Texto", 1: "Texto" }
-    let opcionesMezcladasPorPregunta = {}; // Guarda el orden mezclado de las respuestas para que no cambien al volver atrás
+    let respuestasUsuario = {}; 
+    let opcionesMezcladasPorPregunta = {}; 
 
     const estructuraJuegoHTML = `
         <div class="progress-bar">
@@ -218,6 +217,7 @@
     function eliminarDuplicados(listaPreguntas) {
         const vistas = new Set();
         return listaPreguntas.filter(item => {
+            if (!item || !item.pregunta) return false;
             const preguntaLimpia = item.pregunta.trim().toLowerCase();
             if (vistas.has(preguntaLimpia)) return false;
             vistas.add(preguntaLimpia);
@@ -250,7 +250,9 @@
         nombreTestVisual = selector.options[selector.selectedIndex].text.trim();
         
         esRandomGlobal = document.getElementById('check-random').checked;
-        archivoJSON = `preguntas_${testElegido}.json`;
+        
+        // Anti-caché dinámico integrado para evitar problemas en GitHub Pages
+        archivoJSON = `preguntas_${testElegido}.json?v=${Date.now()}`;
 
         respuestasUsuario = {};
         opcionesMezcladasPorPregunta = {};
@@ -266,8 +268,21 @@
                 mostrarPregunta();
             })
             .catch(err => {
-                document.getElementById('pregunta').innerText = `❌ Error: No se ha podido cargar el archivo "${archivoJSON}".`;
+                document.getElementById('pregunta').innerText = `❌ Error: No se ha podido cargar el archivo de preguntas correspondientes a "${testElegido}". Revisa que el JSON exista en tu repositorio de GitHub.`;
             });
+    }
+
+    function obtenerTextoCorrecto(preguntaObjeto) {
+        // Enfoque robusto: Busca la opción cuyo prefijo coincida con la letra correcta (ej: "A)")
+        let letraCorrecta = preguntaObjeto.respuesta_correcta.trim().toUpperCase();
+        let opcionEncontrada = preguntaObjeto.opciones.find(opc => opc.trim().toUpperCase().startsWith(letraCorrecta));
+        
+        // Backup por si los JSON no tienen formato "A)": cae en el cálculo de índice tradicional
+        if (!opcionEncontrada) {
+            let idx = letraCorrecta.charCodeAt(0) - 65;
+            opcionEncontrada = preguntaObjeto.opciones[idx];
+        }
+        return opcionEncontrada;
     }
 
     function inicializarInterfazJuego() {
@@ -292,7 +307,6 @@
         let opcionesDiv = document.getElementById('opciones');
         opcionesDiv.innerHTML = '';
         
-        // Mantener el orden de las respuestas fijo si volvemos atrás en la misma pregunta
         if (!opcionesMezcladasPorPregunta[indiceActual]) {
             let opcionesAmostrar = [...p.opciones];
             if (esRandomGlobal) {
@@ -303,10 +317,7 @@
 
         let opcionesActuales = opcionesMezcladasPorPregunta[indiceActual];
         let yaRespondida = respuestasUsuario[indiceActual] !== undefined;
-
-        // Buscar texto correcto original
-        let indiceCorrectoOriginal = p.respuesta_correcta.toUpperCase().charCodeAt(0) - 65;
-        let textoCorrectoReal = p.opciones[indiceCorrectoOriginal];
+        let textoCorrectoReal = obtenerTextoCorrecto(p);
 
         opcionesActuales.forEach(opcion => {
             let boton = document.createElement('button');
@@ -314,14 +325,12 @@
             
             if (yaRespondida) {
                 boton.disabled = true;
-                // En modo práctica, pintamos visualmente cómo quedó la pregunta
                 if (modoSeleccionado === 'practica') {
                     if (opcion === textoCorrectoReal) boton.classList.add('correcto');
                     if (opcion === respuestasUsuario[indiceActual] && opcion !== textoCorrectoReal) {
                         boton.classList.add('incorrecto');
                     }
                 } else {
-                    // En modo examen, solo marcamos en azul cuál dejó seleccionada
                     if (opcion === respuestasUsuario[indiceActual]) {
                         boton.style.background = '#007bff';
                         boton.style.borderColor = '#0056b3';
@@ -333,7 +342,6 @@
             opcionesDiv.appendChild(boton);
         });
 
-        // 🛠️ RENDERIZAR BOTONES DE NAVEGACIÓN (Anterior / Siguiente)
         if (indiceActual > 0) {
             let btnAnterior = document.createElement('button');
             btnAnterior.className = 'btn-anterior';
@@ -345,7 +353,6 @@
             wrapperNav.appendChild(btnAnterior);
         }
 
-        // Si ya está respondida o estamos en modo examen, permitimos avanzar o saltar pregunta
         if (yaRespondida || modoSeleccionado === 'examen') {
             let btnSiguiente = document.createElement('button');
             btnSiguiente.className = 'btn-siguiente';
@@ -362,11 +369,9 @@
         respuestasUsuario[indiceActual] = opcionTexto;
 
         if (modoSeleccionado === 'examen') {
-            // Avanza directo en modo examen
             indiceActual++;
             mostrarPregunta();
         } else {
-            // Modo Práctica: bloquea y muestra corrección al instante
             let botones = document.querySelectorAll('#opciones button');
             botones.forEach(b => {
                 b.disabled = true;
@@ -377,10 +382,7 @@
                 botonSeleccionado.classList.add('incorrecto');
             }
 
-            // Añadir botón de siguiente tras responder en práctica
             const wrapperNav = document.getElementById('wrapper-navegacion');
-            
-            // Limpiar si ya había un botón "Siguiente" previo para evitar duplicados
             const btnSigExistente = wrapperNav.querySelector('.btn-siguiente');
             if (btnSigExistente) btnSigExistente.remove();
 
@@ -399,8 +401,7 @@
         let aciertosTotales = 0;
 
         preguntas.forEach((p, idx) => {
-            let indiceCorrectoOriginal = p.respuesta_correcta.toUpperCase().charCodeAt(0) - 65;
-            let textoCorrectoReal = p.opciones[indiceCorrectoOriginal];
+            let textoCorrectoReal = obtenerTextoCorrecto(p);
             if (respuestasUsuario[idx] === textoCorrectoReal) {
                 aciertosTotales++;
             }
