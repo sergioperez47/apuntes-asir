@@ -65,189 +65,103 @@
     "respuesta_correcta": "B"
   },
   {
-    "pregunta": "14. En la placa A785GXH/128M, nomenclatura del puente sur:",
-    "opciones": ["A) AMD SB710", "B) AMD 785G", "C) Super I/O", "D) ATXPWR1"],
-    "respuesta_correcta": "A"
-  },
-  {
-    "pregunta": "15. En la placa A785GXH/128M, nomenclatura del puente norte:",
+    "pregunta": "14. En la placa A785GXH/128M, nomenclatura del puente norte:",
     "opciones": ["A) ATXPWR1", "B) AMD 785G", "C) Super I/O", "D) AM2"],
     "respuesta_correcta": "B"
   },
   {
-    "pregunta": "16. En la placa A785GXH/128M, etiquetas de los puertos de vídeo localizados en el panel trasero:",
+    "pregunta": "15. En la placa A785GXH/128M, etiquetas de los puertos de vídeo localizados en el panel trasero:",
     "opciones": ["A) DVI_CON1 y HDMI1", "B) VGA1 y DVI_CON1", "C) VGA1, DVI_CON1 y HDMI1", "D) VGA1 y HDMI1"],
     "respuesta_correcta": "C"
   },
   {
-    "pregunta": "17. UEFI frente a BIOS:",
+    "pregunta": "16. UEFI frente a BIOS:",
     "opciones": ["A) BIOS corre en 32 bits", "B) BIOS y UEFI corren en 32 bits", "C) UEFI corre en 64 bits", "D) UEFI puede correr en entornos de 32 o 64 bits"],
     "respuesta_correcta": "D"
   },
   {
-    "pregunta": "18. En la placa A785GXH/128M, etiquetas de los conectores especializados en discos duros y ópticos:",
+    "pregunta": "17. En la placa A785GXH/128M, etiquetas de los conectores especializados en discos duros y ópticos:",
     "opciones": ["A) SATAII_1, SATAII_2, SATAII_3, SATAII_4, SATAII_5, SATAII_6", "B) IDE1, SATAII_1, SATAII_2, SATAII_3, SATAII_4, SATAII_5, SATAII_6", "C) IDE1, SATAII_1, SATAII_2, SATAII_3, SATAII_4", "D) IDE1, SATAII_1, SATAII_2, SATAII_3, SATAII_4, SATAII_5, SATAII_6, PCIE1"],
     "respuesta_correcta": "B"
   },
   {
-    "pregunta": "19. Para la placa-base MAG B560M MORTAR, indica su factor de forma (fíjate en la M):",
+    "pregunta": "18. Para la placa-base MAG B560M MORTAR, indica su factor de forma (fíjate en la M):",
     "opciones": ["A) ATX", "B) Micro ATX", "C) Mini ITX"],
     "respuesta_correcta": "B"
   },
   {
-    "pregunta": "20. Placas base típicamente cuadradas debido a sus especificaciones de tamaño:",
+    "pregunta": "19. Placas base típicamente cuadradas debido a sus especificaciones de tamaño:",
     "opciones": ["A) Mini-ITX (17x17 cm) y Micro-ATX (24.4x24.4 cm)", "B) Micro-ATX (mATX) y ATX (Standard ATX)", "C) Mini-ITX (mITX) y ATX (Standard ATX)"],
     "respuesta_correcta": "A"
   },
   {
-    "pregunta": "21. Periféricos válidos para un puerto SATA de placa madre:",
+    "pregunta": "20. Periféricos válidos para un puerto SATA de placa madre:",
     "opciones": ["A) Discos duros", "B) Discos duros y ópticos (lectores/grabadores)", "C) Sólo discos SSD", "D) Discos ópticos"],
     "respuesta_correcta": "B"
   },
   {
-    "pregunta": "22. Para la placa-base MAG B560M MORTAR, número total de puertos USB en el panel trasero con especificación 3.x:",
+    "pregunta": "21. Para la placa-base MAG B560M MORTAR, número total de puertos USB en el panel trasero con especificación 3.x:",
     "opciones": ["A) 2", "B) 4", "C) 8", "D) 6"],
     "respuesta_correcta": "B"
   },
   {
-    "pregunta": "23. Para la placa-base BIOSTAR B660GTQ, indica dónde se pueden conectar almacenamiento masivo (discos):",
+    "pregunta": "22. Para la placa-base BIOSTAR B660GTQ, indica dónde se pueden conectar almacenamiento masivo (discos):",
     "opciones": ["A) Puertos etiquetados como M2_PCIEG4_64G_1, M2_PCIEG4_64G_SATA, SATA_1, SATA_2, SATA_3 y SATA_4", "B) Puertos etiquetados como M2_PCIEG4_64G_1 y M2_PCIEG4_64G_SATA", "C) Puerto M2_PCIEG4_64G_SATA", "D) Puertos SATA_1, SATA_2, SATA_3 y SATA_4"],
     "respuesta_correcta": "A"
   },
   {
-    "pregunta": "24. Siglas de la unidad de disquetes:",
+    "pregunta": "23. Siglas de la unidad de disquetes:",
     "opciones": ["A) HDD", "B) SSD", "C) FDD (Floppy Disk Drive)", "D) SSHD"],
     "respuesta_correcta": "C"
   },
   {
-    "pregunta": "25. Las ranuras sobre la placa base que permiten pinchar tarjetas de expansión (gráficas, sonido) hoy en día son principalmente de tipo:",
+    "pregunta": "24. Las ranuras sobre la placa base que permiten pinchar tarjetas de expansión (gráficas, sonido) hoy en día son principalmente de tipo:",
     "opciones": ["A) PCI Express (PCIe)", "B) AGP", "C) ISA", "D) DIMM"],
     "respuesta_correcta": "A"
   },
   {
-    "pregunta": "26. Para la placa-base BIOSTAR B660GTQ, indica cuál es la frecuencia mínima (base) jEDEC de funcionamiento para la memoria principal DDR4 sin overclocking:",
+    "pregunta": "25. Para la placa-base BIOSTAR B660GTQ, indica cuál es la frecuencia mínima (base) jEDEC de funcionamiento para la memoria principal DDR4 sin overclocking:",
     "opciones": ["A) 1700 MHz", "B) 2133 MHz / 2933 MHz", "C) 3200 MHz", "D) 660 MHz"],
     "respuesta_correcta": "B"
   },
   {
-    "pregunta": "27. Antiguo puerto paralelo especializado históricamente en impresoras:",
+    "pregunta": "26. Antiguo puerto paralelo especializado históricamente en impresoras:",
     "opciones": ["A) LPT", "B) COM", "C) USB", "D) PS/2"],
-    "yesterday_correcta": "A",
     "respuesta_correcta": "A"
   },
   {
-    "pregunta": "28. La interfaz gráfica de usuario (GUI) amigable con soporte de ratón es propia de:",
+    "pregunta": "27. La interfaz gráfica de usuario (GUI) amigable con soporte de ratón es propia de:",
     "opciones": ["A) BIOS", "B) UEFI", "C) BIOS y UEFI"],
     "respuesta_correcta": "B"
   },
   {
-    "pregunta": "29. ¿Qué conector de alimentación de la placa-base lleva el suministro principal de corriente de 24 pines proveniente de la fuente?",
+    "pregunta": "28. ¿Qué conector de alimentación de la placa-base lleva el suministro principal de corriente de 24 pines proveniente de la fuente?",
     "opciones": ["A) ATX_PWR1 (o EATX)", "B) ATX12V1", "C) Molex", "D) SATA_PWR"],
     "respuesta_correcta": "A"
   },
   {
-    "pregunta": "30. Previo estudio de compatibilidad, ¿en qué conexión de la placa-madre 'pincharías' un disco duro con forma de tarjeta compacta?",
+    "pregunta": "29. Previo estudio de compatibilidad, ¿en qué conexión de la placa-madre 'pincharías' un disco duro con forma de tarjeta compacta/alargada?",
     "opciones": ["A) M.2", "B) SATA clásico de cable", "C) ranuras IDE", "D) Puertos LPT"],
     "respuesta_correcta": "A"
   },
   {
-    "pregunta": "31. Placas base cuadradas de tamaño idéntico en ancho y largo:",
-    "opciones": ["A) Mini-ITX (mITX) y ATX", "B) Micro-ATX (mATX) y ATX", "C) Mini-ITX (mITX) y Micro-ATX (mATX)"],
-    "respuesta_correcta": "C"
-  },
-  {
-    "pregunta": "32. Puerto especializado en impresoras:",
-    "opciones": ["A) LPT", "B) COM", "C) USB", "D) PS/2"],
-    "respuesta_correcta": "A"
-  },
-  {
-    "pregunta": "33. ¿En qué conexión 'pincharías' un disco duro SSD con factor de forma de tarjeta alargada?",
-    "opciones": ["A) M.2", "B) SATA tradicional", "C) PCI Express x16 directamente", "D) IDE1"],
-    "respuesta_correcta": "A"
-  },
-  {
-    "pregunta": "34. La interfaz GUI (interfaz gráfica) es característica del firmware:",
-    "opciones": ["A) BIOS", "B) UEFI", "C) BIOS y UEFI"],
-    "respuesta_correcta": "B"
-  },
-  {
-    "pregunta": "35. Periféricos válidos para conectar mediante un cable de interfaz SATA:",
-    "opciones": ["A) Discos duros", "B) Discos duros y unidades ópticas", "C) Sólo discos SSD", "D) Discos ópticos únicamente"],
-    "respuesta_correcta": "B"
-  },
-  {
-    "pregunta": "36. Cuál de los siguientes puertos presenta soporte integrado para mandar audio y vídeo digital a la vez:",
-    "opciones": ["A) DVI", "B) D-SUB", "C) DisplayPort", "D) SPDIF"],
-    "respuesta_correcta": "C"
-  },
-  {
-    "pregunta": "37. La incorporación obligatoria del módulo TPM 2.0 es requisito indispensable del operativo:",
-    "opciones": ["A) W10", "B) W8", "C) W11", "D) a) y c) son ciertas"],
-    "respuesta_correcta": "C"
-  },
-  {
-    "pregunta": "38. PCH es un término moderno usado por Intel alternativamente para:",
-    "opciones": ["A) El PCB", "B) El Chipset", "C) Las ranuras PCI Express", "D) El sistema Plug and Play"],
-    "respuesta_correcta": "B"
-  },
-  {
-    "pregunta": "39. El conector analógico tradicional D-SUB se asocia universalmente con el puerto:",
-    "opciones": ["A) DVI", "B) VGA", "C) BIOS", "D) HDMI"],
-    "respuesta_correcta": "B"
-  },
-  {
-    "pregunta": "40. El puente norte (Northbridge) cumple con:",
-    "opciones": ["A) Está físicamente más cerca de la CPU que el puente sur.", "B) Está más lejos de la CPU que las ranuras de expansión.", "C) Está próximo a las conexiones internas del panel frontal.", "D) Es común e independiente en las placas base más modernas."],
-    "respuesta_correcta": "A"
-  },
-  {
-    "pregunta": "41. Si en la imagen de un panel trasero estándar contamos 2 puertos USB negros, 4 puertos USB azules y 2 puertos USB rojos, los puertos USB suman:",
+    "pregunta": "30. Si en la imagen de un panel trasero estándar contamos 2 puertos USB negros, 4 puertos USB azules y 2 puertos USB rojos, los puertos USB suman:",
     "opciones": ["A) 3", "B) 4", "C) 7", "D) 8", "E) Los negros no tienen derechos"],
     "respuesta_correcta": "D"
   },
   {
-    "pregunta": "42. En la placa A785GXH/128M, nomenclatura del puente sur:",
-    "opciones": ["A) AMD SB710", "B) AMD 785G", "C) Super I/O", "D) ATXPWR1"],
-    "respuesta_correcta": "A"
-  },
-  {
-    "pregunta": "43. En la placa A785GXH/128M, nomenclatura del puente norte:",
-    "opciones": ["A) ATXPWR1", "B) AMD 785G", "C) Super I/O", "D) AM2"],
-    "respuesta_correcta": "B"
-  },
-  {
-    "pregunta": "44. En la placa A785GXH/128M, las etiquetas del panel trasero de vídeo son:",
-    "opciones": ["A) DVI_CON1 y HDMI1", "B) VGA1 y DVI_CON1", "C) VGA1, DVI_CON1 y HDMI1", "D) VGA1 y HDMI1"],
-    "respuesta_correcta": "C"
-  },
-  {
-    "pregunta": "45. En la placa A785GXH/128M, conectores de discos duros y ópticos:",
-    "opciones": ["A) SATAII_1 al SATAII_6", "B) IDE1, SATAII_1, SATAII_2, SATAII_3, SATAII_4, SATAII_5, SATAII_6", "C) IDE1, SATAII_1 al SATAII_4", "D) IDE1 y puertos PCIE"],
-    "respuesta_correcta": "B"
-  },
-  {
-    "pregunta": "46. En la placa A785GXH/128M contamos con 2x PCI, 2x PCIe x1, y 2x PCIe x16. El número total de ranuras de expansión es:",
+    "pregunta": "31. En la placa A785GXH/128M contamos con 2x PCI, 2x PCIe x1, y 2x PCIe x16. El número total de ranuras de expansión es:",
     "opciones": ["A) 3", "B) 5", "C) 6 (Ninguna de las opciones anteriores)", "D) 2"],
     "respuesta_correcta": "C"
   },
   {
-    "pregunta": "47. En la placa A785GXH/128M, el tamaño de la memoria ROM física que aloja el BIOS es de 8 Mb (Megabits), lo que equivale en bytes a:",
+    "pregunta": "32. En la placa A785GXH/128M, el tamaño de la memoria ROM física que aloja el BIOS es de 8 Mb (Megabits), lo que equivale en bytes a:",
     "opciones": ["A) 1 MB (Megabyte)", "B) 8 MB", "C) 2^13 bits", "D) 2^23 bytes"],
     "respuesta_correcta": "A"
   },
   {
-    "pregunta": "48. Para conectar unidades de almacenamiento modernas tanto magnéticas como de estado sólido PCIe/SATA:",
-    "opciones": ["A) Puertos etiquetados como M2_PCIEG4_64G_1, M2_PCIEG4_64G_SATA, SATA_1, SATA_2, SATA_3 y SATA_4", "B) Puertos etiquetados como M2_PCIEG4_64G_1 y M2_PCIEG4_64G_SATA", "C) Puerto M2_PCIEG4_64G_SATA", "D) Solo los puertos SATA_1 al SATA_4"],
-    "respuesta_correcta": "A"
-  },
-  {
-    "pregunta": "49. Si un panel trasero integra un puerto VGA, un puerto DVI y un puerto HDMI, los puertos de vídeo en total suman:",
+    "pregunta": "33. Si un panel trasero integra un puerto VGA, un puerto DVI y un puerto HDMI, los puertos de vídeo en total suman:",
     "opciones": ["A) 1", "B) 2", "C) 3", "D) 4"],
-    "respuesta_correcta": "C"
-  },
-  {
-    "pregunta": "50. Las siglas FDD corresponden históricamente a:",
-    "opciones": ["A) HDD", "B) SSD", "C) FDD (Floppy Disk Drive / Disquetera)", "D) SSHD"],
     "respuesta_correcta": "C"
   }
 ]
