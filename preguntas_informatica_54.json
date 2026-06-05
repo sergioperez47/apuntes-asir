@@ -101,7 +101,7 @@
   },
   {
     "pregunta": "21. El bus del sistema:",
-    "opciones": ["A) Es más lento que el bus de expansión.", "B) Es más rápido que el bus local al procesador.", "C) Comunica el procesador y la memoria primaria.", "D) Es más accesible (para el técnico) que el bus de expansión."],
+    "opciones": ["A) Es más lento que el bus de expansión.", "B) Es más rápido que el bus local al procesador.", "C) Comunica el procesador y la memoria primaria.", "D) Es más accessible (para el técnico) que el bus de expansión."],
     "respuesta_correcta": "C"
   },
   {
@@ -127,6 +127,7 @@
   {
     "pregunta": "26. ¿Cómo se llama al proceso que, en el arranque del ordenador, comprueba el estado del hardware?",
     "opciones": ["A) MBR", "B) POST", "C) CMOS", "D) BIOS"],
+    "scripts": [],
     "respuesta_correcta": "B"
   },
   {
@@ -190,7 +191,7 @@
     "respuesta_correcta": "A"
   },
   {
-    "pregunta": "39. Memoria ROM que admite reprogramación (regrabado) por medios eléctricos/ultravioleta:",
+    "pregunta": "39. Memoria ROM que admite reprogramming (regrabado) por medios eléctricos/ultravioleta:",
     "opciones": ["A) PROM", "B) EPROM"],
     "respuesta_correcta": "B"
   },
@@ -240,4 +241,33 @@
     "respuesta_correcta": "A"
   },
   {
-    "pregunta": "49. El carácter de control RETORNO DE CARRO (CR) tiene el valor decimal
+    "pregunta": "49. El carácter de control RETORNO DE CARRO (CR) tiene el valor decimal:",
+    "opciones": ["A) 10", "B) 13", "C) 32", "D) 127"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "50. ¿Qué tipo de bus se encarga de seleccionar la celda de memoria o dispositivo E/S con el que operar?",
+    "opciones": ["A) Bus de Datos", "B) Bus de Control", "C) Bus de Direcciones", "D) Bus del Sistema"],
+    "respuesta_correcta": "C"
+  },
+  {
+    "pregunta": "51. En un módulo de memoria RAM, ¿qué significan las siglas ECC?",
+    "opciones": ["A) Error Correction Code", "B) Extended Clock Control", "C) Electronic Cache Component", "D) Enhanced Core Cycle"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "52. El componente del procesador encargado de realizar las operaciones lógicas y matemáticas elementales es:",
+    "opciones": ["A) La Unidad de Control (UC)", "B) La Unidad Aritmético-Lógica (ALU)", "C) El Banco de Registros", "D) El Reloj del Sistema"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "53. El estándar de almacenamiento NVMe trabaja directamente sobre el bus:",
+    "opciones": ["A) SATA", "B) USB 3.2", "C) PCI Express (PCIe)", "D) SAS"],
+    "respuesta_correcta": "C"
+  },
+  {
+    "pregunta": "54. ¿Cuál es la principal diferencia funcional entre el BIOS tradicional y el estándar UEFI?",
+    "opciones": ["A) UEFI no realiza el proceso POST", "B) UEFI permite arranque seguro (Secure Boot) y soporte para tablas de partición GPT", "C) BIOS es de software y UEFI es 100% de hardware", "D) BIOS trabaja a 64 bits y UEFI a 16 bits"],
+    "respuesta_correcta": "B"
+  }
+]
