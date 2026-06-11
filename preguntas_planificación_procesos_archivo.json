@@ -1,0 +1,190 @@
+[
+  {
+    "pregunta": "1. Según la introducción del documento, ¿cuáles son las dos herramientas y comandos principales con los que cuenta GNU/Linux para programar la ejecución de tareas?",
+    "opciones": [
+      "A) sleep y watch",
+      "B) AT y Cron",
+      "C) Anacron y Systemd",
+      "D) Crontab y Batch"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "2. ¿Qué es 'cron' dentro del sistema operativo Linux según la definición del texto?",
+    "opciones": [
+      "A) Un comando que mide cuánto tarda un proceso en ejecutarse.",
+      "B) Un demonio que se ejecuta todo el tiempo, responde a eventos temporales y examina los archivos de configuración.",
+      "C) Un archivo de texto plano donde se guardan las contraseñas temporales.",
+      "D) Una herramienta gráfica para monitorizar la memoria swap."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "3. ¿En qué ruta o directorio se almacenan automáticamente los archivos de configuración crontab individuales de cada usuario del sistema?",
+    "opciones": [
+      "A) /etc/cron.d",
+      "B) /var/spool/cron/crontabs",
+      "C) /home/usuario/.crontab",
+      "D) /var/log/cron"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "4. Al crear un archivo crontab de usuario, ¿qué nombre recibe dicho archivo de configuración de forma automática?",
+    "opciones": [
+      "A) El nombre del comando que se va a planificar.",
+      "B) El propio nombre de usuario del propietario de la tarea.",
+      "C) Un número aleatorio asignado por el demonio cron.",
+      "D) El nombre de 'cron.txt'."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "5. ¿Cuál es una diferencia crítica en la estructura del archivo general del sistema '/etc/crontab' en comparación con los archivos crontab de usuario?",
+    "opciones": [
+      "A) No permite el uso de asteriscos (*) en sus campos.",
+      "B) En '/etc/crontab' se debe especificar obligatoriamente el campo 'Usuario' antes del comando.",
+      "C) Solo puede ejecutar tareas cada hora en punto.",
+      "D) No requiere que el demonio cron esté activo para funcionar."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "6. Analizando la estructura de campos de crontab, ¿cuál es el orden exacto de los primeros 5 campos de temporización de izquierda a derecha?",
+    "opciones": [
+      "A) HORA, MINUTO, MES, DIAMES, DIASEMANA",
+      "B) MINUTO, HORA, DIAMES, MES, DIASEMANA",
+      "C) DIASEMANA, MES, DIAMES, HORA, MINUTO",
+      "D) MINUTO, HORA, DIASEMANA, DIAMES, MES"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "7. ¿Cuál es el rango de valores numéricos válidos que acepta el primer campo (MINUTO) en una línea de crontab?",
+    "opciones": [
+      "A) 1-60",
+      "B) 0-59",
+      "C) 0-23",
+      "D) 1-31"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "8. En el quinto campo (DIASEMANA), ¿qué rango numérico se utiliza para representar los días, donde el 0 o el 7 identifican al domingo?",
+    "opciones": [
+      "A) 1-7",
+      "B) 0-6",
+      "C) 0-7",
+      "D) 1-12"
+    ],
+    "respuesta_correcta": "C"
+  },
+  {
+    "pregunta": "9. Dentro de la sintaxis de crontab, ¿qué función cumple el caracter especial comodín del asterisco (*)?",
+    "opciones": [
+      "A) Indica que la tarea está deshabilitada o comentada.",
+      "B) Significa todos los valores posibles para ese campo (por ejemplo, todos los meses o todos los días).",
+      "C) Define un rango numérico cerrado de valores.",
+      "D) Fuerza al comando a ejecutarse con prioridad nice -20."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "10. Si encuentras la siguiente directiva en crontab: '30 2 * * * /bin/sh script.sh', ¿cuándo se ejecutará exactamente el script?",
+    "opciones": [
+      "A) Cada 30 minutos a las 2 de la tarde.",
+      "B) Todos los días a las 02:30 de la madrugada.",
+      "C) Los días 30 de cada mes a las 2 horas.",
+      "D) Únicamente los fines de semana a las 2:30."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "11. ¿Qué comando debes escribir en la terminal si deseas editar de forma interactiva las tareas programadas de tu propio usuario actual?",
+    "opciones": [
+      "A) crontab -l",
+      "B) crontab -e",
+      "C) crontab -r",
+      "D) nano /etc/crontab"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "12. ¿Qué acción realiza el comando 'crontab -r' según las opciones indicadas en el documento?",
+    "opciones": [
+      "A) Lista en pantalla las tareas programadas.",
+      "B) Borra o elimina por completo el archivo crontab del usuario actual.",
+      "C) Reinicia el servicio del demonio cron.",
+      "D) Comprueba si hay errores de sintaxis en el archivo."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "13. ¿Cuál es el propósito principal del comando 'at' a diferencia de 'cron'?",
+    "opciones": [
+      "A) Ejecutar tareas de forma recurrente cada hora.",
+      "B) Ejecutar una tarea o comando una sola vez a una hora/fecha determinada en el futuro.",
+      "C) Monitorizar el uso de la CPU a intervalos de 2 segundos.",
+      "D) Programar tareas en equipos que pasan la mayor parte del tiempo apagados."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "14. Si deseas consultar y listar la cola de trabajos que han sido programados con 'at' y que están esperando a ejecutarse, ¿qué comando debes usar?",
+    "opciones": [
+      "A) atrm",
+      "B) atq",
+      "C) at -e",
+      "D) crontab -l"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "15. Tienes un trabajo en la cola de 'at' con el identificador número 9 y decides cancelarlo para que no se ejecute. ¿Qué comando empleas?",
+    "opciones": [
+      "A) atq 9",
+      "B) atrm 9",
+      "C) crontab -r 9",
+      "D) sleep -d 9"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "16. ¿Qué función cumple el comando 'sleep' en los scripts o líneas de comandos de Linux?",
+    "opciones": [
+      "A) Suspende el equipo enviándolo a hibernación profunda.",
+      "B) Espera una cantidad de tiempo concreta, retrasando la ejecución del siguiente comando.",
+      "C) Detiene de forma definitiva un proceso zombie.",
+      "D) Mide los tiempos de inactividad de los usuarios conectados."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "17. Si ejecutas la instrucción 'sleep 3m', ¿cuánto tiempo de espera estás provocando?",
+    "opciones": [
+      "A) 3 segundos",
+      "B) 3 minutos",
+      "C) 3 horas",
+      "D) 3 días"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "18. ¿Qué realiza exactamente el comando compuesto 'sleep 5s && echo \"ejecutame\"'?",
+    "opciones": [
+      "A) Ejecuta el echo de forma inmediata durante 5 segundos seguidos.",
+      "B) Provoca una espera de 5 segundos y, tras este retraso, ejecuta el comando echo.",
+      "C) Apaga la pantalla por 5 segundos si el comando echo falla.",
+      "D) Programa una tarea repetitiva en crontab cada 5 segundos."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "19. ¿Cuál es el comportamiento por defecto del comando 'watch' al indicarle una orden, como en 'watch date'?",
+    "opciones": [
+      "A) Ejecuta el comando una sola vez y borra el historial.",
+      "B) Permite ejecutar un comando especificado a intervalos regulares, que por defecto son cada 2 segundos.",
+      "C) Mide el tiempo exacto que tarda en completarse un proceso.",
+      "D) Envía el comando al segundo plano de forma independiente."
+    ],
+    "
