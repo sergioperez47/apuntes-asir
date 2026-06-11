@@ -1,0 +1,1082 @@
+[
+  {
+    "questionNumber": 1,
+    "question": "En el fichero /etc/passwd, ¿cuál es el propósito del segundo campo si contiene el carácter 'x'?",
+    "answerOptions": [
+      {
+        "text": "Señala que la contraseña del usuario se almacena encriptada en el fichero /etc/shadow.",
+        "rationale": "La 'x' actúa como un marcador de posición para informar al sistema que la contraseña real debe leerse desde el archivo de sombras protegido.",
+        "isCorrect": true
+      },
+      {
+        "text": "Indica que la cuenta de usuario está bloqueada temporalmente.",
+        "rationale": "El bloqueo de cuentas se gestiona mediante caracteres especiales en el fichero /etc/shadow o usando herramientas específicas, no con el indicador de contraseña externa.",
+        "isCorrect": false
+      },
+      {
+        "text": "Determina que el usuario es un administrador del sistema con privilegios root.",
+        "rationale": "Los privilegios de administrador se asocian al identificador numérico UID 0, no a la presencia del carácter 'x' en el campo de contraseña.",
+        "isCorrect": false
+      },
+      {
+        "text": "Especifica que el usuario no requiere de una contraseña para iniciar sesión.",
+        "rationale": "Si el campo está completamente vacío se permite el acceso sin contraseña, mientras que la 'x' delega la autenticación al archivo shadow.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Este carácter redirige la validación de la clave a otro archivo con permisos de lectura sumamente restrictivos."
+  },
+  {
+    "questionNumber": 2,
+    "question": "Si estás analizando un listado de usuarios y te encuentras con un UID cuyo valor es 0, ¿a qué cuenta corresponde necesariamente?",
+    "answerOptions": [
+      {
+        "text": "Al usuario administrador supremo o root.",
+        "rationale": "El UID 0 está reservado de manera exclusiva por el núcleo del sistema para otorgar los máximos privilegios de superusuario.",
+        "isCorrect": true
+      },
+      {
+        "text": "A una cuenta predefinida de un servicio de red común.",
+        "rationale": "Los servicios y demonios del sistema utilizan rangos de UID específicos (normalmente entre 1 y 999), dejando el valor inicial reservado.",
+        "isCorrect": false
+      },
+      {
+        "text": "Al usuario estándar creado durante el proceso de instalación.",
+        "rationale": "Los usuarios regulares obtienen identificadores numéricos a partir del número 1000 en adelante de acuerdo a las directivas estándar.",
+        "isCorrect": false
+      },
+      {
+        "text": "A un grupo del sistema que carece de usuarios secundarios asociados.",
+        "rationale": "El campo UID identifica exclusivamente a cuentas de usuarios individuales, mientras que los grupos se gestionan con identificadores GID.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Se trata del identificador numérico con el nivel de privilegios más alto en cualquier arquitectura basada en Unix."
+  },
+  {
+    "questionNumber": 3,
+    "question": "Al examinar una línea del archivo /etc/group como 'sudo:x:24:devconnected,bob', ¿qué representa la lista final de nombres separados por comas?",
+    "answerOptions": [
+      {
+        "text": "Los usuarios que pertenecen a ese grupo como un grupo secundario.",
+        "rationale": "Este campo centraliza la relación de pertenencia adicional, mostrando explícitamente qué usuarios regulares forman parte secundaria del grupo.",
+        "isCorrect": true
+      },
+      {
+        "text": "Los usuarios que tienen a dicho grupo asignado como su grupo principal.",
+        "rationale": "El grupo principal de un usuario se define directamente en su registro de /etc/passwd mediante el GID y no se lista explícitamente aquí.",
+        "isCorrect": false
+      },
+      {
+        "text": "Los administradores que poseen permisos exclusivos para renombrar el grupo.",
+        "rationale": "La administración y modificación de grupos recae sobre el usuario root o mediante comandos de sudo, sin importar los nombres declarados en esa lista.",
+        "isCorrect": false
+      },
+      {
+        "text": "Las cuentas del sistema que han sido dadas de baja pero conservan sus archivos.",
+        "rationale": "Los usuarios listados son cuentas activas o válidas que interactúan con los privilegios asignados de forma colectiva al grupo secundario.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Especifica a los miembros suplementarios que heredan de forma directa los permisos otorgados a esta agrupación local."
+  },
+  {
+    "questionNumber": 4,
+    "question": "Un usuario recién dado de alta mediante useradd no puede iniciar sesión porque su cuenta aparece deshabilitada. ¿Qué carácter introduce por defecto este comando en el campo de contraseña de /etc/shadow para causar este comportamiento?",
+    "answerOptions": [
+      {
+        "text": "Un signo de exclamación (!)",
+        "rationale": "El comando coloca intencionadamente un signo de exclamación al inicio de la clave cifrada, invalidando cualquier hash y forzando a establecer una clave con passwd.",
+        "isCorrect": true
+      },
+      {
+        "text": "Un asterisco (*)",
+        "rationale": "El asterisco se suele emplear para deshabilitar cuentas especiales del sistema creadas por defecto que nunca requerirán login interactivo.",
+        "isCorrect": false
+      },
+      {
+        "text": "Un guion medio (-)",
+        "rationale": "Los guiones no se utilizan como marcas sintácticas de bloqueo en la base de datos de contraseñas de Linux.",
+        "isCorrect": false
+      },
+      {
+        "text": "Una equis minúscula (x)",
+        "rationale": "La letra 'x' se asocia al campo de contraseña en /etc/passwd para redirigir la búsqueda, no para bloquear cuentas dentro de /etc/shadow.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Es un símbolo de puntuación que invalida la cadena de cifrado y se retira automáticamente al asignar una contraseña real."
+  },
+  {
+    "questionNumber": 5,
+    "question": "Deseas añadir un grupo secundario llamado 'ssh' a un usuario existente llamado 'alumno' sin alterar los grupos secundarios a los que ya pertenece. ¿Qué combinación de opciones de usermod debes utilizar?",
+    "answerOptions": [
+      {
+        "text": "-a en combinación con -G",
+        "rationale": "La opción -a (append) instruye al sistema a anexar el nuevo grupo proporcionado por -G a la lista de grupos suplementarios preexistentes.",
+        "isCorrect": true
+      },
+      {
+        "text": "-g junto con -m",
+        "rationale": "La opción -g modifica el grupo principal del usuario y -m se usa para mover el contenido del directorio de inicio a una nueva ubicación.",
+        "isCorrect": false
+      },
+      {
+        "text": "-G de forma aislada",
+        "rationale": "Si empleas -G solo, reemplazarás por completo los grupos secundarios anteriores del usuario por el nuevo grupo especificado, perdiendo accesos.",
+        "isCorrect": false
+      },
+      {
+        "text": "-s junto con -d",
+        "rationale": "Estas opciones se encargan de redefinir la ruta absoluta de la shell interactiva por defecto y del directorio de inicio respectivamente.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Necesitas usar la opción para especificar grupos complementarios combinada con la bandera que impide sobrescribir los datos actuales."
+  },
+  {
+    "questionNumber": 6,
+    "question": "Al ejecutar 'userdel agustin', notas que los archivos personales del usuario siguen ocupando espacio en el disco. ¿Qué parámetro omitiste para asegurar la eliminación de su directorio personal?",
+    "answerOptions": [
+      {
+        "text": "-r",
+        "rationale": "La bandera -r (recursive) indica al comando que debe remover por completo el directorio personal y las colas de correo del usuario.",
+        "isCorrect": true
+      },
+      {
+        "text": "-f",
+        "rationale": "El parámetro -f fuerza la eliminación del usuario incluso si este mantiene sesiones de inicio activas en el entorno, pero no borra su home.",
+        "isCorrect": false
+      },
+      {
+        "text": "-d",
+        "rationale": "La opción -d se asocia a la definición o cambio de rutas de directorios durante la creación o modificación, no con userdel.",
+        "isCorrect": false
+      },
+      {
+        "text": "-m",
+        "rationale": "Aunque -m crea el directorio en useradd, el comando de borrado implementa una nomenclatura distinta para limpiar el espacio.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Se trata de un parámetro común en utilidades de borrado que elimina de raíz estructuras de directorios de manera recursiva."
+  },
+  {
+    "questionNumber": 7,
+    "question": "Durante un ejercicio de administración te piden que diferencies el comportamiento de 'useradd' frente a 'adduser'. ¿Cuál es una diferencia fundamental entre ambos?",
+    "answerOptions": [
+      {
+        "text": "adduser solicita de forma interactiva la contraseña y datos adicionales, creando el directorio home de forma automática.",
+        "rationale": "A diferencia de useradd (que requiere parámetros explícitos como -m), adduser guía al administrador paso a paso e implementa las plantillas predefinidas.",
+        "isCorrect": true
+      },
+      {
+        "text": "useradd es un comando interactivo de alto nivel, mientras que adduser se limita a modificar archivos de texto directamente.",
+        "rationale": "El flujo es el inverso; useradd es la herramienta nativa de bajo nivel común a las distribuciones y adduser es un script interactivo más amigable.",
+        "isCorrect": false
+      },
+      {
+        "text": "useradd encripta las contraseñas bajo el estándar MD5 de manera obligatoria y adduser prefiere algoritmos basados en DES.",
+        "rationale": "Los algoritmos de cifrado de contraseñas se configuran a nivel global del sistema en archivos como /etc/login.defs, independientemente de la utilidad usada.",
+        "isCorrect": false
+      },
+      {
+        "text": "adduser prohíbe terminantemente la adición de usuarios con privilegios de sistema o identificadores numéricos inferiores a 1000.",
+        "rationale": "Ambas utilidades permiten la gestión de cuentas de sistema si se les proporcionan los modificadores adecuados.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Piensa en cuál de las dos utilidades actúa como un asistente interactivo amigable que te pide el nombre completo y clave en la terminal."
+  },
+  {
+    "questionNumber": 8,
+    "question": "En el archivo /etc/login.defs se define la directiva 'UMASK 022'. ¿Qué determina esta configuración al crear un usuario?",
+    "answerOptions": [
+      {
+        "text": "La máscara que restringe los permisos predeterminados de los archivos y carpetas creados.",
+        "rationale": "Determina los bits de permisos que se le restarán a las nuevas creaciones de archivos, resultando por ejemplo en permisos 755 para carpetas.",
+        "isCorrect": true
+      },
+      {
+        "text": "El número máximo de reintentos permitidos de contraseña antes de bloquear el acceso.",
+        "rationale": "La cantidad de intentos fallidos de autenticación se administra mediante la variable LOGIN_RETRIES en este mismo fichero.",
+        "isCorrect": false
+      },
+      {
+        "text": "El rango numérico reservado para la asignación automática de GID del sistema.",
+        "rationale": "Los límites inferiores y superiores de identificadores numéricos se controlan con directivas como UID_MIN o GID_MAX.",
+        "isCorrect": false
+      },
+      {
+        "text": "Los días de aviso previo que recibirá el usuario antes de que su contraseña caduque.",
+        "rationale": "El intervalo temporal de advertencia para la renovación de claves se establece con el parámetro PASS_WARN_AGE.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Esta máscara realiza una operación de resta binaria sobre los permisos máximos posibles (777 en directorios) para establecer la seguridad inicial."
+  },
+  {
+    "questionNumber": 9,
+    "question": "Si necesitas cambiar el nombre del directorio personal de un usuario y mover íntegramente todos sus documentos antiguos a la nueva ubicación, ¿qué comando de usermod debes emplear?",
+    "answerOptions": [
+      {
+        "text": "usermod -d /nueva/ruta -m usuario",
+        "rationale": "El parámetro -d define la nueva ruta en los registros y -m obliga activamente al sistema a trasladar físicamente los archivos existentes.",
+        "isCorrect": true
+      },
+      {
+        "text": "usermod -l /nueva/ruta -m usuario",
+        "rationale": "La opción -l se utiliza exclusivamente para renombrar el login o alias del usuario, no para gestionar la transferencia de carpetas.",
+        "isCorrect": false
+      },
+      {
+        "text": "usermod -G /nueva/ruta usuario",
+        "rationale": "El uso de -G manipula las membresías a los grupos complementarios del sistema operativo, desentendiéndose del sistema de archivos.",
+        "isCorrect": false
+      },
+      {
+        "text": "usermod -d /nueva/ruta usuario",
+        "rationale": "Si omites la bandera -m, el registro apuntará al nuevo directorio en /etc/passwd pero el sistema no moverá los datos, rompiendo el acceso al home.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Requires la opción de destino del directorio personal en combinación con el modificador encargado de mover los contenidos físicos en el disco."
+  },
+  {
+    "questionNumber": 10,
+    "question": "Estás configurando una auditoría avanzada y añades la regla '-w /etc/passwd -p wa -k passwd_changes'. ¿Qué evento específico registrará el demonio auditd con este criterio?",
+    "answerOptions": [
+      {
+        "text": "Cualquier operación de escritura o modificación de atributos sobre el archivo /etc/passwd.",
+        "rationale": "La bandera '-w' vigila el archivo y '-p wa' filtra los accesos para guardar un evento bajo la etiqueta clave configurada cada vez que se altere el fichero.",
+        "isCorrect": true
+      },
+      {
+        "text": "Los intentos de lectura maliciosa del archivo por parte de usuarios comunes.",
+        "rationale": "El parámetro '-p wa' monitoriza escrituras (w) y modificaciones de atributos (a), ignorando intencionadamente los accesos de lectura simple.",
+        "isCorrect": false
+      },
+      {
+        "text": "La ejecución del comando 'passwd' independientemente del archivo alterado.",
+        "rationale": "La regla está vinculada estrictamente a la ruta estática del archivo de texto provisto y no al binario del comando que interactúa con él.",
+        "isCorrect": false
+      },
+      {
+        "text": "El tiempo transcurrido en tiempo real desde la última alteración de un UID.",
+        "rationale": "Auditd genera logs históricos de eventos transaccionales en el sistema de archivos, no temporizadores activos de los campos internos.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Presta atención a las letras del argumento '-p wa'; representan las iniciales en inglés de las dos acciones de archivo supervisadas (write y attribute)."
+  },
+  {
+    "questionNumber": 11,
+    "question": "Al examinar el archivo /etc/shadow, observas un campo numérico que indica los días transcurridos desde el 1 de enero de 1970 hasta el último cambio de contraseña. ¿Cuál es este campo?",
+    "answerOptions": [
+      {
+        "text": "El campo 3 (Fecha del último cambio de contraseña).",
+        "rationale": "El tercer campo del registro almacena de forma exacta la marca de tiempo Epoch indicando cuándo se renovó la contraseña por última vez.",
+        "isCorrect": true
+      },
+      {
+        "text": "El campo 2 (Contraseña cifrada).",
+        "rationale": "El segundo campo guarda la cadena criptográfica hash con la sal que valida los accesos.",
+        "isCorrect": false
+      },
+      {
+        "text": "El campo 5 (Días máximos de validez).",
+        "rationale": "El quinto campo controla cuántos días puede utilizar el usuario la misma contraseña antes de ser obligado a cambiarla.",
+        "isCorrect": false
+      },
+      {
+        "text": "El campo 8 (Fecha de expiración de la cuenta).",
+        "rationale": "El octavo campo inhabilita por completo el login del usuario una vez alcanzada la fecha Epoch estipulada.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Se sitúa justo después de la contraseña cifrada y utiliza el formato de tiempo estándar de sistemas Unix."
+  },
+  {
+    "questionNumber": 12,
+    "question": "¿Qué comando se utiliza específicamente para modificar los parámetros de caducidad de la contraseña de un usuario (como los días mínimos, máximos y el aviso de expiración) sin editar los archivos manualmente?",
+    "answerOptions": [
+      {
+        "text": "chage",
+        "rationale": "El comando chage (change age) se encarga de alterar los campos de expiración y políticas de edad de contraseñas reflejados en /etc/shadow.",
+        "isCorrect": true
+      },
+      {
+        "text": "chsh",
+        "rationale": "La utilidad chsh se emplea únicamente para redefinir el intérprete de comandos o shell de inicio asignado al usuario.",
+        "isCorrect": false
+      },
+      {
+        "text": "chfn",
+        "rationale": "El comando chfn altera los datos informativos GECOS del usuario como su nombre completo o datos de oficina.",
+        "isCorrect": false
+      },
+      {
+        "text": "passwd -d",
+        "rationale": "El parámetro -d de passwd se utiliza exclusivamente para eliminar la contraseña de un usuario, dejando la cuenta desprotegida.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Su nombre es una contracción de las palabras en inglés 'change' y 'age'."
+  },
+  {
+    "questionNumber": 13,
+    "question": "¿Cuál es la función principal del directorio /etc/skel en un sistema GNU/Linux?",
+    "answerOptions": [
+      {
+        "text": "Servir de plantilla para copiar los archivos de configuración por defecto (.bashrc, .profile, etc.) al directorio HOME de un nuevo usuario.",
+        "rationale": "El entorno del usuario utiliza este esqueleto para aprovisionar automáticamente la configuración básica en cada proceso de alta de cuenta.",
+        "isCorrect": true
+      },
+      {
+        "text": "Almacenar los binarios esenciales que ejecutan los usuarios administradores.",
+        "rationale": "Los comandos de administración e infraestructura crítica del sistema residen habitualmente en carpetas como /sbin o /usr/sbin.",
+        "isCorrect": false
+      },
+      {
+        "text": "Guardar las contraseñas temporales antes de ser cifradas en el archivo shadow.",
+        "rationale": "Las contraseñas nunca se escriben de manera persistente en texto plano dentro de directorios del sistema, pasando directo por la API de PAM.",
+        "isCorrect": false
+      },
+      {
+        "text": "Contener los scripts de inicio y parada de los servicios locales del sistema.",
+        "rationale": "Los flujos de control de demonios y servicios se delegan a estructuras administradas por systemd en /etc/systemd/system/.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Su nombre alude a la palabra 'skeleton' (esqueleto) y dota de estructura inicial a las carpetas personales."
+  },
+  {
+    "questionNumber": 14,
+    "question": "Si ejecutas el comando 'passwd -l usuario', ¿qué efecto inmediato produces sobre dicha cuenta?",
+    "answerOptions": [
+      {
+        "text": "Bloqueas la cuenta del usuario añadiendo un símbolo de exclamación al hash en /etc/shadow.",
+        "rationale": "La opción -l (lock) inutiliza la cadena de autenticación impidiendo de forma instantánea inicios de sesión mediante esa clave.",
+        "isCorrect": true
+      },
+      {
+        "text": "Eliminas de forma irreversible la contraseña del usuario.",
+        "rationale": "Para eliminar la contraseña se debe emplear el modificador -d, mientras que -l simplemente la restringe de forma reversible.",
+        "isCorrect": false
+      },
+      {
+        "text": "Cambias el shell por defecto del usuario a /sbin/nologin.",
+        "rationale": "Esta modificación de entorno estructural requiere el uso del comando usermod -s o de la herramienta chsh.",
+        "isCorrect": false
+      },
+      {
+        "text": "Fuerzas al usuario a cambiar su contraseña en su próximo inicio de sesión.",
+        "rationale": "Para forzar la caducidad inmediata y obligar al cambio se utiliza la opción -e de passwd o chage -d 0.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "El modificador viene de la palabra 'lock' y altera sintácticamente el hash guardado para que no se reconozca."
+  },
+  {
+    "questionNumber": 15,
+    "question": "¿Qué comando de bajo nivel permite crear un nuevo grupo en el sistema asignándole un GID específico mediante parámetros?",
+    "answerOptions": [
+      {
+        "text": "groupadd -g GID nombre_grupo",
+        "rationale": "La herramienta groupadd registra grupos locales y el parámetro -g fuerza la adopción del identificador numérico deseado.",
+        "isCorrect": true
+      },
+      {
+        "text": "addgroup --gid GID nombre_grupo",
+        "rationale": "Aunque addgroup es un script de más alto nivel útil en ciertas distros, la utilidad nativa estándar de bajo nivel es groupadd con su bandera en minúscula.",
+        "isCorrect": false
+      },
+      {
+        "text": "groupmod -n GID nombre_grupo",
+        "rationale": "La opción -n dentro de groupmod se emplea para alterar el nombre del grupo existente, no para definir su identificador numérico.",
+        "isCorrect": false
+      },
+      {
+        "text": "usermod -g GID nombre_grupo",
+        "rationale": "usermod se enfoca de manera exclusiva en modificar registros de cuentas de usuario, no en declarar entidades grupales nuevas.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Es la herramienta de bajo nivel paralela a useradd orientada al control de agrupaciones."
+  },
+  {
+    "questionNumber": 16,
+    "question": "Para eliminar a un usuario de un grupo secundario manteniendo el resto de sus configuraciones intactas, ¿qué comando proporciona la sintaxis más directa?",
+    "answerOptions": [
+      {
+        "text": "gpasswd -d usuario grupo",
+        "rationale": "El comando gpasswd con la bandera -d (delete) sustrae al usuario indicado del grupo secundario modificando directamente /etc/group.",
+        "isCorrect": true
+      },
+      {
+        "text": "groupdel usuario grupo",
+        "rationale": "groupdel borra por completo la entidad del grupo del sistema operativo, requiriendo un único argumento.",
+        "isCorrect": false
+      },
+      {
+        "text": "usermod -G \"\" usuario",
+        "rationale": "Esto purgaría de golpe absolutamente todos los grupos secundarios a los que pertenece el usuario, lo cual puede romper sus privilegios.",
+        "isCorrect": false
+      },
+      {
+        "text": "userdel -r usuario",
+        "rationale": "Esta acción destruiría por completo la cuenta de usuario del sistema junto con su almacenamiento, no es una desvinculación de grupo.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Utiliza una herramienta de gestión de contraseñas y miembros de grupo con la bandera de borrado o remoción."
+  },
+  {
+    "questionNumber": 17,
+    "question": "¿Qué comando permite a un usuario común cambiar su propio campo de descripción o información personal (Gecos) almacenado en el archivo /etc/passwd?",
+    "answerOptions": [
+      {
+        "text": "chfn",
+        "rationale": "chfn (change finger information) interactúa con los metadatos informativos de la cuenta permitiendo su edición directa por el propietario.",
+        "isCorrect": true
+      },
+      {
+        "text": "chsh",
+        "rationale": "Esta utilidad altera la ruta de la shell interactiva del usuario y rechaza modificaciones sobre campos de texto descriptivos.",
+        "isCorrect": false
+      },
+      {
+        "text": "usermod -c",
+        "rationale": "Aunque usermod -c cambia este campo, requiere privilegios de root de forma estricta, impidiendo que un usuario común lo invoque para sí mismo.",
+        "isCorrect": false
+      },
+      {
+        "text": "id",
+        "rationale": "id es un comando puramente Informativo que imprime identidades e identificadores numéricos sin capacidad de escritura.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Sus siglas hacen alusión al comando histórico de redes de información 'finger'."
+  },
+  {
+    "questionNumber": 18,
+    "question": "Necesitas comprobar rápidamente en la terminal a qué grupos (tanto principales como secundarios) pertenece la cuenta con la que tienes sesión iniciada. ¿Qué comando nativo debes usar?",
+    "answerOptions": [
+      {
+        "text": "groups",
+        "rationale": "El comando groups devuelve de forma directa un listado de los nombres de todas las agrupaciones asignadas al usuario actual.",
+        "isCorrect": true
+      },
+      {
+        "text": "who",
+        "rationale": "who detalla quién está conectado activamente en los diferentes terminales físicos o pseudo-terminales del servidor.",
+        "isCorrect": false
+      },
+      {
+        "text": "last",
+        "rationale": "last lee los ficheros de log históricos para mostrar los últimos accesos exitosos y reinicios acontecidos en la máquina.",
+        "isCorrect": false
+      },
+      {
+        "text": "journalctl",
+        "rationale": "Esta utilidad consulta los diarios centralizados de systemd para depurar servicios de fondo y eventos de infraestructura.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Es una palabra muy simple que representa el plural de 'grupo' en inglés."
+  },
+  {
+    "questionNumber": 19,
+    "question": "Estás utilizando inotify-tools para auditar cambios en tiempo real. Si quieres monitorizar de forma continua un directorio y ver las alertas inmediatamente en la terminal al crear o borrar archivos, ¿qué comando empleas?",
+    "answerOptions": [
+      {
+        "text": "inotifywait -m /ruta/directorio",
+        "rationale": "La opción -m (monitor) instruye al comando a no cerrarse tras el primer evento, manteniendo una escucha activa perpetua en la consola.",
+        "isCorrect": true
+      },
+      {
+        "text": "ausearch -k /ruta/directorio",
+        "rationale": "ausearch rastrea de manera estática los registros históricos del demonio de auditoría basándose en claves, no implementa un stream de inotify.",
+        "isCorrect": false
+      },
+      {
+        "text": "aureport -au",
+        "rationale": "Genera resúmenes ejecutivos tabulados relativos a las autenticaciones de usuarios sin rastrear cambios en directorios.",
+        "isCorrect": false
+      },
+      {
+        "text": "watch -n 1 /ruta/directorio",
+        "rationale": "watch repite un comando cada intervalo de tiempo, pero no aprovecha las llamadas del kernel de inotify para capturar transacciones exactas.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Necesitas la utilidad de espera de inotify configurada con el parámetro que activa el modo de monitoreo continuo."
+  },
+  {
+    "questionNumber": 20,
+    "question": "En el archivo /etc/passwd, ¿qué indica que una cuenta de usuario o servicio no puede iniciar una sesión de terminal interactiva (cuenta no logueable)?",
+    "answerOptions": [
+      {
+        "text": "Que su shell por defecto está configurado como /usr/sbin/nologin o /bin/false.",
+        "rationale": "Asignar estos ejecutables simulados detiene inmediatamente el proceso de login devolviendo un rechazo seguro antes de entregar la terminal.",
+        "isCorrect": true
+      },
+      {
+        "text": "Que su UID es un número negativo.",
+        "rationale": "Los UID son campos enteros sin signo y el sistema rechaza representaciones negativas en las bases de datos de usuarios.",
+        "isCorrect": false
+      },
+      {
+        "text": "Que el campo de su directorio HOME está completamente vacío.",
+        "rationale": "Tener un HOME ausente o mal configurado provoca advertencias en el login y nos deja en el directorio raíz, pero no prohíbe el inicio de sesión por sí solo.",
+        "isCorrect": false
+      },
+      {
+        "text": "Que su nombre de usuario comienza con un guion bajo (_).",
+        "rationale": "El inicio con guion bajo es una convención estética opcional para identificar servicios en ciertas distribuciones, careciendo de lógica de bloqueo.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Este control se delega al último campo del registro, sustituyendo la ruta de la shell válida por una rutina de rechazo."
+  },
+  {
+    "questionNumber": 21,
+    "question": "En el contexto de la gestión de cuentas en Linux, ¿en qué archivo de configuración global se definen los límites predeterminados para la caducidad de contraseñas (PASS_MAX_DAYS, PASS_MIN_DAYS) al usar useradd?",
+    "answerOptions": [
+      {
+        "text": "/etc/login.defs",
+        "rationale": "Este archivo contiene la configuración de valores por defecto para los subsistemas de login shadow y utilidades de creación de cuentas.",
+        "isCorrect": true
+      },
+      {
+        "text": "/etc/default/useradd",
+        "rationale": "Aunque define parámetros esenciales como el grupo por defecto, el HOME y el esqueleto, las directivas temporales de contraseñas residen en login.defs.",
+        "isCorrect": false
+      },
+      {
+        "text": "/etc/shadow",
+        "rationale": "Este archivo almacena la configuración de caducidad específica e individualizada de cada usuario, no los valores de plantilla del sistema.",
+        "isCorrect": false
+      },
+      {
+        "text": "/etc/securetty",
+        "rationale": "Regula los terminales específicos desde los cuales el usuario root puede iniciar sesión de forma directa en la máquina.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Es un archivo de directivas globales de login ubicado en /etc cuyas extensiones aluden a definiciones."
+  },
+  {
+    "questionNumber": 22,
+    "question": "Al inspeccionar una línea de /etc/shadow, el cuarto campo contiene el valor numérico 7. ¿Qué restricción impone este valor al usuario?",
+    "answerOptions": [
+      {
+        "text": "El número mínimo de días que el usuario debe esperar antes de poder cambiar su contraseña otra vez.",
+        "rationale": "Establece el intervalo de inmutabilidad de la clave para evitar que los usuarios esquiven el historial de contraseñas rotando contraseñas consecutivamente.",
+        "isCorrect": true
+      },
+      {
+        "text": "Los días que le quedan a la contraseña actual antes de expirar.",
+        "rationale": "Los días restantes se calculan de manera dinámica restando el tiempo transcurrido, no se fijan estáticamente en este campo.",
+        "isCorrect": false
+      },
+      {
+        "text": "El número de intentos permitidos antes de bloquear temporalmente el acceso por terminal.",
+        "rationale": "El recuento de bloqueos reactivos de seguridad se delega a módulos PAM específicos y no a los campos de edad de clave de shadow.",
+        "isCorrect": false
+      },
+      {
+        "text": "Los días de preaviso diarios que recibirá el usuario antes de la caducidad obligatoria.",
+        "rationale": "La advertencia previa se sitúa en el sexto campo del registro de sombras, no en el cuarto.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Controla el parámetro de días mínimos asociados a la rotación de claves de seguridad."
+  },
+  {
+    "questionNumber": 23,
+    "question": "¿Qué comando permite inspeccionar de manera tabulada y comprensible las políticas de envejecimiento y vencimiento de contraseña de la cuenta de un usuario?",
+    "answerOptions": [
+      {
+        "text": "chage -l usuario",
+        "rationale": "La opción -l (list) del comando chage formatea los datos crudos del shadow y los presenta en texto legible con fechas exactas.",
+        "isCorrect": true
+      },
+      {
+        "text": "passwd -S usuario",
+        "rationale": "Muestra un estado corto resumido con metadatos cifrados básicos, pero no genera el desglose tabulado pormenorizado de chage.",
+        "isCorrect": false
+      },
+      {
+        "text": "usermod -v usuario",
+        "rationale": "usermod carece de la opción -v para el listado de edades de contraseñas, limitándose a labores puras de modificación.",
+        "isCorrect": false
+      },
+      {
+        "text": "id -g usuario",
+        "rationale": "Devuelve exclusivamente el identificador numérico de grupo principal (GID) del usuario consultado.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Combina la herramienta especializada en edad de contraseñas con el modificador común para listar información."
+  },
+  {
+    "questionNumber": 24,
+    "question": "Si ejecutas la directiva 'usermod -e 2026-12-31 alumno', ¿qué cambio específico estás aplicando en el ciclo de vida de esa cuenta?",
+    "answerOptions": [
+      {
+        "text": "Estableces una fecha de vencimiento absoluta en la cual la cuenta quedará inactiva independientemente de la edad de su contraseña.",
+        "rationale": "La opción -e (expire) define la fecha de fin de validez del perfil de usuario, útil para contratos temporales o alumnos de curso.",
+        "isCorrect": true
+      },
+      {
+        "text": "Fuerzas a que la contraseña deba renovarse obligatoriamente ese día.",
+        "rationale": "Para forzar renovaciones en fechas concretas de contraseñas se actúa sobre chage, no sobre el fin de vida global del usuario.",
+        "isCorrect": false
+      },
+      {
+        "text": "Programas una tarea cron automática para borrar al usuario ese día del disco.",
+        "rationale": "La cuenta se deshabilita bloqueando el acceso, pero los archivos del home y sus registros se preservan intactos hasta orden expresa.",
+        "isCorrect": false
+      },
+      {
+        "text": "Indicas el último día en que el usuario puede usar la cuenta sin tener privilegios sudo.",
+        "rationale": "El entorno sudo se administra de forma aislada mediante el fichero /etc/sudoers y no depende de la fecha de expiración del perfil.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "La opción proviene de 'expire' y actúa a nivel global de la cuenta, reflejándose en el campo 8 de /etc/shadow."
+  },
+  {
+    "questionNumber": 25,
+    "question": "¿Cuál es el propósito del comando 'chfn' en la gestión cotidiana de usuarios locales?",
+    "answerOptions": [
+      {
+        "text": "Modificar los datos informativos opcionales de la cuenta, como el nombre completo, el número de despacho y teléfonos.",
+        "rationale": "chfn (change finger) edita los campos del bloque GECOS en /etc/passwd destinados a identificar al operario real tras el alias.",
+        "isCorrect": true
+      },
+      {
+        "text": "Cambiar el nombre del grupo principal asignado a un perfil operativo.",
+        "rationale": "Para redefinir agrupaciones se debe utilizar obligatoriamente groupmod o el comando general usermod.",
+        "isCorrect": false
+      },
+      {
+        "text": "Actualizar de forma forzada el algoritmo de hashing de contraseñas del sistema.",
+        "rationale": "La selección del algoritmo es estructural y centralizada, modificándose en las configuraciones de PAM o de login.defs.",
+        "isCorrect": false
+      },
+      {
+        "text": "Restablecer los valores por defecto del esqueleto de directorios.",
+        "rationale": "Este comando no tiene relación alguna con los sistemas de archivos de plantillas de /etc/skel.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Cambia la información que históricamente consultaba el protocolo 'finger' de información de usuarios."
+  },
+  {
+    "questionNumber": 26,
+    "question": "Deseas cambiar el nombre identificativo (login) de un usuario de 'informatica' a 'sistemas'. ¿Qué comando de usermod realiza esta redefinición de alias de manera limpia?",
+    "answerOptions": [
+      {
+        "text": "usermod -l sistemas informatica",
+        "rationale": "La bandera -l (login) recibe el nuevo nombre deseado seguido del nombre actual que se va a sustituir en /etc/passwd.",
+        "isCorrect": true
+      },
+      {
+        "text": "usermod -n sistemas informatica",
+        "rationale": "La opción -n se utiliza en groupmod para alterar grupos, mientras que usermod emplea -l para modificar el login.",
+        "isCorrect": false
+      },
+      {
+        "text": "usermod informatica -l sistemas",
+        "rationale": "El orden sintáctico tradicional del comando requiere que los modificadores y el nuevo valor precedan al usuario objetivo al final de la línea.",
+        "isCorrect": false
+      },
+      {
+        "text": "usermod -c sistemas informatica",
+        "rationale": "La bandera -c altera el comentario o descripción interna GECOS, manteniendo inalterado el alias de inicio de sesión.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Se utiliza el parámetro que hace referencia al nuevo 'login' identificativo."
+  },
+  {
+    "questionNumber": 27,
+    "question": "En una auditoría del archivo /etc/group encuentras la línea 'contabilidad:x:1005:'. ¿Qué indica que el último campo esté vacío?",
+    "answerOptions": [
+      {
+        "text": "Que ningún usuario del sistema tiene a este grupo asignado como su grupo secundario.",
+        "rationale": "El último campo lista los miembros secundarios explícitos; al estar vacío significa que nadie pertenece a él de forma complementaria.",
+        "isCorrect": true
+      },
+      {
+        "text": "Que el grupo carece de contraseña de grupo, por lo que es inaccesible.",
+        "rationale": "La ausencia de contraseña en los grupos se marca con la 'x' delegando en /etc/gshadow, el campo final es solo de membresía.",
+        "isCorrect": false
+      },
+      {
+        "text": "Que los usuarios agregados son administradores ocultos por seguridad.",
+        "rationale": "Linux no oculta usuarios en los campos finales de grupo por motivos de seguridad estándar, reflejando siempre la pertenencia real.",
+        "isCorrect": false
+      },
+      {
+        "text": "Que el grupo fue deshabilitado automáticamente debido a inactividad.",
+        "rationale": "Los grupos no se desactivan de forma automatizada por inactividad de su lista de miembros.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "El cuarto campo separado por dos puntos recoge las cadenas de texto de los usuarios secundarios asociados."
+  },
+  {
+    "questionNumber": 28,
+    "question": "Si ejecutas el comando 'usermod -s /bin/false operador', ¿qué comportamiento experimentará el usuario 'operador' al conectarse?",
+    "answerOptions": [
+      {
+        "text": "Se cerrará su intento de sesión inmediatamente tras autenticarse, devolviendo un código de salida falso sin abrir shell.",
+        "rationale": "Al invocar /bin/false como intérprete, este programa finaliza inmediatamente impidiendo la ejecución de un entorno interactivo.",
+        "isCorrect": true
+      },
+      {
+        "text": "Se le asignará una shell restringida donde solo podrá ejecutar comandos seguros de administración.",
+        "rationale": "Para entornos restringidos se suele configurar rbash o shells específicas de menú, no utilidades de retorno nulo como /bin/false.",
+        "isCorrect": false
+      },
+      {
+        "text": "El sistema denegará la conexión alegando explícitamente un mensaje de cuenta bloqueada de manera descriptiva.",
+        "rationale": "/bin/false sale de forma silenciosa sin texto, a diferencia de /usr/sbin/nologin que suele imprimir un aviso refinado.",
+        "isCorrect": false
+      },
+      {
+        "text": "Podrá acceder normalmente pero carecerá de permisos para escribir en su directorio personal.",
+        "rationale": "La shell por defecto afecta a la ejecución de comandos de entrada, los permisos de escritura dependen de los bits del sistema de archivos.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "El ejecutable 'false' es un binario que simplemente retorna un estado de error o falso y termina su ejecución."
+  },
+  {
+    "questionNumber": 29,
+    "question": "¿Cuál es el archivo protegido del sistema que almacena las contraseñas cifradas y la información de membresía de grupos en paralelo a /etc/group?",
+    "answerOptions": [
+      {
+        "text": "/etc/gshadow",
+        "rationale": "gshadow complementa a group guardando los hashes de contraseñas de grupos y gestores con estrictas restricciones de lectura.",
+        "isCorrect": true
+      },
+      {
+        "text": "/etc/group.shadow",
+        "rationale": "Esta ruta no es un estándar sintáctico de nombres en la arquitectura de archivos de configuración de Linux.",
+        "isCorrect": false
+      },
+      {
+        "text": "/etc/shadow",
+        "rationale": "/etc/shadow gestiona en exclusiva las contraseñas y edades criptográficas de cuentas individuales de usuario, no de grupos.",
+        "isCorrect": false
+      },
+      {
+        "text": "/etc/security/groups.conf",
+        "rationale": "Los privilegios estructurales de pertenencia y contraseñas de grupo no se regulan desde este directorio de seguridad.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Su nombre empieza por 'g' en alusión a grupos y sigue la misma nomenclatura de seguridad de contraseñas de usuario."
+  },
+  {
+    "questionNumber": 30,
+    "question": "Necesitas dar de alta un usuario de servicio para una aplicación web y requieres que el sistema le asigne automáticamente un UID inferior a 1000 de tipo sistema. ¿Qué bandera de 'useradd' automatiza esto?",
+    "answerOptions": [
+      {
+        "text": "useradd -r nombre_servicio",
+        "rationale": "La opción -r (system) fuerza la creación de una cuenta de sistema eligiendo un identificador en el rango inferior libre.",
+        "isCorrect": true
+      },
+      {
+        "text": "useradd -s nombre_servicio",
+        "rationale": "La opción -s se asocia a la definición explícita de la ruta de la shell inicial del usuario.",
+        "isCorrect": false
+      },
+      {
+        "text": "useradd -k nombre_servicio",
+        "rationale": "El parámetro -k se combina con -m para designar una ruta de esqueleto de archivos alternativa a /etc/skel.",
+        "isCorrect": false
+      },
+      {
+        "text": "useradd -sys nombre_servicio",
+        "rationale": "Los comandos nativos de bajo nivel como useradd emplean banderas de un único carácter o formatos largos estándar, no abreviaciones libres.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "La bandera coincide con la inicial de la palabra 'system' en desuso o redefinida como bajo rango."
+  },
+  {
+    "questionNumber": 31,
+    "question": "En el archivo /etc/default/useradd se localiza la directiva 'SKEL=/etc/skel'. Si un administrador modifica esta ruta a '/etc/plantilla_asir', ¿qué efecto tendrá en los nuevos usuarios?",
+    "answerOptions": [
+      {
+        "text": "Los nuevos perfiles creados heredarán los archivos de inicialización desde la nueva carpeta especificada.",
+        "rationale": "useradd consulta este archivo por defecto para saber qué directorio clonar físicamente hacia el HOME del usuario recién creado.",
+        "isCorrect": true
+      },
+      {
+        "text": "El comando useradd fallará de forma obligatoria al no encontrar la ruta tradicional del esqueleto.",
+        "rationale": "El sistema respeta la redefinición del archivo siempre y cuando la carpeta destino exista y cuente con permisos de lectura.",
+        "isCorrect": false
+      },
+      {
+        "text": "Se deshabilitará la creación de directorios personales para salvaguardar la seguridad estructural.",
+        "rationale": "La creación de directorios personales se rige por la directiva CREATE_HOME o el parámetro -m, independiente de la ruta origen.",
+        "isCorrect": false
+      },
+      {
+        "text": "Afectará de forma retroactiva a los usuarios antiguos modificando sus configuraciones actuales.",
+        "rationale": "Las directivas de useradd solo actúan en el instante preciso de la creación, careciendo de efectos retroactivos.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Cambia la ubicación origen desde la cual se clonan los archivos por defecto del entorno del usuario."
+  },
+  {
+    "questionNumber": 32,
+    "question": "Estás analizando la seguridad del sistema mediante auditorías. ¿Qué utilidad del paquete auditd empleas para buscar eventos concretos en los logs filtrando por una etiqueta clave específica?",
+    "answerOptions": [
+      {
+        "text": "ausearch",
+        "rationale": "La herramienta ausearch (audit search) interroga los ficheros de logs del demonio auditd filtrando eficientemente por identificadores, procesos o claves (-k).",
+        "isCorrect": true
+      },
+      {
+        "text": "aureport",
+        "rationale": "aureport se orienta a maquetar resúmenes de rendimiento y estadísticas generales tabuladas, no a la búsqueda granular de trazas individuales.",
+        "isCorrect": false
+      },
+      {
+        "text": "auditctl",
+        "rationale": "Se usa de forma exclusiva para inyectar, eliminar o alterar las reglas de auditoría activas en el espacio del kernel.",
+        "isCorrect": false
+      },
+      {
+        "text": "autrace",
+        "rationale": "autrace realiza un seguimiento pormenorizado de las llamadas al sistema ejecutadas por un binario específico en un instante determinado.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Es la utilidad encargada de realizar búsquedas dentro del ecosistema de auditoría avanzada de Linux."
+  },
+  {
+    "questionNumber": 33,
+    "question": "¿Cuál es la sintaxis correcta del comando 'gpasswd' para convertir al usuario 'juan' en el administrador/gestor de un grupo llamado 'desarrollo'?",
+    "answerOptions": [
+      {
+        "text": "gpasswd -A juan desarrollo",
+        "rationale": "La bandera -A (administrator) confiere al usuario indicado derechos de gestión sobre la lista de miembros y claves del grupo objetivo.",
+        "isCorrect": true
+      },
+      {
+        "text": "gpasswd -a juan desarrollo",
+        "rationale": "La opción en minúscula -a añade al usuario al grupo como un miembro regular secundario, sin otorgarle rol de administrador.",
+        "isCorrect": false
+      },
+      {
+        "text": "gpasswd -M juan desarrollo",
+        "rationale": "El parámetro -M redefine la lista completa de miembros del grupo, reemplazando a los integrantes actuales por el listado provisto.",
+        "isCorrect": false
+      },
+      {
+        "text": "gpasswd -d juan desarrollo",
+        "rationale": "La opción -d elimina por completo al usuario de la lista de integrantes del grupo secundario.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Para designar administradores de grupo se emplea el parámetro que usa la letra inicial en mayúscula de la palabra 'Administrator'."
+  },
+  {
+    "questionNumber": 34,
+    "question": "Al ejecutar 'chage -M 90 usuario', ¿qué directiva de ciclo de vida de contraseña estás configurando en la cuenta?",
+    "answerOptions": [
+      {
+        "text": "Estableces que la contraseña caducará de manera obligatoria a los 90 días de su última modificación.",
+        "rationale": "El parámetro -M (Maximum) controla la validez temporal máxima permitida para una clave antes de exigir su renovación.",
+        "isCorrect": true
+      },
+      {
+        "text": "Permites que el usuario cambie su contraseña hasta un máximo de 90 veces al año.",
+        "rationale": "No existe un contador de frecuencia de modificaciones anuales numéricas dentro de los esquemas estructurales de shadow.",
+        "isCorrect": false
+      },
+      {
+        "text": "Determinas que la cuenta caducará de forma absoluta dentro de 90 días a contar desde hoy.",
+        "rationale": "Para configurar la caducidad total del perfil de forma relativa se deben realizar cálculos numéricos explícitos o usar la opción -E con fechas absolutas.",
+        "isCorrect": false
+      },
+      {
+        "text": "Configuras que el aviso preventivo de expiración saltará en la terminal durante 90 días.",
+        "rationale": "El periodo de preaviso e información en el login se estipula mediante el parámetro -W de la herramienta.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Proviene de la palabra 'Maximum' y altera el quinto campo del registro shadow correspondiente a la vigencia."
+  },
+  {
+    "questionNumber": 35,
+    "question": "Si un administrador ejecuta la regla 'inotifywait -e modify /var/log/auth.log', ¿qué suceso provocará que el comando imprima una alerta en consola y finalice?",
+    "answerOptions": [
+      {
+        "text": "Cualquier alteración o escritura de datos que altere el contenido interno del fichero.",
+        "rationale": "El evento 'modify' reacciona específicamente ante operaciones de edición y adición de contenido sobre el descriptor supervisado.",
+        "isCorrect": true
+      },
+      {
+        "text": "La simple apertura del archivo por parte de un editor o script de lectura.",
+        "rationale": "El acceso de lectura pura o apertura se captura mediante el evento 'access' u 'open', sin necesidad de mutaciones.",
+        "isCorrect": false
+      },
+      {
+        "text": "La eliminación o cambio de nombre del archivo en el sistema de directorios.",
+        "rationale": "Las acciones de supresión y reubicación de ficheros se gestionan con los filtros 'delete' o 'move_from'.",
+        "isCorrect": false
+      },
+      {
+        "text": "Un intento fallido de autenticación SSH por fuerza bruta.",
+        "rationale": "inotifywait supervisa las operaciones genéricas sobre el archivo de texto a nivel de sistema de ficheros, sin interpretar la semántica del tráfico de red.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "El parámetro '-e' filtra por eventos y la palabra 'modify' alude directamente a cambios físicos o escrituras de datos."
+  },
+  {
+    "questionNumber": 36,
+    "question": "¿En cuál de los siguientes archivos de configuración se puede establecer la shell predeterminada (/bin/bash, /bin/sh) que recibirán de forma automática todos los usuarios creados mediante 'useradd'?",
+    "answerOptions": [
+      {
+        "text": "/etc/default/useradd",
+        "rationale": "Este archivo almacena la directiva SHELL= que lee el binario useradd cuando no se le pasa la opción -s de forma explícita por terminal.",
+        "isCorrect": true
+      },
+      {
+        "text": "/etc/shells",
+        "rationale": "/etc/shells simplemente contiene un listado de las rutas de shells válidas e instaladas en el sistema para consulta de servicios.",
+        "isCorrect": false
+      },
+      {
+        "text": "/etc/profile",
+        "rationale": "Se encarga de inicializar variables ambientales globales de entorno una vez que la shell ya ha iniciado, no de asignar el binario inicial.",
+        "isCorrect": false
+      },
+      {
+        "text": "/etc/passwd",
+        "rationale": "Guarda la shell individual asignada a cada usuario concreto, pero no la plantilla base que determina las nuevas altas.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Es el archivo que aloja las variables por defecto específicas de la utilidad useradd dentro de la subcarpeta default."
+  },
+  {
+    "questionNumber": 37,
+    "question": "Necesitas verificar de forma rápida qué usuarios tienen actualmente una sesión abierta en el sistema, detallando desde qué IP se conectan y qué comando ejecutan en su terminal. ¿Qué utilidad nativa es la más idónea?",
+    "answerOptions": [
+      {
+        "text": "w",
+        "rationale": "El comando de una sola letra 'w' combina la información de quién está conectado con estadísticas de carga y el proceso en ejecución activa.",
+        "isCorrect": true
+      },
+      {
+        "text": "id",
+        "rationale": "id imprime los detalles sintácticos de identificadores UID, GID y pertenencia a grupos de una cuenta, ignorando conexiones de red.",
+        "isCorrect": false
+      },
+      {
+        "text": "lastlog",
+        "rationale": "lastlog consulta de forma estática la fecha del último inicio de sesión registrado para cada cuenta del sistema, sin monitorizar el tiempo real.",
+        "isCorrect": false
+      },
+      {
+        "text": "uname",
+        "rationale": "uname imprime metadatos del sistema operativo, versión de kernel y arquitectura de hardware del host.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Es un comando extremadamente corto que consiste en una única letra consonante al final del alfabeto inglés."
+  },
+  {
+    "questionNumber": 38,
+    "question": "Al revisar el fichero /etc/passwd observas que una cuenta tiene como directorio HOME la ruta '/nonexistent'. ¿Qué implicación operativa acarrea comúnmente esta configuración?",
+    "answerOptions": [
+      {
+        "text": "Se utiliza para cuentas de servicios o demonios del sistema que no necesitan almacenar archivos personales ni entornos locales.",
+        "rationale": "Evita la creación innecesaria de espacio en el disco para procesos automatizados que no ejecutan sesiones de usuario tradicionales.",
+        "isCorrect": true
+      },
+      {
+        "text": "Indica que la cuenta se encuentra corrupta y el sistema operativo la borrará en el próximo inicio.",
+        "rationale": "Es una configuración deliberada y segura para robustecer el sistema, no un indicador de fallos estructurales en la base de datos.",
+        "isCorrect": false
+      },
+      {
+        "text": "El usuario podrá conectarse pero el sistema clonará los datos en /tmp de forma efímera.",
+        "rationale": "Linux no genera entornos temporales transparentes en /tmp de manera automática si el HOME configurado apunta a rutas inexistentes.",
+        "isCorrect": false
+      },
+      {
+        "text": "Permite al usuario loguearse usando cualquier directorio del sistema de archivos como su inicio.",
+        "rationale": "El login fallará al intentar posicionar al operador en la ruta o caerá al directorio raíz, restringiendo la comodidad del entorno.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Esta ruta ficticia denota explícitamente la ausencia intencionada de un espacio físico personal."
+  },
+  {
+    "questionNumber": 39,
+    "question": "¿Qué utilidad de auditoría del ecosistema auditd se utiliza específicamente para generar informes resumidos y estadísticas legibles sobre accesos, anomalías y fallos de autenticación?",
+    "answerOptions": [
+      {
+        "text": "aureport",
+        "rationale": "aureport recolecta las trazas brutas de auditoría y las procesa para maquetar tablas sintéticas de rendimiento e incidencias de seguridad.",
+        "isCorrect": true
+      },
+      {
+        "text": "auditctl",
+        "rationale": "Esta utilidad está pensada para la configuración dinámica y el aprovisionamiento de reglas en caliente, no para maquetar resúmenes.",
+        "isCorrect": false
+      },
+      {
+        "text": "ausearch",
+        "rationale": "Se limita al filtrado y extracción de registros de eventos crudos basados en criterios de búsqueda, sin agregar estadísticas estructuradas.",
+        "isCorrect": false
+      },
+      {
+        "text": "autrace",
+        "rationale": "Sigue los pasos y llamadas al sistema que realiza un proceso concreto en tiempo de ejecución, de forma similar a strace.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "Su nombre es una combinación de 'audit' y la palabra 'report' (informe) en inglés."
+  },
+  {
+    "questionNumber": 40,
+    "question": "Quieres configurar una directiva en /etc/login.defs para obligar a que los nuevos usuarios regulares creados tengan identificadores numéricos a partir del 5000 en adelante. ¿Qué variable debes ajustar?",
+    "answerOptions": [
+      {
+        "text": "UID_MIN 5000",
+        "rationale": "La directiva UID_MIN marca la frontera inferior para el reparto automatizado de identificadores de cuentas de usuario regulares.",
+        "isCorrect": true
+      },
+      {
+        "text": "UID_START 5000",
+        "rationale": "Esta nomenclatura de variable no pertenece al conjunto de directivas interpretadas por el archivo estructurado login.defs.",
+        "isCorrect": false
+      },
+      {
+        "text": "MIN_UID 5000",
+        "rationale": "El orden sintáctico correcto requiere la palabra UID al principio seguida del delimitador de mínimo.",
+        "isCorrect": false
+      },
+      {
+        "text": "SYS_UID_MIN 5000",
+        "rationale": "SYS_UID_MIN acota los identificadores numéricos de las cuentas de sistema o servicios, no de los usuarios comunes.",
+        "isCorrect": false
+      }
+    ],
+    "hint": "La variable determina el valor mínimo absoluto de la ID de usuario regular."
+  }
+]
