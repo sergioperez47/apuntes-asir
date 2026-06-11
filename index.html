@@ -2,96 +2,516 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Plataforma de Cuestionarios</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Cuestionarios - ASIR</title>
     <style>
-        body { font-family: sans-serif; background: #121212; color: #fff; padding: 20px; display: flex; justify-content: center; }
-        .card { background: #1e1e1e; padding: 30px; border-radius: 12px; width: 100%; max-width: 600px; box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
-        .btn-siguiente, .btn-anterior { padding: 15px; border: none; border-radius: 8px; cursor: pointer; color: white; font-weight: bold; flex: 1; }
-        .btn-siguiente { background: #007bff; }
-        .btn-anterior { background: #555; }
-        .navigation-wrapper { display: flex; gap: 10px; margin-top: 20px; }
-        button:disabled { opacity: 0.5; cursor: not-allowed; }
-        .correcto { background: #155724 !important; border: 2px solid #28a745 !important; }
-        .incorrecto { background: #721c24 !important; border: 2px solid #dc3545 !important; }
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background-color: #121212; 
+            color: #ffffff; 
+            padding: 20px; 
+            display: flex; 
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center;
+            min-height: 90vh;
+            margin: 0;
+        }
+        .card { 
+            background: #1e1e1e; 
+            padding: 30px; 
+            border-radius: 12px; 
+            max-width: 600px; 
+            width: 100%; 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5); 
+            box-sizing: border-box;
+        }
+        .progress-bar {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h2 {
+            font-size: 20px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        select {
+            width: 100%;
+            padding: 12px;
+            background: #2a2a2a;
+            color: white;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        .random-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #252d3a;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #3a3a3a;
+            margin-bottom: 25px;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #444; transition: .3s; border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 4px;
+            background-color: white; transition: .3s; border-radius: 50%;
+        }
+        input:checked + .slider { background-color: #007bff; }
+        input:checked + .slider:before { transform: translateX(24px); }
+
+        button { 
+            display: block; width: 100%; margin: 12px 0; padding: 14px; 
+            background: #2a2a2a; color: white; border: 2px solid #3a3a3a; 
+            border-radius: 8px; cursor: pointer; text-align: left; font-size: 16px; 
+            transition: all 0.2s ease;
+        }
+        button:hover:not(:disabled) { 
+            background: #007bff; border-color: #0056b3; transform: translateX(5px);
+        }
+        button.correcto { background: #155724 !important; border-color: #28a745 !important; color: #d4edda !important; }
+        button.incorrecto { background: #721c24 !important; border-color: #dc3545 !important; color: #f8d7da !important; }
+        
+        /* Botonera inferior de navegación */
+        .navigation-wrapper {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .btn-siguiente { background: #007bff; text-align: center; font-weight: bold; margin: 0; }
+        .btn-siguiente:hover { background: #0056b3; }
+        .btn-anterior { background: #444; border-color: #555; text-align: center; font-weight: bold; margin: 0; }
+        .btn-anterior:hover { background: #555; }
+        
+        .menu-box, .resultado-box { text-align: center; padding: 10px; }
+        .menu-box h1 { color: #007bff; margin-bottom: 5px; }
+        .menu-box p { color: #aaa; margin-bottom: 20px; }
+        
+        .btn-modo { text-align: center; font-weight: bold; font-size: 18px; background: #252d3a; border-color: #007bff; margin: 15px 0; padding: 18px; }
+        .btn-modo:hover { background: #007bff; }
+        
+        .resultado-box h3 { margin: 0 0 15px 0; color: #007bff; font-size: 24px; }
+        .puntuacion { font-size: 32px; font-weight: bold; color: #28a745; margin-bottom: 15px; }
+        
+        .btn-reiniciar { background: #28a745; border: none; text-align: center; font-weight: bold; display: inline-block; width: auto; padding: 10px 25px; margin-top: 15px; }
+        .btn-reiniciar:hover { background: #218838; }
+
+        .btn-pausa {
+            background: #3a3a3a; border: 1px solid #555; font-size: 12px; color: #ccc;
+            padding: 5px 10px; border-radius: 6px; cursor: pointer; width: auto; margin: 0; text-align: center;
+        }
+        .btn-pausa:hover { background: #dc3545; color: white; border-color: #dc3545; }
+
+        .resume-box {
+            background: #252d3a; border: 2px dashed #007bff; border-radius: 8px;
+            padding: 15px; margin-bottom: 25px; text-align: center;
+        }
+        .btn-continuar {
+            background: #007bff; border-color: #0056b3; text-align: center; font-weight: bold; font-size: 16px;
+        }
+
+        /* Estilos del Historial */
+        .history-card {
+            margin-top: 25px; background: #1e1e1e; border-radius: 12px;
+            max-width: 600px; width: 100%; padding: 20px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5); box-sizing: border-box;
+        }
+        .history-card h2 { margin-top: 0; color: #007bff; font-size: 18px; display: flex; justify-content: space-between; align-items: center;}
+        .btn-borrar-historial {
+            background: #dc3545; border: none; padding: 6px 12px; font-size: 12px; color: white; border-radius: 4px; cursor: pointer; width: auto; margin: 0; text-align: center;
+        }
+        .btn-borrar-historial:hover { background: #bd2130; }
+        .history-list { max-height: 200px; overflow-y: auto; padding-right: 5px; }
+        .history-item {
+            background: #252d3a; padding: 10px 12px; border-radius: 6px; margin-bottom: 8px; font-size: 13px;
+            display: flex; justify-content: space-between; align-items: center; border-left: 4px solid #3a3a3a;
+        }
+        .history-item.aprobado { border-left-color: #28a745; }
+        .history-item.suspenso { border-left-color: #dc3545; }
+        .history-meta { color: #aaa; font-size: 11px; }
+        .history-score { font-weight: bold; font-size: 15px; }
     </style>
 </head>
 <body>
-<div class="card" id="main-container">
-    <select id="selector-test">
-        <option value="repaso_script_1">📜 Script Bash: Repaso Final</option>
-        <option value="repaso_script_2">📜 Script Bash 2: Repaso Final</option>
 
-    </select>
-    <button onclick="comenzarTest('practica')">MODO PRÁCTICA</button>
-    <button onclick="comenzarTest('examen')">MODO EXAMEN</button>
+<div class="card" id="main-container">
+    <div class="menu-box">
+        <h1>Plataforma de Cuestionarios</h1>
+        <p>Prepara tus exámenes de ASIR</p>
+        
+        <div id="wrapper-continuar"></div>
+
+        <label for="selector-test" style="display:block; text-align:left; margin-bottom:8px; color:#ccc; font-size:14px;">1. Elige el tema del test:</label>
+        <select id="selector-test">
+            <option value="repaso_script_1.json">💻 Repaso Script 1</option>
+            <option value="repaso_script_2.json">🔌 Repaso Script 2</option>
+        </select>
+
+        <div class="random-container">
+            <span style="font-size: 15px; color:#fff; font-weight: 500;">🎲 Desordenar todo (Modo Random)</span>
+            <label class="switch">
+                <input type="checkbox" id="check-random" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <p style="text-align:left; margin-bottom:8px; color:#ccc; font-size:14px;">2. Elige el modo de juego:</p>
+        <button class="btn-modo" onclick="comenzarTest('practica')">📖 MODO PRÁCTICA<br><span style="font-size:12px; font-weight:normal; color:#ccc;">Verás correcciones en verde/rojo tras cada pregunta.</span></button>
+        <button class="btn-modo" onclick="comenzarTest('examen')">📝 MODO EXAMEN<br><span style="font-size:12px; font-weight:normal; color:#ccc;">Sin pistas. Descubrirás tu puntuación total al final.</span></button>
+    </div>
+</div>
+
+<div class="history-card" id="history-container">
+    <h2>
+        📊 Historial de Intentos
+        <button class="btn-borrar-historial" onclick="borrarHistorial()">Borrar todo</button>
+    </h2>
+    <div class="history-list" id="lista-historial"></div>
 </div>
 
 <script>
-    let preguntas = [], indiceActual = 0, modoSeleccionado = '', respuestasUsuario = {};
+    let preguntas = [];
+    let indiceActual = 0;
+    let modoSeleccionado = ''; 
+    let archivoJSON = '';
+    let nombreTestVisual = '';
+    let esRandomGlobal = true;
+
+    let respuestasUsuario = {}; 
+    let opcionesMezcladasPorPregunta = {}; 
+
+    const estructuraJuegoHTML = `
+        <div class="progress-bar">
+            <span id="modo-texto">Modo</span>
+            <span id="progreso">Pregunta 0 de 0</span>
+            <button class="btn-pausa" onclick="pausarYSalir()">⏸️ Pausar</button>
+        </div>
+        <h2 id="pregunta">Cargando pregunta...</h2>
+        <div id="opciones"></div>
+        <div id="wrapper-navegacion" class="navigation-wrapper"></div>
+    `;
+
+    document.addEventListener("DOMContentLoaded", () => {
+        actualizarHistorialVisual();
+        comprobarTestPausado();
+    });
+
+    function eliminarDuplicados(listaPreguntas) {
+        const vistas = new Set();
+        return listaPreguntas.filter(item => {
+            if (!item || !item.pregunta) return false;
+            const preguntaLimpia = item.pregunta.trim().toLowerCase();
+            if (vistas.has(preguntaLimpia)) return false;
+            vistas.add(preguntaLimpia);
+            return true;
+        });
+    }
+
+    function comprobarTestPausado() {
+        const guardado = JSON.parse(localStorage.getItem('test_pausado_asir'));
+        const contenedor = document.getElementById('wrapper-continuar');
+        if (!contenedor) return;
+
+        if (guardado) {
+            contenedor.innerHTML = `
+                <div class="resume-box">
+                    <p style="margin: 0 0 10px 0; font-size: 14px; color:#007bff;"><strong>¡Tienes una sesión guardada!</strong></p>
+                    <p style="margin: 0 0 15px 0; font-size: 13px; color:#ccc;">${guardado.nombreTest} (${guardado.modo}) - En la pregunta ${guardado.indiceActual + 1}</p>
+                    <button class="btn-continuar" onclick="cargarTestPausado()">▶️ Continuar Test</button>
+                </div>
+            `;
+        } else {
+            contenedor.innerHTML = '';
+        }
+    }
 
     function comenzarTest(modo) {
         modoSeleccionado = modo;
-        const testElegido = document.getElementById('selector-test').value;
-        fetch(`./${testElegido}.json`)
-            .then(res => res.json())
+        const selector = document.getElementById('selector-test');
+        const testElegido = selector.value;
+        nombreTestVisual = selector.options[selector.selectedIndex].text.trim();
+        
+        esRandomGlobal = document.getElementById('check-random').checked;
+        
+        // Asignación limpia del nombre del archivo y ruta relativa explícita para el fetch
+        archivoJSON = `preguntas_${testElegido}.json`;
+        const urlConAntiCache = `./preguntas_${testElegido}.json?nocache=${Date.now()}`;
+
+        respuestasUsuario = {};
+        opcionesMezcladasPorPregunta = {};
+        indiceActual = 0;
+
+        inicializarInterfazJuego();
+
+        fetch(urlConAntiCache)
+            .then(res => { if(!res.ok) throw new Error(); return res.json(); })
             .then(data => {
-                preguntas = data;
-                indiceActual = 0;
-                renderizarJuego();
+                let preguntasUnicas = eliminarDuplicados(data);
+                preguntas = esRandomGlobal ? preguntasUnicas.sort(() => Math.random() - 0.5) : preguntasUnicas;
+                mostrarPregunta();
+            })
+            .catch(err => {
+                document.getElementById('pregunta').innerText = `❌ Error: No se ha podido cargar el archivo "${archivoJSON}". Revisa que el archivo exista en la raíz de tu repositorio de GitHub.`;
             });
     }
 
-    function renderizarJuego() {
-        document.getElementById('main-container').innerHTML = `
-            <h2 id="pregunta"></h2>
-            <div id="opciones"></div>
-            <div id="wrapper-navegacion" class="navigation-wrapper"></div>
-        `;
-        mostrarPregunta();
+    function obtenerTextoCorrecto(preguntaObjeto) {
+        let letraCorrecta = preguntaObjeto.respuesta_correcta.trim().toUpperCase();
+        let opcionEncontrada = preguntaObjeto.opciones.find(opc => opc.trim().toUpperCase().startsWith(letraCorrecta));
+        
+        if (!opcionEncontrada) {
+            let idx = letraCorrecta.charCodeAt(0) - 65;
+            opcionEncontrada = preguntaObjeto.opciones[idx];
+        }
+        return opcionEncontrada;
+    }
+
+    function inicializarInterfazJuego() {
+        document.getElementById('history-container').style.display = 'none';
+        document.getElementById('main-container').innerHTML = estructuraJuegoHTML;
+        document.getElementById('modo-texto').innerText = modoSeleccionado === 'practica' ? '📖 Práctica' : '📝 Examen';
     }
 
     function mostrarPregunta() {
+        if (indiceActual >= preguntas.length) {
+            finalizarYCalcularTest();
+            return;
+        }
+
+        document.getElementById('progreso').innerText = `Pregunta ${indiceActual + 1} de ${preguntas.length}`;
+        const wrapperNav = document.getElementById('wrapper-navegacion');
+        wrapperNav.innerHTML = ''; 
+
         let p = preguntas[indiceActual];
         document.getElementById('pregunta').innerText = p.pregunta;
-        let cont = document.getElementById('opciones');
-        cont.innerHTML = '';
-        p.opciones.forEach(opc => {
-            let b = document.createElement('button');
-            b.innerText = opc;
-            b.onclick = () => registrarRespuesta(b, opc, p.respuesta_correcta);
-            cont.appendChild(b);
-        });
-        actualizarBotonesNavegacion();
-    }
-
-    function registrarRespuesta(b, opc, correct) {
-        respuestasUsuario[indiceActual] = opc;
-        if (modoSeleccionado === 'practica') {
-            Array.from(b.parentNode.children).forEach(btn => btn.disabled = true);
-            b.classList.add(opc.startsWith(correct) ? 'correcto' : 'incorrecto');
+        
+        let opcionesDiv = document.getElementById('opciones');
+        opcionesDiv.innerHTML = '';
+        
+        if (!opcionesMezcladasPorPregunta[indiceActual]) {
+            let opcionesAmostrar = [...p.opciones];
+            if (esRandomGlobal) {
+                opcionesAmostrar.sort(() => Math.random() - 0.5);
+            }
+            opcionesMezcladasPorPregunta[indiceActual] = opcionesAmostrar;
         }
-    }
 
-    function actualizarBotonesNavegacion() {
-        let nav = document.getElementById('wrapper-navegacion');
-        nav.innerHTML = ''; // Limpieza total para evitar duplicados
+        let opcionesActuales = opcionesMezcladasPorPregunta[indiceActual];
+        let yaRespondida = respuestasUsuario[indiceActual] !== undefined;
+        let textoCorrectoReal = obtenerTextoCorrecto(p);
+
+        opcionesActuales.forEach(opcion => {
+            let boton = document.createElement('button');
+            boton.innerText = opcion;
+            
+            if (yaRespondida) {
+                boton.disabled = true;
+                if (modoSeleccionado === 'practica') {
+                    if (opcion === textoCorrectoReal) boton.classList.add('correcto');
+                    if (opcion === respuestasUsuario[indiceActual] && opcion !== textoCorrectoReal) {
+                        boton.classList.add('incorrecto');
+                    }
+                } else {
+                    if (opcion === respuestasUsuario[indiceActual]) {
+                        boton.style.background = '#007bff';
+                        boton.style.borderColor = '#0056b3';
+                    }
+                }
+            } else {
+                boton.onclick = () => registrarRespuesta(boton, opcion, textoCorrectoReal);
+            }
+            opcionesDiv.appendChild(boton);
+        });
 
         if (indiceActual > 0) {
-            let ant = document.createElement('button');
-            ant.className = 'btn-anterior';
-            ant.innerText = '⬅️ Anterior';
-            ant.onclick = () => { indiceActual--; mostrarPregunta(); };
-            nav.appendChild(ant);
+            let btnAnterior = document.createElement('button');
+            btnAnterior.className = 'btn-anterior';
+            btnAnterior.innerText = '⬅️ Anterior';
+            btnAnterior.onclick = () => {
+                indiceActual--;
+                mostrarPregunta();
+            };
+            wrapperNav.appendChild(btnAnterior);
         }
 
-        if (indiceActual < preguntas.length - 1) {
-            let sig = document.createElement('button');
-            sig.className = 'btn-siguiente';
-            sig.innerText = 'Siguiente ➡️';
-            sig.onclick = () => { indiceActual++; mostrarPregunta(); };
-            nav.appendChild(sig);
+        if (yaRespondida || modoSeleccionado === 'examen') {
+            let btnSiguiente = document.createElement('button');
+            btnSiguiente.className = 'btn-siguiente';
+            btnSiguiente.innerText = indiceActual === preguntas.length - 1 ? '🏁 Finalizar' : 'Siguiente ➡️';
+            btnSiguiente.onclick = () => {
+                indiceActual++;
+                mostrarPregunta();
+            };
+            wrapperNav.appendChild(btnSiguiente);
         }
     }
+
+    function registrarRespuesta(botonSeleccionado, opcionTexto, textoCorrectoReal) {
+        respuestasUsuario[indiceActual] = opcionTexto;
+
+        if (modoSeleccionado === 'examen') {
+            indiceActual++;
+            mostrarPregunta();
+        } else {
+            let botones = document.querySelectorAll('#opciones button');
+            botones.forEach(b => {
+                b.disabled = true;
+                if (b.innerText === textoCorrectoReal) b.classList.add('correcto');
+            });
+
+            if (opcionTexto !== textoCorrectoReal) {
+                botonSeleccionado.classList.add('incorrecto');
+            }
+
+            const wrapperNav = document.getElementById('wrapper-navegacion');
+            const btnSigExistente = wrapperNav.querySelector('.btn-siguiente');
+            if (btnSigExistente) btnSigExistente.remove();
+
+            let btnSiguiente = document.createElement('button');
+            btnSiguiente.className = 'btn-siguiente';
+            btnSiguiente.innerText = indiceActual === preguntas.length - 1 ? '🏁 Finalizar' : 'Siguiente ➡️';
+            btnSiguiente.onclick = () => {
+                indiceActual++;
+                mostrarPregunta();
+            };
+            wrapperNav.appendChild(btnSiguiente);
+        }
+    }
+
+    function finalizarYCalcularTest() {
+        let aciertosTotales = 0;
+
+        preguntas.forEach((p, idx) => {
+            let textoCorrectoReal = obtenerTextoCorrecto(p);
+            if (respuestasUsuario[idx] === textoCorrectoReal) {
+                aciertosTotales++;
+            }
+        });
+
+        guardarIntento(aciertosTotales);
+        localStorage.removeItem('test_pausado_asir');
+        mostrarResultadoFinal(aciertosTotales);
+    }
+
+    function pausarYSalir() {
+        if (confirm("¿Quieres pausar el test actual y volver al menú principal?")) {
+            let datosPausa = {
+                preguntas: preguntas,
+                indiceActual: indiceActual,
+                respuestasUsuario: respuestasUsuario,
+                opcionesMezcladasPorPregunta: opcionesMezcladasPorPregunta,
+                modoSeleccionado: modoSeleccionado,
+                nombreTest: nombreTestVisual,
+                esRandomGlobal: esRandomGlobal
+            };
+            localStorage.setItem('test_pausado_asir', JSON.stringify(datosPausa));
+            window.location.reload();
+        }
+    }
+
+    function cargarTestPausado() {
+        const guardado = JSON.parse(localStorage.getItem('test_pausado_asir'));
+        if (!guardado) return;
+
+        preguntas = guardado.preguntas;
+        indiceActual = guardado.indiceActual;
+        respuestasUsuario = guardado.respuestasUsuario || {};
+        opcionesMezcladasPorPregunta = guardado.opcionesMezcladasPorPregunta || {};
+        modoSeleccionado = guardado.modoSeleccionado;
+        nombreTestVisual = guardado.nombreTest;
+        esRandomGlobal = guardado.esRandomGlobal !== undefined ? guardado.esRandomGlobal : true;
+
+        inicializarInterfazJuego();
+        mostrarPregunta();
+    }
+
+    function guardarIntento(aciertos) {
+        let porcentaje = Math.round((aciertos / preguntas.length) * 100);
+        let ahora = new Date();
+        let fechaFormateada = ahora.toLocaleDateString() + ' - ' + ahora.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
+        let nuevoIntento = {
+            test: nombreTestVisual,
+            modo: modoSeleccionado === 'practica' ? 'Práctica' : 'Examen',
+            nota: `${aciertos}/${preguntas.length}`,
+            aprobado: porcentaje >= 50,
+            fecha: fechaFormateada
+        };
+
+        let historial = JSON.parse(localStorage.getItem('historial_asir')) || [];
+        historial.unshift(nuevoIntento);
+        localStorage.setItem('historial_asir', JSON.stringify(historial));
+    }
+
+    function actualizarHistorialVisual() {
+        let historial = JSON.parse(localStorage.getItem('historial_asir')) || [];
+        let lista = document.getElementById('lista-historial');
+        if(!lista) return;
+        lista.innerHTML = '';
+
+        if (historial.length === 0) {
+            lista.innerHTML = `<p style="color:#aaa; font-size:13px; margin:10px 0;">Aún no tienes intentos guardados.</p>`;
+            return;
+        }
+
+        historial.forEach(item => {
+            let div = document.createElement('div');
+            div.className = `history-item ${item.aprobado ? 'aprobado' : 'suspenso'}`;
+            div.innerHTML = `
+                <div>
+                    <strong>${item.test}</strong> (${item.modo})<br>
+                    <span class="history-meta">${item.fecha}</span>
+                </div>
+                <div class="history-score" style="color: ${item.aprobado ? '#28a745' : '#dc3545'}">
+                    ${item.nota}
+                </div>
+            `;
+            lista.appendChild(div);
+        });
+    }
+
+    function borrarHistorial() {
+        if(confirm("¿Seguro que quieres borrar todo tu historial de intentos?")) {
+            localStorage.removeItem('historial_asir');
+            actualizarHistorialVisual();
+        }
+    }
+
+    function mostrarResultadoFinal(aciertos) {
+        const contenedor = document.getElementById('main-container');
+        let porcentaje = Math.round((aciertos / preguntas.length) * 100);
+        let mensajeMotivacional = porcentaje >= 50 ? "¡Enhorabuena! Has aprobado el test. 🎉" : "Te falta un empujón. ¡Sigue repasando! 📚";
+
+        contenedor.innerHTML = `
+            <div class="resultado-box">
+                <h3>¡Test Finalizado!</h3>
+                <p>Tu puntuación total ha sido:</p>
+                <div class="puntuacion">${aciertos} / ${preguntas.length}</div>
+                <p>Porcentaje de aciertos: <strong>${porcentaje}%</strong></p>
+                <p>${mensajeMotivacional}</p>
+                <button class="btn-reiniciar" onclick="window.location.reload()">Volver al Menú</button>
+            </div>
+        `;
+    }
 </script>
+
 </body>
 </html>
