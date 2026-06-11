@@ -1,0 +1,202 @@
+[
+  {
+    "pregunta": "1. Según el primer ejercicio del documento, ¿cuál es la sintaxis exacta de crontab para automatizar el script '/home/usuario/backup.sh' todos los días a las 2:30 AM?",
+    "opciones": [
+      "A) 2 30 * * * /home/usuario/backup.sh",
+      "B) 30 2 * * * /home/usuario/backup.sh",
+      "C) 30 14 * * * /home/usuario/backup.sh",
+      "D) * 2 30 * * /home/usuario/backup.sh"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "2. Para cumplir con el Ejercicio 2, el cual solicita limpiar archivos temporales con el script '/home/usuario/limpiar.sh' cada lunes a las 3:00 AM, ¿qué valor se debe asignar al campo del día de la semana?",
+    "opciones": [
+      "A) 0",
+      "B) 1",
+      "C) 7",
+      "D) Mon-Fri"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "3. El Ejercicio 3 pide ejecutar '/home/usuario/monitor.sh' cada 15 minutos durante las horas laborales (de lunes a viernes de 9 AM a 6 PM). ¿Cómo se representa el rango de horas en crontab considerando que las 6 PM equivale a las 18:00?",
+    "opciones": [
+      "A) 9-6",
+      "B) 9-18",
+      "C) 9-17",
+      "D) 09,18"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "4. ¿Cuál es la planificación correcta para el Ejercicio 4, que exige lanzar un script de reportes el primer día de cada mes a las 8:00 AM?",
+    "opciones": [
+      "A) 0 8 * * 1 /home/usuario/reporte.sh",
+      "B) 0 8 1 * * /home/usuario/reporte.sh",
+      "C) 8 0 1 * * /home/usuario/reporte.sh",
+      "D) 0 8 1 1 * /home/usuario/reporte.sh"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "5. En el Ejercicio 5 se plantea una lógica restrictiva: ejecutar un respaldo cada domingo a medianoche, 'pero solo si es fin de mes (31, 30, 29 o 28)'. ¿Cómo se estructura la lista de días del mes en crontab?",
+    "opciones": [
+      "A) 28-31",
+      "B) 28,29,30,31",
+      "C) 31-28",
+      "D) Last_Day"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "6. El Ejercicio 6 requiere sincronizar cada 2 horas entre las 8 AM y las 8 PM (20:00), 'pero solo los miércoles'. ¿Qué valor de día de la semana identifica al miércoles en el formato estándar de Linux (donde el domingo es 0 o 7)?",
+    "opciones": [
+      "A) 2",
+      "B) 3",
+      "C) 4",
+      "D) 5"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "7. El Ejercicio 7 plantea una doble planificación para 'check_disk.sh': cada hora entre las 9 AM y 6 PM laborables, y además una vez los fines de semana a las 10 AM. ¿Cuál es la forma correcta de resolver este escenario en un entorno real?",
+    "opciones": [
+      "A) No se puede hacer, crontab solo permite una tarea por script.",
+      "B) Escribiendo dos líneas independientes de configuración cron en el archivo crontab.",
+      "C) Utilizando obligatoriamente el comando anacron.",
+      "D) Añadiendo un bucle 'while' infinito dentro del archivo /etc/crontab."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "8. De acuerdo con el Ejercicio 8, ¿qué sintaxis permite ejecutar el script 'archivar_logs.sh' cada 30 minutos, pero únicamente los días pares del mes?",
+    "opciones": [
+      "A) */30 * */2 * * /home/usuario/archivar_logs.sh",
+      "B) 30 * 2,4,6,8,10,12,14,16,18,20,22,24,26,28,30 * * /home/usuario/archivar_logs.sh",
+      "C) 0,30 * * * 2,4,6 /home/usuario/archivar_logs.sh",
+      "D) 30 2 * * * /home/usuario/archivar_logs.sh"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "9. En el apartado 'Script - 1', ¿cuál es la rutina diaria del backup diferencial y en qué momento se sustituye por un backup completo?",
+    "opciones": [
+      "A) Corre a las 2 a.m. los fines de semana y cambia los días 15.",
+      "B) Corre a las 2 a.m. de lunes a viernes, y el primer día de cada mes se ejecuta un backup completo a la misma hora.",
+      "C) Se ejecuta cada 2 horas y el backup completo se hace de forma manual.",
+      "D) Depende de si el espacio de almacenamiento del disco es inferior al 90%."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "10. El 'Script - 2' simula recordatorios de reuniones por correo 10 minutos antes. Si las reuniones son a las 10 a. m. y a las 3 p. m. (15:00) cada martes y jueves, ¿a qué minutos y horas exactos debe programarse el envío cron?",
+    "opciones": [
+      "A) Minuto 10 a las horas 10 y 15.",
+      "B) Minuto 50 a las horas 9 y 14 (es decir, 09:50 y 14:50).",
+      "C) Minuto 0 a las horas 10 y 15.",
+      "D) Minuto 10 a las horas 9 y 15."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "11. ¿Cuál es el criterio temporal y de retención establecido en el 'Script - 3' para realizar la compresión y rotación de los logs del sistema?",
+    "opciones": [
+      "A) Todos los días a medianoche, manteniendo los últimos 30 días.",
+      "B) Todos los domingos a medianoche, manteniendo los logs de los últimos 7 días sin comprimir.",
+      "C) Cada 30 minutos los días pares del mes.",
+      "D) El primer día de cada mes a las 8:00 AM."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "12. Según las directivas del 'Script - 4' de monitorización de disco, ¿con qué frecuencia temporal se debe revisar el almacenamiento?",
+    "opciones": [
+      "A) Cada 15 minutos.",
+      "B) Cada hora.",
+      "C) Únicamente a la medianoche.",
+      "D) Cada primer día del mes."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "13. Siguiendo con la lógica del 'Script - 4', ¿qué dos acciones desencadena el script si el almacenamiento supera el 90% y el 95% de ocupación respectivamente?",
+    "opciones": [
+      "A) Si supera el 90% apaga el equipo, si supera el 95% formatea el disco.",
+      "B) Si supera el 90% envía una alerta, y si supera el 95% además elimina archivos temporales.",
+      "C) Si supera el 90% ejecuta un backup completo, si supera el 95% detiene los demonios.",
+      "D) Si supera el 90% cambia la prioridad del kernel, si supera el 95% borra el archivo crontab."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "14. En el 'Script - 5' (Calendario fiscal), ¿qué días del mes y a qué hora en punto se debe automatizar la generación de informes?",
+    "opciones": [
+      "A) Los días 1 y 15 a las 9:00 AM.",
+      "B) Los días 15 and 30 de cada mes a las 9 a. m.",
+      "C) Todos los domingos a la medianoche.",
+      "D) El primer día de cada mes a las 8:00 AM."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "15. En el 'Ejercicio 6.- Planificador inteligente', ¿qué tres herramientas de administración de Linux se combinan para lograr un flujo de trabajo optimizado y redundante?",
+    "opciones": [
+      "A) ps, top y htop",
+      "B) Cron, At y Anacron",
+      "C) nice, renice y kill",
+      "D) bash, sh y vi"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "16. Dentro de la lógica del planificador inteligente híbrido (Ejercicio 6), ¿qué rol concreto cumple la herramienta 'cron'?",
+    "opciones": [
+      "A) Borrar los archivos temporales cada noche.",
+      "B) Ejecutarse cada hora para verificar si hay archivos nuevos en una carpeta.",
+      "C) Programar el procesamiento en diferido de los archivos masivos.",
+      "D) Medir el tiempo de ejecución en segundos."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "17. Dentro del mismo planificador inteligente híbrido, si se localizan archivos nuevos, ¿por qué y para cuándo se invoca al comando 'at'?",
+    "opciones": [
+      "A) Para procesar los archivos de manera inmediata con prioridad nice -20.",
+      "B) Para programar su procesamiento en diferido exactamente 30 minutos después, evitando así sobrecargar el sistema.",
+      "C) Para eliminar de forma irrevocable los archivos corruptos.",
+      "D) Para enviar un reporte por correo electrónico al administrador root."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "18. ¿Cuál es la justificación técnica de incluir 'anacron' en la arquitectura del planificador inteligente híbrido?",
+    "opciones": [
+      "A) Ocultar los scripts para que los usuarios estándar no puedan leerlos.",
+      "B) Garantizar que si el sistema estaba apagado durante la verificación horaria de cron, al encenderse la máquina se procesen los archivos pendientes.",
+      "C) Permitir que las tareas se ejecuten en intervalos inferiores a los 15 segundos.",
+      "D) Reducir el consumo de CPU del demonio del sistema operativo."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "19. Al final del documento se añade una nota aclaratoria sobre el Ejercicio 6 híbrido de automatización. ¿Qué recomendación o recurso le permite usar al alumno?",
+    "opciones": [
+      "A) El uso de una distribución Linux antigua como RedHat 5.",
+      "B) El uso guiado de una Inteligencia Artificial (IA), a condición de entender el resultado final.",
+      "C) El formateo preventivo de la máquina virtual de pruebas.",
+      "D) La sustitución total de cron por scripts en entorno gráfico."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "20. Observando el patrón general de rutas de archivos en todo el documento, ¿en qué directorio de usuario se asume que se encuentran alojados scripts como 'backup.sh', 'limpiar.sh' o 'monitor.sh'?",
+    "opciones": [
+      "A) /var/spool/cron/",
+      "B) /home/usuario/",
+      "C) /etc/default/",
+      "D) /root/bin/"
+    ],
+    "respuesta_correcta": "B"
+  }
+]
