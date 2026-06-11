@@ -1,0 +1,54 @@
+[
+  {
+    "pregunta": "1. Según la primera actividad práctica del documento, ¿qué identifica el número 'PID' en un sistema operativo GNU/Linux?",
+    "opciones": [
+      "A) El protocolo de asignación de memoria compartida.",
+      "B) El identificador único y exclusivo numérico que el sistema asigna a cada proceso en ejecución.",
+      "C) La contraseña encriptada del usuario que lanzó la aplicación.",
+      "D) El número de hilos máximos que puede abrir el microprocesador."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "2. Al comparar las opciones del comando 'ps', ¿qué diferencia técnica existe entre usar la bandera '–a' y la bandera '–x'?",
+    "opciones": [
+      "A) '–a' borra el historial de comandos y '–x' ejecuta una aplicación en modo seguro.",
+      "B) '–a' muestra los procesos de todos los usuarios asociados a terminales, mientras que '–x' incluye los procesos que no están vinculados a ninguna terminal (procesos del sistema/demonios).",
+      "C) '–a' solo lista tareas del administrador root y '–x' lista las del usuario estándar.",
+      "D) '–a' trabaja en tiempo real y '–x' realiza un volcado estático en un archivo .log."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "3. ¿Qué rango de valores puede tomar el parámetro 'NICE' de un proceso en Linux y qué restricción tienen los usuarios estándar sobre él?",
+    "opciones": [
+      "A) De 0 a 100, y solo el usuario root puede usar números pares.",
+      "B) De -20 a 19, donde los usuarios comunes solo pueden asignar valores positivos (bajar la prioridad) y el root puede asignar valores negativos (subir la prioridad).",
+      "C) De 1 a 32768, y cualquier usuario puede alterarlo libremente sin restricciones.",
+      "D) De -128 a 127, y se modifica automáticamente según el uso de la memoria SWAP."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "4. En el Ejercicio 4 se pide listar archivos con la extensión '.jpg'. ¿Qué combinación de comandos y tuberías se plantea para filtrar estas cadenas de texto?",
+    "opciones": [
+      "A) ls -la y la tubería hacia el comando grep",
+      "B) kill -9 y el comando top",
+      "C) ps -e y el comando pstree",
+      "D) nice y la redirección hacia un script shell"
+    ],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "5. Si deseas ejecutar una búsqueda masiva de archivos en el sistema forzándola a que corra con la menor prioridad de CPU posible, ¿con qué valor numérico 'nice' debes lanzar el comando?",
+    "opciones": [
+      "A) -20",
+      "B) 19",
+      "C) 0",
+      "D) -1"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "6. Estás ejecutando una tarea en la terminal y necesitas cambiar su prioridad en caliente/vivo. ¿Qué comando utilizas especificando el nuevo valor y su PID?",
+    "opciones":
