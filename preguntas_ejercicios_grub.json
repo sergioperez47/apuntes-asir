@@ -1,0 +1,202 @@
+[
+  {
+    "pregunta": "1. Según la introducción del documento, ¿cuál es el objetivo primordial de realizar tareas de configuración sobre el Gestor de Arranque GRUB?",
+    "opciones": [
+      "A) Duplicar la memoria caché del disco duro.",
+      "B) Modificarlo y adaptarlo a determinadas situaciones y configuraciones de Hardware que requieren parámetros específicos durante el arranque.",
+      "C) Eliminar los sistemas de seguridad del Kernel de Linux.",
+      "D) Desinstalar por completo la interfaz gráfica del sistema operativo."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "2. ¿Qué archivo o ruta del sistema contiene la serie de variables que definen el comportamiento de los scripts que configuran el menú del GRUB?",
+    "opciones": [
+      "A) /boot/grub/grub.cfg",
+      "B) /etc/default/grub",
+      "C) /var/log/grub.log",
+      "D) /etc/grub.d/menu.lst"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "3. ¿Qué comando exacto con privilegios de administrador se debe ejecutar en la terminal para consolidar y aplicar las modificaciones hechas en el archivo de variables del GRUB?",
+    "opciones": [
+      "A) sudo edit-grub",
+      "B) sudo update-grub",
+      "C) sudo apply-grub",
+      "D) sudo grub-install"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "4. Uno de los cambios solicitados consiste en personalizar la entrada visual de la distribución en el menú. ¿Qué texto exacto debe aparecer junto a la palabra 'Ubuntu'?",
+    "opciones": [
+      "A) Ubuntu + VERSION_KERNEL",
+      "B) Ubuntu + NOMBREALUMN@",
+      "C) Ubuntu + GRUB2_MODE",
+      "D) Ubuntu + LSB_RELEASE"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "5. ¿Cuántos segundos exactos se pide establecer en el archivo de configuración para que el menú espere antes de arrancar automáticamente la primera opción?",
+    "opciones": [
+      "A) 3 segundos",
+      "B) 7 segundos",
+      "C) 10 segundos",
+      "D) 30 segundos"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "6. ¿Qué variable del archivo `/etc/default/grub` es la encargada de fijar la resolución de pantalla del menú del gestor de arranque?",
+    "opciones": [
+      "A) GRUB_RESOLUTION",
+      "B) GFXMODE (o GRUB_GFXMODE)",
+      "C) GRUB_DISPLAY",
+      "D) GRUB_SCREEN_SIZE"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "7. De acuerdo con las especificaciones del ejercicio, ¿a qué resolución gráfica exacta se debe configurar el parámetro de vídeo del GRUB?",
+    "opciones": [
+      "A) 640x480",
+      "B) 1024x768",
+      "C) 1280x1024",
+      "D) 1920x1080"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "8. ¿Por qué motivo técnico se puede requerir en algunas máquinas que NO se carguen los controladores de vídeo durante las primeras etapas del arranque?",
+    "opciones": [
+      "A) Para ahorrar batería en los dispositivos portátiles.",
+      "B) Por problemas de hardware, requiriendo retrasar su carga hasta que el display gráfico (xorg) se inicie.",
+      "C) Para acelerar la velocidad de transferencia de la red local.",
+      "D) Para ocultar la versión del Kernel a usuarios no autorizados."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "9. Para forzar al sistema a no cargar los controladores de vídeo provisionales en el arranque, ¿qué valores predeterminados ('quiet splash') deben ser sustituidos?",
+    "opciones": [
+      "A) nomodeset",
+      "B) textonly",
+      "C) novideo",
+      "D) safe_boot"
+    ],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "10. ¿Cuál es el primer comando de la secuencia indicada en el documento si deseas actualizar el listado de paquetes del repositorio antes de instalar software adicional?",
+    "opciones": [
+      "A) sudo apt install",
+      "B) sudo apt update",
+      "C) sudo update-grub",
+      "D) sudo apt upgrade"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "11. ¿Qué paquete o software de diagnóstico específico se pide instalar en el menú del GRUB mediante la orden de consola?",
+    "opciones": [
+      "A) Gparted",
+      "B) memtest86+",
+      "C) Htop",
+      "D) Iotop"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "12. ¿Cuál es la sintaxis de instalación completa y exacta que se detalla en el texto para agregar la utilidad de diagnóstico de memoria?",
+    "opciones": [
+      "A) sudo apt get install memtest",
+      "B) sudo apt install memtest86+",
+      "C) sudo apt-get install memtest-plus",
+      "D) sudo install memtest86"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "13. Justo después de instalar el paquete 'memtest86+', ¿qué acción obligatoria se debe realizar en la terminal para que la opción aparezca disponible al encender la PC?",
+    "opciones": [
+      "A) Editar manualmente el archivo grub.cfg.",
+      "B) Ejecutar la orden 'sudo update-grub'.",
+      "C) Reiniciar el demonio systemd.",
+      "D) Modificar los permisos de la carpeta /etc/grub.d/."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "14. Una vez concluida toda la secuencia de comandos e instalación de Memtest86+, ¿qué paso físico final se solicita realizar con la máquina?",
+    "opciones": [
+      "A) Apagarla por completo durante 5 minutos.",
+      "B) Reiniciar la máquina.",
+      "C) Desconectar los módulos de memoria RAM.",
+      "D) Entrar en modo monousuario."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "15. Aunque el documento te pide describirlo en tus propias palabras, basándote en la naturaleza de la herramienta instalada, ¿qué componente del ordenador comprueba el software 'Memtest86+'?",
+    "opciones": [
+      "A) Los sectores defectuosos del disco duro.",
+      "B) El estado físico y la integridad de los módulos de la memoria RAM.",
+      "C) La temperatura interna del microprocesador.",
+      "D) La velocidad de los ventiladores de la placa base."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "16. En la parte final de las actividades de edición del archivo de configuración, ¿qué instrucción abierta se le da al alumno?",
+    "opciones": [
+      "A) Que elimine el gestor de arranque secundario de Windows.",
+      "B) Que realice varias operaciones propias no contempladas en los ejercicios anteriores.",
+      "C) Que configure un arranque dual híbrido forzado.",
+      "D) Que bloquee el acceso al GRUB con una contraseña cifrada."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "17. ¿Qué tarea teórica de síntesis o desarrollo propio se exige redactar en el último punto del documento?",
+    "opciones": [
+      "A) Un manual de comandos del editor de texto vi.",
+      "B) Tu propio resumen/esquema del proceso de arranque de linux.",
+      "C) Una tabla comparativa entre los sistemas de archivos ext4 y NTFS.",
+      "D) Un mapa de llamadas al sistema interceptadas con strace."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "18. Analizando el flujo completo del ejercicio, si realizas cambios en `/etc/default/grub` pero NO ejecutas `sudo update-grub` antes de reiniciar, ¿qué sucederá?",
+    "opciones": [
+      "A) El sistema operativo sufrirá un error crítico y no volverá a iniciar.",
+      "B) Los cambios se ignorarán por completo y el menú del GRUB mantendrá su comportamiento anterior.",
+      "C) Se aplicarán los cambios de manera temporal únicamente para ese inicio.",
+      "D) El GRUB se desinstalará automáticamente por inconsistencia."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "19. ¿Cuál de los siguientes componentes se ve directamente afectado y modificado por el valor asignado al parámetro 'nomodeset' en la línea de comandos del Kernel?",
+    "opciones": [
+      "A) La tabla de particiones del disco duro.",
+      "B) El subsistema gráfico y la carga de controladores de vídeo.",
+      "C) El orden de prioridad del proceso init.",
+      "D) El tiempo de retención de los logs de auditoría."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "20. Al observar la estructura general del documento, los scripts subyacentes encargados de procesar las variables que edita el usuario se ejecutan de manera automatizada al lanzar el comando de actualización. ¿A qué gestor corresponden?",
+    "opciones": [
+      "A) LILO",
+      "B) GRUB (estándar GRUB2)",
+      "C) NTLDR",
+      "D) Bootmgr"
+    ],
+    "respuesta_correcta": "B"
+  }
+]
