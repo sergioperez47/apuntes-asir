@@ -1,0 +1,202 @@
+[
+  {
+    "pregunta": "1. Según la sección de gestores de arranque en Linux, ¿en qué archivo o ruta almacenaba su configuración el GRUB clásico (primera versión)?",
+    "opciones": [
+      "A) /etc/default/grub",
+      "B) /boot/grub/menu.lst",
+      "C) /boot/grub/grub.cfg",
+      "D) C:\\Boot\\BCD"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "2. ¿Cuáles son los dos ficheros clave implicados en el manejo y lectura del arranque dentro del estándar actual GRUB2?",
+    "opciones": [
+      "A) Boot.ini y /boot/grub/menu.lst",
+      "B) /etc/default/grub y /boot/grub/grub.cfg",
+      "C) /etc/grub.d y /var/log/grub.log",
+      "D) NTLDR y BCD.LOG"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "3. ¿Qué gestor de arranque utilizaba de forma nativa Windows XP y los sistemas anteriores a este?",
+    "opciones": [
+      "A) Bootmgr",
+      "B) NTLDR (NT Loader)",
+      "C) LILO",
+      "D) GRUB2"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "4. En sistemas Windows obsoletos como XP, ¿cómo se llamaba el archivo de texto plano situado en la raíz de la unidad principal que guardaba la configuración de inicio?",
+    "opciones": [
+      "A) grub.cfg",
+      "B) Boot.ini",
+      "C) BCD.LOG",
+      "D) menu.lst"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "5. ¿Qué gestor de arranque incorporan los sistemas operativos Windows Vista, 7, 8, 9 y 10, permitiendo iniciar en sistemas que no usan BIOS?",
+    "opciones": [
+      "A) NTLDR",
+      "B) Bootmgr (Windows Boot Manager)",
+      "C) LILO",
+      "D) GRUB Legacy"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "6. En las versiones modernas de Windows (Vista a 10), la información de arranque ya no es un archivo de texto, sino una base de datos. ¿Qué nombre recibe dicha base de datos?",
+    "opciones": [
+      "A) Boot.ini",
+      "B) BCD",
+      "C) menu.lst",
+      "D) GRUB_DEFAULT"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "7. ¿Qué comando específico de la consola de Windows debe utilizar un administrador si necesita modificar o editar los registros de la base de datos BCD?",
+    "opciones": [
+      "A) update-grub",
+      "B) BCDEDIT",
+      "C) grub-mkconfig",
+      "D) bcd.log --edit"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "8. De acuerdo con las reglas de respeto explicadas en el documento, ¿cuál es el comportamiento de los gestores de arranque de Windows con respecto a Linux?",
+    "opciones": [
+      "A) Siempre detectan a Linux y lo añaden al menú automáticamente.",
+      "B) Los gestores de arranque de Windows nunca respetarán a Linux; solo son capaces de arrancar sistemas Windows.",
+      "C) Permiten arrancar Linux únicamente si está instalado en un disco duro externo.",
+      "D) Sobreescriben el Kernel de Linux convirtiéndolo en un archivo .sys"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "9. ¿Cuál es la regla de compatibilidad que aplican los sistemas operativos Windows entre sus propias versiones?",
+    "opciones": [
+      "A) Ninguna versión de Windows reconoce a otra si están en el mismo PC.",
+      "B) Respetan a los sistemas operativos Windows, pero solo a los anteriores a dicho Windows (ej. Windows 10 reconoce a Windows 7, pero al revés no).",
+      "C) Los sistemas antiguos siempre respetan y configuran el arranque de los sistemas que saldrán en el futuro.",
+      "D) Solo se respetan si se utiliza el archivo de configuración antiguo Boot.ini"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "10. Dentro de las características de GRUB2, ¿cuál es la función o naturaleza real del archivo `/boot/grub/grub.cfg`?",
+    "opciones": [
+      "A) Es el archivo donde el usuario edita los menús de forma manual.",
+      "B) Es el archivo de configuración definitivo de GRUB2, pero NO se debe modificar a mano, ya que se genera automáticamente mediante scripts.",
+      "C) Es un script que borra el arranque de Windows de forma maliciosa.",
+      "D) Guarda los controladores gráficos de vídeo como 'nomodeset'."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "11. Cuando realizas modificaciones en el archivo de texto ejecutable `/etc/default/grub`, ¿qué comando debes correr después en la terminal para aplicar y consolidar los cambios en el sistema?",
+    "opciones": [
+      "A) grub-install /dev/sda",
+      "B) update-grub (o grub-mkconfig -o /boot/grub/grub.cfg)",
+      "C) bcdedit /update",
+      "D) reboot --grub"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "12. Al configurar el archivo `/etc/default/grub`, ¿para qué se utiliza el parámetro parametrizado `GRUB_DEFAULT=0`?",
+    "opciones": [
+      "A) Para ocultar el menú de selección de sistemas por completo.",
+      "B) Para indicar cuál es el sistema operativo que se iniciará por defecto (el 0 indica que arrancará la primera opción de la lista).",
+      "C) Para otorgar 0 segundos de espera en la pantalla de carga.",
+      "D) Para deshabilitar los submenús de recuperación del Kernel."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "13. Si deseas que el menú de GRUB se muestre en pantalla durante 30 segundos exactos antes de arrancar automáticamente, ¿qué variable debes configurar?",
+    "opciones": [
+      "A) GRUB_DEFAULT=30",
+      "B) GRUB_TIMEOUT=30",
+      "C) GRUB_HIDDEN_TIMEOUT=30",
+      "D) GRUB_CMDLINE_LINUX=30"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "14. ¿Qué efecto tiene configurar el parámetro `GRUB_TIMEOUT=-1` en el archivo de configuración de GRUB2?",
+    "opciones": [
+      "A) El menú se saltará de forma instantánea sin dar tiempo al usuario.",
+      "B) El menú se mostrará de forma indefinida y no arrancará ningún sistema hasta que el usuario pulse Enter manualmente.",
+      "C) Provoca un error de bucle infinito bloqueando la placa base.",
+      "D) Arranca el sistema en modo de recuperación forzada."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "15. Dentro de la variable `GRUB_CMDLINE_LINUX_DEFAULT`, ¿qué función realiza la opción o etiqueta `quiet`?",
+    "opciones": [
+      "A) Carga una pantalla gráfica animada en lugar de texto.",
+      "B) Hace un arranque silencioso, ocultando las líneas de información de carga de módulos del Kernel de Linux.",
+      "C) Reduce las revoluciones de los ventiladores para evitar ruido.",
+      "D) Deshabilita el inicio de las interfaces de red."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "16. Si en la misma línea de comandos por defecto agregas la palabra clave `splash`, ¿qué le estás pidiendo al gestor de arranque?",
+    "opciones": [
+      "A) Que detenga el arranque si encuentra un error de hardware.",
+      "B) Que muestre una pantalla gráfica de carga (con el logo del sistema) mientras arranca en segundo plano.",
+      "C) Que limite la resolución de pantalla a un formato de 640x480.",
+      "D) Que configure el teclado en el idioma nativo del instalador."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "17. ¿Qué opción avanzada debes añadir en la línea de comandos si necesitas que el sistema NO cargue los controladores o drivers gráficos de vídeo durante el arranque?",
+    "opciones": [
+      "A) quiet",
+      "B) nomodeset",
+      "C) splash",
+      "D) default=0"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "18. Durante la pantalla de carga del menú de GRUB, ¿qué acción te permite realizar presionar la 'Tecla E' en caliente?",
+    "opciones": [
+      "A) Formatear la partición activa.",
+      "B) Editar la configuración de las líneas de arranque en directo/caliente para esa sesión de inicio.",
+      "C) Habilitar la consola de comandos limpia de recuperación.",
+      "D) Cambiar la contraseña del usuario root de manera definitiva."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "19. ¿Qué sucede o qué consola de rescate se habilita si presionas la 'Tecla C' en la interfaz visual del menú de GRUB?",
+    "opciones": [
+      "A) El Bloc de notas de Windows.",
+      "B) Una consola de comandos directa de grub (grub> o grub rescue>) para introducir comandos manuales.",
+      "C) Una utilidad de prueba de estrés para los módulos de la memoria RAM.",
+      "D) El borrado inmediato de los archivos de paginación ext4."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "20. Además de `/etc/default/grub`, ¿en qué directorio o carpeta se guardan los scripts ejecutables adicionales (numerados del 00 al 40) que utiliza GRUB2 para construir el menú final?",
+    "opciones": [
+      "A) /boot/grub/menu.d",
+      "B) /etc/grub.d",
+      "C) /var/spool/grub",
+      "D) C:\\Boot\\BCD\\"
+    ],
+    "respuesta_correcta": "B"
+  }
+]
