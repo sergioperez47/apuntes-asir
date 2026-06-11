@@ -1,1 +1,70 @@
+# Cuestionario Técnico: Script de Gestión de Archivos (13 Preguntas)
 
+```json
+[
+  {
+    "pregunta": "1. Para asegurar que el script reciba exactamente los 4 parámetros requeridos, ¿qué variable especial debe compararse con el valor 4?",
+    "opciones": ["A) $0", "B) $1", "C) $#", "D) $@"],
+    "respuesta_correcta": "C"
+  },
+  {
+    "pregunta": "2. Si el UID del usuario que ejecuta el script es 0, ¿qué se ha detectado?",
+    "opciones": ["A) Un usuario normal", "B) El usuario root", "C) Un error de sintaxis", "D) Un usuario invitado"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "3. En el comando 'mkdir -p \"$1\"', ¿qué permite realizar el flag '-p'?",
+    "opciones": ["A) Borrar el directorio si existe", "B) Cambiar el propietario del directorio", "C) Crear la ruta completa incluyendo directorios padres", "D) Listar el directorio tras crearlo"],
+    "respuesta_correcta": "C"
+  },
+  {
+    "pregunta": "4. Según el requerimiento de tu script, ¿cuál es el comando correcto para asignar el usuario y grupo recibidos como parámetros?",
+    "opciones": ["A) chown $3:$4 \"$1/$2\"", "B) chmod $3:$4 \"$1/$2\"", "C) chgrp $3:$4 \"$1/$2\"", "D) chown $1:$2 \"$3/$4\""],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "5. ¿Qué comando utilizas para crear un archivo vacío o actualizar su fecha de modificación?",
+    "opciones": ["A) mkdir", "B) touch", "C) chmod", "D) ls"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "6. Al utilizar '[ ! -d \"$1\" ]', ¿qué condición se está evaluando?",
+    "opciones": ["A) Si el directorio existe", "B) Si el directorio no existe", "C) Si el archivo existe", "D) Si el archivo no existe"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "7. ¿Qué comando muestra los permisos y propietarios del archivo de forma detallada?",
+    "opciones": ["A) ls -a", "B) ls -l", "C) ls -d", "D) ls -1"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "8. ¿Por qué es una buena práctica utilizar comillas dobles (\"\") alrededor de las variables de ruta (ej: \"$1\")?",
+    "opciones": ["A) Para mejorar la estética del código", "B) Para evitar errores si la ruta contiene espacios", "C) Porque Bash no permite variables sin comillas", "D) Para que el comando sea más rápido"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "9. Si el script finaliza tras detectar un error, ¿qué código de salida es el adecuado para indicar un fallo?",
+    "opciones": ["A) 0", "B) 1", "C) 100", "D) -1"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "10. ¿Cuál es el orden de los parámetros definidos en el enunciado que el script debe recibir?",
+    "opciones": ["A) Directorio, Archivo, Usuario, Grupo", "B) Archivo, Directorio, Grupo, Usuario", "C) Usuario, Grupo, Directorio, Archivo", "D) Directorio, Usuario, Grupo, Archivo"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "11. ¿Cuál es el descriptor de archivo para la salida de error estándar (stderr) al que deberías redirigir los mensajes de error del script?",
+    "opciones": ["A) 0", "B) 1", "C) 2", "D) 3"],
+    "respuesta_correcta": "C"
+  },
+  {
+    "pregunta": "12. Si ejecutas un comando y quieres saber inmediatamente después si tuvo éxito o falló, ¿qué variable especial debes consultar?",
+    "opciones": ["A) $#", "B) $!", "C) $?", "D) $$"],
+    "respuesta_correcta": "C"
+  },
+  {
+    "pregunta": "13. ¿Qué pasaría si intentas ejecutar 'mkdir' sobre una ruta donde el usuario no tiene permisos de escritura en el padre?",
+    "opciones": ["A) El script crea el directorio igual", "B) El comando devuelve un error y el script debería capturarlo", "C) El sistema lo ignora y sigue", "D) El script se convierte en root"],
+    "respuesta_correcta": "B"
+  }
+]
