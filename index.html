@@ -2,149 +2,96 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma de Cuestionarios - ASIR</title>
+    <title>Plataforma de Cuestionarios</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #121212; color: #ffffff; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 90vh; margin: 0; }
-        .card { background: #1e1e1e; padding: 30px; border-radius: 12px; max-width: 600px; width: 100%; box-shadow: 0 6px 20px rgba(0,0,0,0.5); box-sizing: border-box; }
-        .progress-bar { font-size: 14px; color: #aaa; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
-        h2 { font-size: 20px; line-height: 1.5; margin-bottom: 20px; }
-        select { width: 100%; padding: 12px; background: #2a2a2a; color: white; border: 2px solid #007bff; border-radius: 8px; font-size: 16px; margin-bottom: 20px; cursor: pointer; }
-        .random-container { display: flex; align-items: center; justify-content: space-between; background: #252d3a; padding: 12px 15px; border-radius: 8px; border: 1px solid #3a3a3a; margin-bottom: 25px; }
-        .switch { position: relative; display: inline-block; width: 50px; height: 26px; }
-        .switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #444; transition: .3s; border-radius: 34px; }
-        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 4px; background-color: white; transition: .3s; border-radius: 50%; }
-        input:checked + .slider { background-color: #007bff; }
-        input:checked + .slider:before { transform: translateX(24px); }
-        button { display: block; width: 100%; margin: 12px 0; padding: 14px; background: #2a2a2a; color: white; border: 2px solid #3a3a3a; border-radius: 8px; cursor: pointer; text-align: left; font-size: 16px; transition: all 0.2s ease; }
-        button:hover:not(:disabled) { background: #007bff; border-color: #0056b3; transform: translateX(5px); }
-        button.correcto { background: #155724 !important; border-color: #28a745 !important; color: #d4edda !important; }
-        button.incorrecto { background: #721c24 !important; border-color: #dc3545 !important; color: #f8d7da !important; }
-        .navigation-wrapper { display: flex; gap: 15px; margin-top: 20px; }
-        .btn-siguiente { background: #007bff; text-align: center; font-weight: bold; margin: 0; }
-        .btn-siguiente:hover { background: #0056b3; }
-        .btn-anterior { background: #444; border-color: #555; text-align: center; font-weight: bold; margin: 0; }
-        .btn-anterior:hover { background: #555; }
-        .menu-box, .resultado-box { text-align: center; padding: 10px; }
-        .menu-box h1 { color: #007bff; margin-bottom: 5px; }
-        .menu-box p { color: #aaa; margin-bottom: 20px; }
-        .btn-modo { text-align: center; font-weight: bold; font-size: 18px; background: #252d3a; border-color: #007bff; margin: 15px 0; padding: 18px; }
-        .btn-modo:hover { background: #007bff; }
-        .resultado-box h3 { margin: 0 0 15px 0; color: #007bff; font-size: 24px; }
-        .puntuacion { font-size: 32px; font-weight: bold; color: #28a745; margin-bottom: 15px; }
-        .btn-reiniciar { background: #28a745; border: none; text-align: center; font-weight: bold; display: inline-block; width: auto; padding: 10px 25px; margin-top: 15px; }
-        .btn-reiniciar:hover { background: #218838; }
-        .btn-pausa { background: #3a3a3a; border: 1px solid #555; font-size: 12px; color: #ccc; padding: 5px 10px; border-radius: 6px; cursor: pointer; width: auto; margin: 0; text-align: center; }
-        .btn-pausa:hover { background: #dc3545; color: white; border-color: #dc3545; }
-        .resume-box { background: #252d3a; border: 2px dashed #007bff; border-radius: 8px; padding: 15px; margin-bottom: 25px; text-align: center; }
-        .btn-continuar { background: #007bff; border-color: #0056b3; text-align: center; font-weight: bold; font-size: 16px; }
-        .history-card { margin-top: 25px; background: #1e1e1e; border-radius: 12px; max-width: 600px; width: 100%; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.5); box-sizing: border-box; }
-        .history-card h2 { margin-top: 0; color: #007bff; font-size: 18px; display: flex; justify-content: space-between; align-items: center;}
-        .btn-borrar-historial { background: #dc3545; border: none; padding: 6px 12px; font-size: 12px; color: white; border-radius: 4px; cursor: pointer; width: auto; margin: 0; text-align: center; }
-        .btn-borrar-historial:hover { background: #bd2130; }
-        .history-list { max-height: 200px; overflow-y: auto; padding-right: 5px; }
-        .history-item { background: #252d3a; padding: 10px 12px; border-radius: 6px; margin-bottom: 8px; font-size: 13px; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid #3a3a3a; }
-        .history-item.aprobado { border-left-color: #28a745; }
-        .history-item.suspenso { border-left-color: #dc3545; }
-        .history-meta { color: #aaa; font-size: 11px; }
-        .history-score { font-weight: bold; font-size: 15px; }
+        body { font-family: sans-serif; background: #121212; color: #fff; padding: 20px; display: flex; justify-content: center; }
+        .card { background: #1e1e1e; padding: 30px; border-radius: 12px; width: 100%; max-width: 600px; box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
+        .btn-siguiente, .btn-anterior { padding: 15px; border: none; border-radius: 8px; cursor: pointer; color: white; font-weight: bold; flex: 1; }
+        .btn-siguiente { background: #007bff; }
+        .btn-anterior { background: #555; }
+        .navigation-wrapper { display: flex; gap: 10px; margin-top: 20px; }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .correcto { background: #155724 !important; border: 2px solid #28a745 !important; }
+        .incorrecto { background: #721c24 !important; border: 2px solid #dc3545 !important; }
     </style>
 </head>
 <body>
-
 <div class="card" id="main-container">
-    <div class="menu-box">
-        <h1>Plataforma de Cuestionarios</h1>
-        <p>Prepara tus exámenes de ASIR</p>
-        <div id="wrapper-continuar"></div>
-        <label for="selector-test" style="display:block; text-align:left; margin-bottom:8px; color:#ccc; font-size:14px;">1. Elige el tema del test:</label>
-        <select id="selector-test">
-            <option value="repaso_script_1">📜 Script Bash: Repaso Final</option>
-            <option value="repaso_script_2">📜 Script Bash 2: Repaso Final</option>
+    <select id="selector-test">
+        <option value="repaso_script_1">📜 Script Bash: Repaso Final</option>
+        <option value="repaso_script_2">📜 Script Bash 2: Repaso Final</option>
 
-        </select>
-        <div class="random-container">
-            <span style="font-size: 15px; color:#fff; font-weight: 500;">🎲 Desordenar todo (Modo Random)</span>
-            <label class="switch"><input type="checkbox" id="check-random" checked><span class="slider"></span></label>
-        </div>
-        <p style="text-align:left; margin-bottom:8px; color:#ccc; font-size:14px;">2. Elige el modo de juego:</p>
-        <button class="btn-modo" onclick="comenzarTest('practica')">📖 MODO PRÁCTICA<br><span style="font-size:12px; font-weight:normal; color:#ccc;">Verás correcciones tras cada pregunta.</span></button>
-        <button class="btn-modo" onclick="comenzarTest('examen')">📝 MODO EXAMEN<br><span style="font-size:12px; font-weight:normal; color:#ccc;">Sin pistas. Resultado al final.</span></button>
-    </div>
-</div>
-
-<div class="history-card" id="history-container">
-    <h2>📊 Historial <button class="btn-borrar-historial" onclick="borrarHistorial()">Borrar</button></h2>
-    <div class="history-list" id="lista-historial"></div>
+    </select>
+    <button onclick="comenzarTest('practica')">MODO PRÁCTICA</button>
+    <button onclick="comenzarTest('examen')">MODO EXAMEN</button>
 </div>
 
 <script>
-    let preguntas = [], indiceActual = 0, modoSeleccionado = '', archivoJSON = '', nombreTestVisual = '', esRandomGlobal = true, respuestasUsuario = {}, opcionesMezcladasPorPregunta = {};
-    const estructuraJuegoHTML = `<div class="progress-bar"><span id="modo-texto">Modo</span><span id="progreso">Pregunta 0 de 0</span><button class="btn-pausa" onclick="pausarYSalir()">⏸️ Pausar</button></div><h2 id="pregunta">Cargando...</h2><div id="opciones"></div><div id="wrapper-navegacion" class="navigation-wrapper"></div>`;
-
-    document.addEventListener("DOMContentLoaded", () => { actualizarHistorialVisual(); comprobarTestPausado(); });
+    let preguntas = [], indiceActual = 0, modoSeleccionado = '', respuestasUsuario = {};
 
     function comenzarTest(modo) {
         modoSeleccionado = modo;
-        const selector = document.getElementById('selector-test');
-        const testElegido = selector.value;
-        nombreTestVisual = selector.options[selector.selectedIndex].text.trim();
-        esRandomGlobal = document.getElementById('check-random').checked;
-        archivoJSON = `${testElegido}.json`; 
-        fetch(`./${archivoJSON}?nocache=${Date.now()}`)
-            .then(res => { if(!res.ok) throw new Error(); return res.json(); })
+        const testElegido = document.getElementById('selector-test').value;
+        fetch(`./${testElegido}.json`)
+            .then(res => res.json())
             .then(data => {
-                preguntas = esRandomGlobal ? data.sort(() => Math.random() - 0.5) : data;
-                inicializarInterfazJuego();
-                mostrarPregunta();
-            })
-            .catch(() => document.getElementById('pregunta').innerText = `❌ Error: No se encuentra "${archivoJSON}".`);
+                preguntas = data;
+                indiceActual = 0;
+                renderizarJuego();
+            });
     }
 
-    function inicializarInterfazJuego() {
-        document.getElementById('history-container').style.display = 'none';
-        document.getElementById('main-container').innerHTML = estructuraJuegoHTML;
-        document.getElementById('modo-texto').innerText = modoSeleccionado === 'practica' ? '📖 Práctica' : '📝 Examen';
+    function renderizarJuego() {
+        document.getElementById('main-container').innerHTML = `
+            <h2 id="pregunta"></h2>
+            <div id="opciones"></div>
+            <div id="wrapper-navegacion" class="navigation-wrapper"></div>
+        `;
+        mostrarPregunta();
     }
 
     function mostrarPregunta() {
-        if (indiceActual >= preguntas.length) { finalizarYCalcularTest(); return; }
         let p = preguntas[indiceActual];
-        document.getElementById('progreso').innerText = `Pregunta ${indiceActual + 1} de ${preguntas.length}`;
         document.getElementById('pregunta').innerText = p.pregunta;
-        let opcionesDiv = document.getElementById('opciones'); opcionesDiv.innerHTML = '';
-        if (!opcionesMezcladasPorPregunta[indiceActual]) opcionesMezcladasPorPregunta[indiceActual] = esRandomGlobal ? [...p.opciones].sort(() => Math.random() - 0.5) : [...p.opciones];
-        opcionesMezcladasPorPregunta[indiceActual].forEach(opc => {
-            let b = document.createElement('button'); b.innerText = opc;
+        let cont = document.getElementById('opciones');
+        cont.innerHTML = '';
+        p.opciones.forEach(opc => {
+            let b = document.createElement('button');
+            b.innerText = opc;
             b.onclick = () => registrarRespuesta(b, opc, p.respuesta_correcta);
-            opcionesDiv.appendChild(b);
+            cont.appendChild(b);
         });
+        actualizarBotonesNavegacion();
     }
 
     function registrarRespuesta(b, opc, correct) {
         respuestasUsuario[indiceActual] = opc;
-        if (modoSeleccionado === 'examen') { indiceActual++; mostrarPregunta(); }
-        else {
-            let correctText = opc.charAt(0) === correct ? opc : opcionesMezcladasPorPregunta[indiceActual].find(x => x.startsWith(correct));
-            Array.from(b.parentNode.children).forEach(btn => {
-                btn.disabled = true;
-                if(btn.innerText === correctText) btn.classList.add('correcto');
-                if(btn.innerText === opc && opc !== correctText) btn.classList.add('incorrecto');
-            });
-            let btnNext = document.createElement('button'); btnNext.className = 'btn-siguiente'; btnNext.innerText = 'Siguiente ➡️';
-            btnNext.onclick = () => { indiceActual++; mostrarPregunta(); };
-            document.getElementById('wrapper-navegacion').appendChild(btnNext);
+        if (modoSeleccionado === 'practica') {
+            Array.from(b.parentNode.children).forEach(btn => btn.disabled = true);
+            b.classList.add(opc.startsWith(correct) ? 'correcto' : 'incorrecto');
         }
     }
 
-    function finalizarYCalcularTest() {
-        let aciertos = preguntas.reduce((acc, p, i) => acc + (respuestasUsuario[i] && respuestasUsuario[i].startsWith(p.respuesta_correcta) ? 1 : 0), 0);
-        document.getElementById('main-container').innerHTML = `<div class="resultado-box"><h3>Finalizado</h3><div class="puntuacion">${aciertos} / ${preguntas.length}</div><button class="btn-reiniciar" onclick="location.reload()">Volver</button></div>`;
+    function actualizarBotonesNavegacion() {
+        let nav = document.getElementById('wrapper-navegacion');
+        nav.innerHTML = ''; // Limpieza total para evitar duplicados
+
+        if (indiceActual > 0) {
+            let ant = document.createElement('button');
+            ant.className = 'btn-anterior';
+            ant.innerText = '⬅️ Anterior';
+            ant.onclick = () => { indiceActual--; mostrarPregunta(); };
+            nav.appendChild(ant);
+        }
+
+        if (indiceActual < preguntas.length - 1) {
+            let sig = document.createElement('button');
+            sig.className = 'btn-siguiente';
+            sig.innerText = 'Siguiente ➡️';
+            sig.onclick = () => { indiceActual++; mostrarPregunta(); };
+            nav.appendChild(sig);
+        }
     }
-
-    function actualizarHistorialVisual() { /* ... lógica de historial ... */ }
 </script>
-
 </body>
 </html>
