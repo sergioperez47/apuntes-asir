@@ -1,0 +1,102 @@
+[
+  {
+    "pregunta": "1. ¿Qué comando permite verificar cuántos parámetros ha recibido el script?",
+    "opciones": ["A) $0", "B) $1", "C) $#", "D) $@"],
+    "respuesta_correcta": "C"
+  },
+  {
+    "pregunta": "2. ¿Qué utilidad tiene la variable IFS en 'while IFS=\",\" read'?",
+    "opciones": ["A) Directorio base", "B) Separador de campos (coma)", "C) Contador de líneas", "D) Gestión de errores"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "3. ¿Cómo se obtiene el PID de un proceso de forma segura en el script?",
+    "opciones": ["A) Usando 'ps'", "B) Usando 'pgrep'", "C) Usando 'kill'", "D) Usando 'top'"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "4. ¿Qué hace la prueba '[ -z \"$pid\" ]'?",
+    "opciones": ["A) Verifica si el proceso existe", "B) Comprueba si la cadena del PID está vacía", "C) Borra el proceso", "D) Reinicia el servicio"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "5. ¿Cuál es la ventaja de la estructura 'case' para señales?",
+    "opciones": ["A) Mayor velocidad", "B) Mejor legibilidad y mantenimiento", "C) Menor consumo de RAM", "D) Permite señales inexistentes"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "6. ¿Qué indica el flag '-f' en 'pgrep -f'?",
+    "opciones": ["A) Búsqueda en la línea de comandos completa", "B) Forzado de cierre", "C) Filtro de root", "D) Modo silencioso"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "7. ¿Qué sucede si el archivo de entrada no termina en .csv?",
+    "opciones": ["A) El script avisa y termina con exit 1", "B) Lo ignora", "C) Lo convierte automáticamente", "D) Se ejecuta igual"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "8. ¿Qué hace 'sleep' dentro del bucle?",
+    "opciones": ["A) Pausa la ejecución del script", "B) Pone en reposo el proceso", "C) Borra el CSV", "D) Cambia la señal"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "9. ¿Qué implica la señal '-9' en kill?",
+    "opciones": ["A) SIGTERM", "B) SIGKILL (forzoso)", "C) SIGHUP", "D) SIGINT"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "10. ¿Para qué se usa 'head -n 1' tras un pgrep?",
+    "opciones": ["A) Para tomar solo el primer PID encontrado", "B) Para borrar la cabecera del CSV", "C) Para ordenar alfabéticamente", "D) Para buscar solo en la primera línea"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "11. ¿Qué variable contiene el nombre del script mismo?",
+    "opciones": ["A) $0", "B) $1", "C) $#", "D) $!"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "12. ¿Por qué usamos comillas dobles en \"$variable\"?",
+    "opciones": ["A) Para estética", "B) Para manejar espacios en nombres", "C) Para ejecutar más rápido", "D) Es obligatorio siempre"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "13. ¿Cómo se redirige la entrada del archivo al bucle while?",
+    "opciones": ["A) < $1", "B) > $1", "C) | $1", "D) >> $1"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "14. ¿Qué hace 'exit 1' en un script?",
+    "opciones": ["A) Termina con error", "B) Termina con éxito", "C) Pausa el script", "D) Limpia la pantalla"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "15. ¿Qué significa 'TERM' en el contexto de señales?",
+    "opciones": ["A) Terminación ordenada", "B) Terminación forzosa", "C) Reinicio", "D) Suspensión"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "16. ¿Cómo se definen los campos en el 'read' del bucle?",
+    "opciones": ["A) Por orden en el CSV", "B) Por orden alfabético", "C) Por tamaño", "D) Al azar"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "17. ¿Qué evita el uso de 'continue' en el script?",
+    "opciones": ["A) Detiene el script", "B) Salta a la siguiente iteración del bucle", "C) Borra variables", "D) Mata el proceso"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "18. ¿Por qué es mala práctica usar kill directamente sobre nombres?",
+    "opciones": ["A) Porque no entiende el nombre", "B) Porque es muy lento", "C) Porque requiere privilegios especiales", "D) Porque falla siempre"],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "19. ¿Qué hace la redirección '> /dev/null' en el pgrep?",
+    "opciones": ["A) Guarda el error", "B) Descarta la salida estándar", "C) Crea un log", "D) Muestra el PID"],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "20. ¿Qué hace la estructura 'done < \"$1\"'?",
+    "opciones": ["A) Finaliza el bucle y cierra el archivo", "B) Escribe el archivo", "C) Crea el archivo", "D) Borra el archivo"],
+    "respuesta_correcta": "A"
+  }
+]
