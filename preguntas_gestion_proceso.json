@@ -1,0 +1,202 @@
+[
+  {
+    "pregunta": "1. Según la introducción del documento, ¿cuál es la diferencia conceptual exacta entre un programa y un proceso?",
+    "opciones": [
+      "A) Un programa consume memoria RAM física de forma constante y un proceso solo se guarda en el disco duro.",
+      "B) Un programa es código almacenado esperando ser ejecutado, mientras que un proceso nace cuando se ejecuta dicho código y requiere recursos del sistema para funcionar.",
+      "C) El programa posee un identificador numérico dinámico PPID y el proceso carece de cualquier etiqueta.",
+      "D) Los programas son gestionados exclusivamente por el hardware y los procesos por los entornos gráficos."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "2. Al ejecutarse un proceso en un sistema operativo multitarea como Linux, ¿qué dato identificador único le asigna el sistema para referirse a él sin confusión?",
+    "opciones": [
+      "A) El descriptor GECOS",
+      "B) El identificador numérico PID",
+      "C) El hash cifrado del archivo /proc",
+      "D) El indicador secundario TTY"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "3. Con base en la tabla de opciones del comando 'ps', ¿qué función realiza la bandera '-N'?",
+    "opciones": [
+      "A) Muestra procesos que no están asociados a ninguna terminal física.",
+      "B) Aplica una condición de negación sobre los filtros seleccionados.",
+      "C) Lista la información extendida del proceso incluyendo el consumo de memoria.",
+      "D) Muestra únicamente los procesos vinculados al usuario administrador root."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "4. Si deseas ejecutar el comando 'ps' forzándolo a que muestre únicamente información detallada de todos los procesos del sistema, ¿qué combinación de modificadores debes emplear?",
+    "opciones": [
+      "A) ps -N",
+      "B) ps -aux",
+      "C) ps L",
+      "D) ps -o time"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "5. Al revisar las columnas de salida de la información 'stdout' de procesos, ¿qué significa el acrónimo 'PPID'?",
+    "opciones": [
+      "A) Porcentaje de Procesamiento Interno Directo.",
+      "B) Parent Process ID (Identificador del proceso padre que creó al actual).",
+      "C) Prioridad de Proceso en Segundo Plano.",
+      "D) Protocolo de Paginación de Interrupciones de Disco."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "6. Dentro de la estructura de estado (columnas STAT o S), ¿qué tipo de proceso se representa con la letra 'Z'?",
+    "opciones": [
+      "A) Un proceso Runnable (en ejecución o listo para correr).",
+      "B) Un proceso Zombie (difunto, que no terminó de manera correcta).",
+      "C) Un proceso en Sleeping (esperando por algún evento).",
+      "D) Un proceso en Uninterruptible sleep asociado a acciones de IO."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "7. ¿Qué comando específico te permite visualizar la jerarquía completa de los procesos del sistema en un formato visual estructurado de árbol?",
+    "opciones": [
+      "A) pidof",
+      "B) pstree",
+      "C) renice",
+      "D) top"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "8. Si necesitas obtener directamente los números de PID asociados a una aplicación en ejecución como 'firefox', ¿qué comando directo debes usar?",
+    "opciones": [
+      "A) pstree -u firefox",
+      "B) pidof firefox",
+      "C) killall firefox",
+      "D) ps -o time firefox"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "9. Con respecto al envío de señales a través de 'kill', ¿qué número de señal corresponde a 'SIGKILL' para terminar o matar un proceso completamente?",
+    "opciones": [
+      "A) kill -1",
+      "B) kill -9",
+      "C) kill -15",
+      "D) kill -19"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "10. ¿Cuál es la diferencia principal entre el comando 'kill' y el comando 'killall' según el texto?",
+    "opciones": [
+      "A) 'kill' elimina todos los procesos y 'killall' solo borra uno.",
+      "B) 'kill' requiere especificar la lista de PIDs (números), mientras que 'killall' permite enviar señales especificando el nombre del programa.",
+      "C) 'killall' solo puede ser ejecutado por usuarios estándar sin privilegios.",
+      "D) 'kill' trabaja de manera asíncrona y 'killall' detiene el hardware."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "11. Al hablar de prioridades de CPU con el comando 'nice', ¿cuál es el rango numérico de valores 'nice' (niceness) que un usuario puede asignar?",
+    "opciones": [
+      "A) De 0 a 100",
+      "B) De -20 a 19",
+      "C) De 0 a 39",
+      "D) De 1 a 32768"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "12. Si aumentas el valor 'nice' de un proceso (haciéndolo más positivo), ¿qué efecto produces en su comportamiento?",
+    "opciones": [
+      "A) Obtiene la prioridad más alta del kernel de inmediato.",
+      "B) Tendrá menor prioridad, otorgándole menos tiempo de procesador.",
+      "C) Se detiene completamente pasando a estado Stopped.",
+      "D) Se desvincula de forma permanente de su terminal asociada."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "13. ¿Qué comando te permite modificar y editar la prioridad de un proceso que ya se encuentra en ejecución en tiempo real?",
+    "opciones": [
+      "A) nice",
+      "B) renice",
+      "C) jobs",
+      "D) nohup"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "14. De acuerdo con el apartado de prioridades del kernel, ¿cuál es la fórmula matemática exacta que relaciona la prioridad del kernel (PR) y el valor nice (NI) para los usuarios?",
+    "opciones": [
+      "A) PR = 100 + NI",
+      "B) PR = 20 + NI",
+      "C) PR = NI - 20",
+      "D) PR = 249 / NI"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "15. ¿Qué comando debes utilizar para listar las tareas o procesos que tienes actualmente corriendo o suspendidos en segundo plano (background)?",
+    "opciones": [
+      "A) top",
+      "B) jobs",
+      "C) fg",
+      "D) bg"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "16. Si tienes una tarea corriendo en segundo plano identificada como el trabajo número 1, ¿cómo la devuelves al primer plano (foreground) de tu pantalla?",
+    "opciones": [
+      "A) bg %1",
+      "B) fg %1",
+      "C) nohup %1",
+      "D) ps -o %1"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "17. ¿Para qué se utiliza el comando 'nohup' al lanzar una aplicación como 'nohup gnome-calculator &'?",
+    "opciones": [
+      "A) Para ocultar el proceso de la lista global del comando top.",
+      "B) Para lanzar un proceso independiente de la terminal, garantizando que si se cierra la terminal el proceso se mantenga vivo.",
+      "C) Para reducir a la mitad el consumo de memoria RAM virtual.",
+      "D) Para forzar al proceso a ejecutarse con permisos de administrador sin pedir contraseña."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "18. Al monitorizar con 'top', ¿cada cuántos segundos se actualiza la información en pantalla por defecto?",
+    "opciones": [
+      "A) Cada 1 segundo.",
+      "B) Cada 3 segundos.",
+      "C) Cada 5 segundos.",
+      "D) Cada 10 segundos."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "19. En caso de un desastre o bloqueo en el entorno gráfico, ¿qué comando transforma el cursor del ratón en una calavera o cruz para cerrar una ventana con un solo clic?",
+    "opciones": [
+      "A) pkill",
+      "B) xkill",
+      "C) strace",
+      "D) fuser"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "20. Dentro de la sección 'Otros comandos de interés', ¿qué herramienta se describe como una versión más visual, interactiva y colorida de 'top'?",
+    "opciones": [
+      "A) iotop",
+      "B) htop",
+      "C) lsof",
+      "D) ionice"
+    ],
+    "respuesta_correcta": "B"
+  }
+]
