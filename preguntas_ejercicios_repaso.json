@@ -1,0 +1,202 @@
+[
+  {
+    "pregunta": "1. Según la primera actividad de nivel 'Fácil', ¿qué combinación de modificadores de 'ps' y herramientas se requiere para listar con formato detallado todos los procesos del sistema (incluso sin terminal) filtrando solo por el usuario 'root'?",
+    "opciones": [
+      "A) ps -u root --all",
+      "B) El comando ps con opciones detalladas (como -ef o aux) combinado con la tubería '| grep root'",
+      "C) pstree -p root",
+      "D) killall -u root"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "2. En una actividad de nivel 'Complejo', se te pide ordenar todos los procesos de tu propio usuario por consumo de CPU de mayor a menor. ¿Qué bandera u opción de ordenación de 'ps' cumple esta directiva?",
+    "opciones": [
+      "A) ps -u usuario --sort=-%cpu",
+      "B) ps -u usuario --memory-first",
+      "C) ps -e --tree",
+      "D) ps aux --kill-cpu"
+    ],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "3. Si ejecutas una lista de ordenación de procesos y necesitas guardarla físicamente en un archivo de texto independiente llamado 'mis_procesos.txt', ¿qué símbolo de redirección debes emplear?",
+    "opciones": [
+      "A) La tubería vertical (|)",
+      "B) El símbolo de redirección de salida (>)",
+      "C) El símbolo de ampersand (&)",
+      "D) El caracter especial de asterisco (*)"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "4. ¿Qué proceso maestro de inicialización del sistema se menciona en el ejercicio como la raíz principal a identificar al desplegar el árbol de procesos con 'pstree'?",
+    "opciones": [
+      "A) bash",
+      "B) systemd",
+      "C) cron",
+      "D) sshd"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "5. En el bloque de repaso ejecutas 'sleep 200 &' en segundo plano y usas 'pstree'. ¿Qué información estructural relevante pretendes identificar en el árbol con este comando?",
+    "opciones": [
+      "A) La cantidad de memoria virtual libre en el sistema.",
+      "B) Su posición exacta dentro de la jerarquía de procesos e identificar quién es su proceso padre.",
+      "C) El tiempo de expiración de la contraseña del administrador.",
+      "D) El puerto de red que mantiene abierto el navegador web."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "6. Deseas averiguar con exactitud cuántas instancias aisladas e hilos del intérprete de comandos 'bash' tienes activos en tu terminal actual. ¿Qué combinación de comandos cuenta las líneas de salida?",
+    "opciones": [
+      "A) pidof bash | wc -l",
+      "B) ps -e | grep bash | wc -l",
+      "C) pstree -p | grep bash",
+      "D) jobs -l bash"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "7. Si necesitas realizar una auditoría de rendimiento sobre un demonio del sistema como 'cron' o 'sshd', ¿cuál es el procedimiento inicial que dictan los ejercicios?",
+    "opciones": [
+      "A) Cambiar su prioridad a niceness -20 de inmediato.",
+      "B) Averiguar primero su número de PID, obtener su información detallada con 'ps' y comprobar cuánto tiempo lleva ejecutándose.",
+      "C) Matar el proceso con un killall amistoso.",
+      "D) Lanzarlo de nuevo utilizando el comando de inmunidad nohup."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "8. Ejecutas la instrucción de retardo 'sleep 300 &' en segundo plano. ¿Cuál es el método más directo que describe la actividad de nivel fácil para finalizar este proceso individual?",
+    "opciones": [
+      "A) Usar el comando 'kill' especificando su número de PID único.",
+      "B) Cerrar la ventana de la terminal gráfica por la fuerza.",
+      "C) Utilizar la combinación de teclas Ctrl + Z.",
+      "D) Ejecutar un comando 'crontab -r' de borrado."
+    ],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "9. En una actividad compleja lanzas tres procesos masivos 'yes > /dev/null &' en segundo plano y se te pide suspenderlos a todos a la vez. ¿Qué señal de control debes enviar?",
+    "opciones": [
+      "A) Señal 9 (SIGKILL)",
+      "B) Señal 19 (SIGSTOP) para detenerlos temporalmente sin matarlos",
+      "C) Señal 15 (SIGTERM)",
+      "D) Señal 1 (SIGHUP)"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "10. Si tienes múltiples procesos detenidos con una señal de pausa (SIGSTOP), ¿qué comando o señal se utiliza si deseas reanudar exclusivamente uno de ellos?",
+    "opciones": [
+      "A) kill -9",
+      "B) bg (o pasándole la señal 18 SIGCONT)",
+      "C) nice",
+      "D) nohup"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "11. Tienes tres instancias independientes de 'sleep 200' corriendo simultáneamente en segundo plano. ¿Qué comando te permite destruirlas y terminarlas a todas juntas de un solo golpe usando el nombre?",
+    "opciones": [
+      "A) kill 1 2 3",
+      "B) killall sleep",
+      "C) renice 19 sleep",
+      "D) pstree -p sleep"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "12. Si ejecutas por error varios procesos cíclicos infinitos 'yes > /dev/null' que están saturando el equipo, ¿cuál es la forma definitiva de eliminarlos a todos simultáneamente según el repaso?",
+    "opciones": [
+      "A) Utilizar el comando killall con el nombre del proceso ('killall yes')",
+      "B) Esperar a que el temporizador watch los cierre solos cada 2 segundos.",
+      "C) Cambiar su variable en la ruta /etc/default/grub.",
+      "D) Utilizar el comando sleep pasándole un modificador de minutos."
+    ],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "13. Deseas lanzar una tarea pesada de comandos con una prioridad inicial de cortesía de valor 10. ¿Qué comando utilizas delante de la instrucción?",
+    "opciones": [
+      "A) renice -n 10",
+      "B) nice -n 10",
+      "C) top -p 10",
+      "D) alternate 10"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "14. Intentas modificar la prioridad de un proceso activo para subirla a un valor muy alto y agresivo de prioridad negativa (como -5). ¿Qué requisito indispensable necesitas en la terminal?",
+    "opciones": [
+      "A) Estar en segundo plano obligatoriamente.",
+      "B) Utilizar privilegios de administrador del sistema mediante el prefijo 'sudo'.",
+      "C) Detener el proceso previamente con la combinación Ctrl + C.",
+      "D) Modificar el archivo de configuración /etc/crontab."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "15. En el ejercicio de comparación de rendimiento con 'top', si un proceso 'yes' corre con prioridad -5 y otro con prioridad 10 de forma concurrente, ¿cuál consumirá mayor porcentaje de CPU?",
+    "opciones": [
+      "A) Consumirá más CPU el proceso con prioridad 10.",
+      "B) Consumirá más CPU el proceso con prioridad -5 (ya que tiene mayor prioridad real en el kernel).",
+      "C) Consumirán exactamente lo mismo porque el valor nice no afecta al procesador.",
+      "D) Ambos procesos se destruyen de forma automática por seguridad."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "16. Tienes tres trabajos listados en tu consola. ¿Qué comando debes usar si deseas traer el trabajo número 2 de vuelta al primer plano de ejecución de tu pantalla?",
+    "opciones": [
+      "A) bg %2",
+      "B) fg %2",
+      "C) nice %2",
+      "D) kill -9 %2"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "17. Si una tarea interactiva se encuentra bloqueando la entrada de texto de tu terminal actual, ¿qué combinación de botones suspende la aplicación temporalmente enviándola a la lista de trabajos?",
+    "opciones": [
+      "A) Ctrl + C",
+      "B) Ctrl + Z",
+      "C) Ctrl + Alt + Del",
+      "D) Ctrl + X"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "18. Lanzar un proceso pesado con el comando 'nohup' al principio (ej: 'nohup sleep 200 &') te otorga una ventaja crítica en administración de servidores. ¿Cuál es?",
+    "opciones": [
+      "A) El proceso se ejecuta consumiendo un 0% de memoria RAM.",
+      "B) Si la terminal de comandos se cierra, el proceso sobrevive y se mantiene ejecutándose de forma inmune en segundo plano.",
+      "C) Oculta el proceso para que ningún otro usuario pueda verlo con 'ps'.",
+      "D) Le asigna de forma automática la máxima prioridad -20 al proceso."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "19. De acuerdo con el último ejercicio de nivel complejo, ¿para qué se plantea el uso de un bucle infinito combinado con 'nohup'?",
+    "opciones": [
+      "A) Para simular un ataque de denegación de servicios.",
+      "B) Para lanzar un comando inmune que escriba de forma persistente información (como la fecha) cada 5 segundos en un archivo independiente.",
+      "C) Para cambiar de forma cíclica las contraseñas de los usuarios locales.",
+      "D) Para monitorizar los cambios del cargador de arranque GRUB2 en directo."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "20. Al usar 'nohup', si no especificas una redirección manual para las salidas de información de texto del programa lanzado, ¿en qué archivo del directorio actual se vuelcan automáticamente de forma predeterminada?",
+    "opciones": [
+      "A) /var/log/syslog",
+      "B) nohup.out",
+      "C) stdout.txt",
+      "D) /etc/default/grub"
+    ],
+    "respuesta_correcta": "B"
+  }
+]
