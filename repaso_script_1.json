@@ -1,6 +1,3 @@
-# Cuestionario Técnico: Script de Gestión de Archivos (13 Preguntas)
-
-```json
 [
   {
     "pregunta": "1. Para asegurar que el script reciba exactamente los 4 parámetros requeridos, ¿qué variable especial debe compararse con el valor 4?",
