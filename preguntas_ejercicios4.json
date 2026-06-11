@@ -1,201 +1,201 @@
 [
   {
-    "pregunta": "1. Para crear los tres grupos requeridos en la práctica (Equipo1, Equipo2 y Equipo3) mediante comandos individuales, ¿qué orden se debe ejecutar?",
+    "pregunta": "1. Si ejecutas el comando 'id' a secas en la terminal, ¿qué información te muestra el sistema de forma predeterminada?",
     "opciones": [
-      "A) groupmod Equipo1 && groupmod Equipo2 && groupmod Equipo3",
-      "B) groupadd Equipo1 ; groupadd Equipo2 ; groupadd Equipo3",
-      "C) newgrp Equipo1 , Equipo2 , Equipo3",
-      "D) useradd -g Equipo1 -g Equipo2 -g Equipo3"
+      "A) El historial de los últimos comandos ejecutados por el administrador.",
+      "B) El UID (identificador de usuario) y el GID (identificador de grupo) del usuario actual con el que tienes abierta la sesión.",
+      "C) La lista completa de todos los usuarios reales registrados en el archivo /etc/passwd.",
+      "D) El tiempo que lleva el servidor encendido y la carga media de la CPU."
     ],
     "respuesta_correcta": "B"
   },
   {
-    "pregunta": "2. Al dar de alta al usuario 'proyectoA' con el grupo principal 'Equipo1' y su nombre descriptivo completo, ¿cuál es el comando useradd correcto?",
+    "pregunta": "2. ¿Cuál es el comando correcto si deseas obtener la información de identificación (UID, GID y grupos) de un usuario específico llamado 'juan'?",
     "opciones": [
-      "A) useradd -g Equipo1 -c \"proyecto de desarrollo web\" -m proyectoA",
-      "B) useradd -G Equipo1 -d \"proyecto de desarrollo web\" proyectoA",
-      "C) usermod -g Equipo1 -c \"proyecto de desarrollo web\" proyectoA",
-      "D) useradd -p Equipo1 -f \"proyecto de desarrollo web\" -m proyectoA"
+      "A) who juan",
+      "B) finger -u juan",
+      "C) id juan",
+      "D) chage -l juan"
+    ],
+    "respuesta_correcta": "C"
+  },
+  {
+    "pregunta": "3. ¿Qué opción debes añadir al comando 'id' para que imprima única y exclusivamente el número de UID de un usuario específico?",
+    "opciones": [
+      "A) id -g usuario",
+      "B) id -u usuario",
+      "C) id -G usuario",
+      "D) id -n usuario"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "4. Si necesitas listar únicamente los identificadores de todos los grupos (tanto el principal como los secundarios) a los que pertenece un usuario, ¿qué parámetro de 'id' debes emplear?",
+    "opciones": [
+      "A) id -u",
+      "B) id -G",
+      "C) id -p",
+      "D) id -Z"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "5. ¿Qué comando nativo de Linux te permite mostrar de forma directa la lista de usuarios que se encuentran actualmente conectados al sistema?",
+    "opciones": [
+      "A) last",
+      "B) who",
+      "C) chage",
+      "D) id -a"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "6. Al comparar las utilidades de monitorización de sesiones activas, ¿qué diferencia principal aporta el comando 'w' con respecto a 'who'?",
+    "opciones": [
+      "A) 'w' muestra únicamente las cuentas bloqueadas del sistema operativo.",
+      "B) 'w' ofrece una salida mucho más detallada que incluye los tiempos de inactividad de las pantallas y el proceso o comando que está ejecutando cada usuario actualmente.",
+      "C) 'w' solo lee el archivo histórico /var/log/wtmp sin mostrar conexiones en tiempo real.",
+      "D) 'w' requiere permisos de superusuario absoluto y 'who' lo puede ejecutar cualquiera."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "7. ¿Qué opción puedes añadir al comando 'who' si deseas mostrar de manera directa y limpia únicamente los nombres de usuario de las sesiones activas?",
+    "opciones": [
+      "A) who -q",
+      "B) who -a",
+      "C) who -b",
+      "D) who -d"
     ],
     "respuesta_correcta": "A"
   },
   {
-    "pregunta": "3. El enunciado indica que el usuario 'proyectoB' pertenece al grupo principal 'Equipo2'. ¿Qué bandera de 'useradd' define estrictamente este grupo primario o por defecto?",
+    "pregunta": "8. Te piden verificar si un usuario específico tiene una sesión abierta actualmente en la máquina. ¿Cómo filtras de forma eficiente la salida de 'who' desde la terminal?",
     "opciones": [
-      "A) -G",
-      "B) -g",
-      "C) -p",
-      "D) -k"
-    ],
-    "respuesta_correcta": "B"
-  },
-  {
-    "pregunta": "4. Siguiendo el patrón de contraseñas exigido (nombredelusuario_nombredelgrupoprincipal), ¿cuál será la contraseña exacta asignada al usuario 'proyectoB'?",
-    "opciones": [
-      "A) proyectoB_Equipo1",
-      "B) proyectoB_Equipo2",
-      "C) proyectoB_Equipo3",
-      "D) proyecto de carga de datos_Equipo2"
-    ],
-    "respuesta_correcta": "B"
-  },
-  {
-    "pregunta": "5. ¿Cuál es la contraseña exacta que le corresponde al usuario 'proyectoC' según la regla de nomenclatura de la práctica?",
-    "opciones": [
-      "A) proyectoC_Equipo1",
-      "B) proyectoC_Equipo2",
-      "C) proyectoC_Equipo3",
-      "D) proyectoC_proyecto de evolutivos"
-    ],
-    "respuesta_correcta": "B"
-  },
-  {
-    "pregunta": "6. La práctica exige que el usuario 'proyectoC' comparta el mismo directorio personal de trabajo de 'proyectoA' (/home/proyectoA). ¿Qué comando de creación logra esto de forma directa?",
-    "opciones": [
-      "A) useradd -g Equipo2 -d /home/proyectoA -M proyectoC",
-      "B) useradd -g Equipo2 -d /home/proyectoA proyectoC",
-      "C) useradd -g Equipo2 -m -d /home/proyectoC proyectoA",
-      "D) usermod -g Equipo2 -m -d /home/proyectoA proyectoC"
+      "A) who | grep 'nombre_usuario'",
+      "B) who -f 'nombre_usuario'",
+      "C) chage -l 'nombre_usuario'",
+      "D) last -n 1 'nombre_usuario'"
     ],
     "respuesta_correcta": "A"
   },
   {
-    "pregunta": "7. Al usar 'useradd -d /home/proyectoA -M proyectoC', ¿qué función cumple la bandera '-M' (mayúscula) para evitar errores con el directorio de proyectoA?",
+    "pregunta": "9. ¿Qué parámetro o modificador te permite filtrar la salida del comando 'w' para que se concentre en mostrar de forma reducida el usuario y el proceso que tiene en ejecución actual?",
     "opciones": [
-      "A) Fuerza el borrado de cualquier archivo preexistente en la ruta.",
-      "B) Le indica al sistema que NO intente crear ni sobreescribir la carpeta home, ya que esta ya existe y pertenece a proyectoA.",
-      "C) Encripta automáticamente el contenido de la carpeta compartida.",
-      "D) Convierte al usuario en el propietario absoluto del directorio destino."
-    ],
-    "respuesta_correcta": "B"
-  },
-  {
-    "pregunta": "8. Una vez creados los tres usuarios, se solicita 'añadir a los tres al grupo denominado Equipo3' como grupo secundario. ¿Qué comando añade a 'proyectoA' manteniendo intacto su grupo primario?",
-    "opciones": [
-      "A) usermod -g Equipo3 proyectoA",
-      "B) usermod -aG Equipo3 proyectoA",
-      "C) groupmod -A proyectoA Equipo3",
-      "D) useradd -G Equipo3 proyectoA"
-    ],
-    "respuesta_correcta": "B"
-  },
-  {
-    "pregunta": "9. ¿Qué comando alternativo se puede utilizar para añadir directamente al usuario 'proyectoB' al grupo complementario 'Equipo3'?",
-    "opciones": [
-      "A) gpasswd -a proyectoB Equipo3",
-      "B) gpasswd -d proyectoB Equipo3",
-      "C) chsh -G Equipo3 proyectoB",
-      "D) usermod -g Equipo3 proyectoB"
+      "A) w -s",
+      "B) w -h",
+      "C) w -f",
+      "D) w -l"
     ],
     "respuesta_correcta": "A"
   },
   {
-    "pregunta": "10. Para comprobar la información descriptiva (GECOS) de los usuarios creados y verificar que aparezca 'proyecto de evolutivos', ¿qué archivo maestro debes examinar?",
+    "pregunta": "10. ¿Cuál es la finalidad principal del comando 'last' en la administración de auditorías de acceso de usuarios?",
     "opciones": [
-      "A) /etc/shadow",
-      "B) /etc/passwd",
-      "C) /etc/group",
-      "D) /etc/login.defs"
+      "A) Mostrar los plazos exactos en los que va a caducar una contraseña local.",
+      "B) Listar de forma retrospectiva el historial de inicios y cierres de sesión de los usuarios del sistema leyendo el archivo /var/log/wtmp.",
+      "C) Modificar de forma interactiva los metadatos y el nombre completo de una cuenta.",
+      "D) Monitorizar en tiempo real qué archivos se están borrando en el directorio /home."
     ],
     "respuesta_correcta": "B"
   },
   {
-    "pregunta": "11. Si revisas la línea de 'Equipo3' dentro del archivo /etc/group al finalizar las asignaciones, ¿qué contenido deberías ver al final de dicha línea?",
+    "pregunta": "11. Si deseas limitar el resultado de 'last' para auditar únicamente los últimos 5 registros o entradas de inicio de sesión, ¿cómo debes estructurar el comando?",
     "opciones": [
-      "A) Únicamente el nombre de proyectoA.",
-      "B) Los tres usuarios separados por comas: proyectoA,proyectoB,proyectoC",
-      "C) Ningún nombre, ya que Equipo3 pasó a ser el grupo principal de todos.",
-      "D) El hash de seguridad cifrado de las contraseñas del grupo."
-    ],
-    "respuesta_correcta": "B"
-  },
-  {
-    "pregunta": "12. La práctica pide abrir un terminal para cada usuario y crear un fichero en su /home. Si estás logueado como 'proyectoA' y ejecutas 'touch nota.txt', ¿dónde se guardará físicamente dicho archivo?",
-    "opciones": [
-      "A) /home/proyectoB",
-      "B) /home/proyectoA/nota.txt",
-      "C) /root/nota.txt",
-      "D) /etc/skel/nota.txt"
-    ],
-    "respuesta_correcta": "B"
-  },
-  {
-    "pregunta": "13. Si el usuario 'proyectoC' inicia sesión en su terminal e intenta crear el archivo 'ficheroC.txt' dentro de su home compartido (/home/proyectoA), ¿qué problema de permisos se puede encontrar inicialmente si no se ajusta el grupo?",
-    "opciones": [
-      "A) Error de comando no encontrado.",
-      "B) Permiso denegado (Permission denied), porque el directorio pertenece originalmente a proyectoA y su grupo principal Equipo1.",
-      "C) El sistema se cuelga por conflicto de redundancia de almacenamiento.",
-      "D) El archivo se crea pero se borra automáticamente al cerrar la terminal."
-    ],
-    "respuesta_correcta": "B"
-  },
-  {
-    "pregunta": "14. Mientras mantienes los terminales abiertos para cada usuario, la práctica te pide comprobar qué usuarios están utilizando el sistema en ese instante. ¿Qué comandos nativos te permiten ver este registro de sesiones activas?",
-    "opciones": [
-      "A) lastlog y id",
-      "B) w y who",
-      "C) auditctl y journalctl",
-      "D) chsh y chfn"
-    ],
-    "respuesta_correcta": "B"
-  },
-  {
-    "pregunta": "15. Al ejecutar el comando 'w' en el terminal del administrador para verificar las sesiones de la práctica, ¿qué información clave de los usuarios se lista en la pantalla?",
-    "opciones": [
-      "A) Sus contraseñas encriptadas en formato MD5.",
-      "B) El nombre de usuario, el nombre de la terminal (TTY), la hora de inicio de sesión y el comando o proceso que ejecutan.",
-      "C) Los límites máximos de espacio de almacenamiento en disco asignados.",
-      "D) El historial de todos los grupos eliminados durante el día."
-    ],
-    "respuesta_correcta": "B"
-  },
-  {
-    "pregunta": "16. En la última fase del ejercicio se te ordena de forma explícita: 'Cuando termines borra los tres usuarios'. ¿Qué comando elimina al usuario 'proyectoA' borrando también su directorio de trabajo?",
-    "opciones": [
-      "A) userdel proyectoA",
-      "B) userdel -r proyectoA",
-      "C) groupdel proyectoA",
-      "D) usermod -l proyectoA"
-    ],
-    "respuesta_correcta": "B"
-  },
-  {
-    "pregunta": "17. Si ejecutas 'userdel -r proyectoC', ¿qué ocurre con el directorio /home/proyectoA que compartía con el primer usuario?",
-    "opciones": [
-      "A) Se borra por completo perdiéndose los datos de proyectoA.",
-      "B) El sistema da un aviso o deniega la eliminación del directorio porque pertenece a otro UID activo (proyectoA), protegiendo la integridad.",
-      "C) Se duplica el directorio en una papelera de reciclaje global del sistema.",
-      "D) Cambia de nombre automáticamente a /home/no_existente."
-    ],
-    "respuesta_correcta": "B"
-  },
-  {
-    "pregunta": "18. Para verificar rápidamente desde la terminal (sin usar el entorno gráfico) que los usuarios han sido completamente eliminados del sistema, ¿qué comando de búsqueda puedes aplicar?",
-    "opciones": [
-      "A) grep 'proyecto' /etc/passwd",
-      "B) id Equipo3",
-      "C) ls -l /etc/skel",
-      "D) chage -l root"
+      "A) last -n 5",
+      "B) last -p 5",
+      "C) last -u 5",
+      "D) last -s 5"
     ],
     "respuesta_correcta": "A"
   },
   {
-    "pregunta": "19. Si tras borrar los usuarios decides limpiar por completo el sistema eliminando también el grupo secundario 'Equipo3', ¿qué comando debes emplear?",
+    "pregunta": "12. Necesitas averiguar de forma rápida cuándo fue la última vez que el usuario 'marta' accedió al servidor. ¿Qué orden es la más adecuada?",
     "opciones": [
-      "A) userdel Equipo3",
-      "B) groupdel Equipo3",
-      "C) gpasswd -d Equipo3",
-      "D) usermod -X Equipo3"
+      "A) who marta",
+      "B) last marta",
+      "C) id -u marta",
+      "D) finger -s marta"
     ],
     "respuesta_correcta": "B"
   },
   {
-    "pregunta": "20. Al revisar una línea del archivo /etc/passwd referida a los usuarios de la práctica, por ejemplo, 'proyectoA:x:1020:2001:proyecto de desarrollo web:/home/proyectoA:/bin/bash', ¿qué representa el número '2001'?",
+    "pregunta": "13. ¿Qué palabra clave especial puedes pasarle como argumento a 'last' si deseas filtrar el historial para analizar únicamente los momentos en que se ha reiniciado el sistema?",
     "opciones": [
-      "A) El identificador único del usuario (UID).",
-      "B) El identificador numérico de su grupo principal o por defecto (GID).",
-      "C) La cantidad de días de validez que le quedan a su contraseña.",
-      "D) El identificador del puerto TCP de red asignado a su sesión de terminal."
+      "A) last reboot",
+      "B) last shutdown",
+      "C) last restart",
+      "D) last init"
+    ],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "14. En caso de que la herramienta informativa 'finger' no venga instalada por defecto en tu distribución Ubuntu, ¿con qué comando del gestor de paquetes debes incorporarla?",
+    "opciones": [
+      "A) sudo apt install finger",
+      "B) sudo apt-get purge finger",
+      "C) sudo snap download finger",
+      "D) useradd -m finger"
+    ],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "15. ¿Qué información estructurada y detallada te devuelve el comando 'finger usuario' al consultar una cuenta específica?",
+    "opciones": [
+      "A) El hash encriptado de su clave de acceso secreta.",
+      "B) Datos del perfil como el login, el nombre completo (campo GECOS), la ruta absoluta de su directorio HOME, su shell por defecto y el estado de su buzón de correo.",
+      "C) Las cuotas máximas de almacenamiento que le quedan disponibles en disco.",
+      "D) Una gráfica de rendimiento de los hilos de procesamiento que tiene bloqueados."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "16. ¿Qué comando te permite examinar de forma directa toda la información relativa a los plazos, antigüedad y caducidad de la contraseña de tu usuario actual?",
+    "opciones": [
+      "A) chage -l",
+      "B) passwd -S",
+      "C) id -G",
+      "D) finger -m"
+    ],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "17. ¿Cómo puedes configurar mediante 'chage' una cuenta de usuario para asegurar que su contraseña no caduque nunca en el sistema (estableciendo el valor máximo)?",
+    "opciones": [
+      "A) chage -M -1 usuario",
+      "B) chage -M 99999 usuario",
+      "C) chage -E 0 usuario",
+      "D) chage -I -1 usuario"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "18. Deseas programar el sistema para que lance un mensaje de aviso en la pantalla de un usuario advirtiéndole que debe cambiar su clave 7 días antes de que llegue su vencimiento. ¿Qué bandera gestiona este aviso?",
+    "opciones": [
+      "A) chage -W 7 usuario",
+      "B) chage -m 7 usuario",
+      "C) chage -I 7 usuario",
+      "D) chage -E 7 usuario"
+    ],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "19. Un método avanzado de seguridad con 'chage' para bloquear de inmediato el acceso a una cuenta consiste en fijar su fecha de expiración en el pasado (por ejemplo, el día 1 de enero de 1970). ¿Qué opción modifica dicha fecha absoluta?",
+    "opciones": [
+      "A) chage -E 0 usuario",
+      "B) chage -M 0 usuario",
+      "C) chage -d 0 usuario",
+      "D) chage -W 0 usuario"
+    ],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "20. Si ejecutas la instrucción de control 'chage -M 60 juan', ¿qué restricción de tiempo estás aplicando sobre el perfil de dicho usuario?",
+    "opciones": [
+      "A) Que la cuenta se cerrará de forma automática tras 60 minutos de inactividad.",
+      "B) Que la contraseña tendrá una duración o vigencia máxima de 60 días antes de verse forzado a renovarla.",
+      "C) Que dispondrá de un margen de 60 días de gracia si se le olvida la clave de paso.",
+      "D) Que su identificador único UID cambiará correlativamente pasados 60 días."
     ],
     "respuesta_correcta": "B"
   }
