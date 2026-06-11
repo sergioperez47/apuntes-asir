@@ -1,0 +1,402 @@
+[
+  {
+    "pregunta": "1. Al ejecutar 'useradd -m maria', ¿qué acción automática realiza el sistema en el directorio /home?",
+    "opciones": [
+      "A) Crea el directorio personal del usuario únicamente si no existe ningún otro usuario con el mismo nombre.",
+      "B) Genera automáticamente la carpeta /home/maria y copia en ella los archivos de la plantilla /etc/skel.",
+      "C) Asigna un espacio de disco ilimitado para el nuevo usuario en la partición principal.",
+      "D) Configura los permisos del directorio como públicos para que cualquier usuario pueda leerlo."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "2. Según los ejercicios prácticos, si necesitas cambiar el identificador numérico de un grupo existente (GID) a '2001', ¿qué comando debes emplear?",
+    "opciones": [
+      "A) groupadd -g 2001 nombre_grupo",
+      "B) groupmod -g 2001 nombre_grupo",
+      "C) usermod -g 2001 nombre_grupo",
+      "D) newgrp -g 2001 nombre_grupo"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "3. En el archivo /etc/passwd, ¿cuál es la función o el contenido del quinto campo de una línea de usuario?",
+    "opciones": [
+      "A) Almacenar la ruta absoluta hacia el shell predeterminado del usuario.",
+      "B) Mostrar el identificador numérico del grupo principal (GID).",
+      "C) Contener información complementaria o comentario sobre el usuario (nombre completo, teléfono, etc.).",
+      "D) Indicar el estado de caducidad y bloqueo de la cuenta de usuario."
+    ],
+    "respuesta_correcta": "C"
+  },
+  {
+    "pregunta": "4. Si un administrador ejecuta 'usermod -c \"Juan Pérez Pérez\" juan', ¿qué campo del archivo /etc/passwd se está modificando?",
+    "opciones": [
+      "A) El campo del nombre de inicio de sesión (login).",
+      "B) El campo de información general o comentario (Gecos).",
+      "C) El campo del directorio personal de trabajo (Home).",
+      "D) El campo del identificador único de usuario (UID)."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "5. En el archivo /etc/passwd, ¿qué ruta se asigna habitualmente en el campo del HOME para los usuarios o servicios del sistema que no necesitan almacenar archivos personales?",
+    "opciones": [
+      "A) /dev/null",
+      "B) /nonexistent",
+      "C) /root",
+      "D) /etc/skel"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "6. ¿Qué sucede de forma predeterminada si intentas ejecutar 'groupdel profesores' mientras el usuario 'marta' todavía tiene a 'profesores' configurado como su grupo principal?",
+    "opciones": [
+      "A) El sistema elimina el grupo y deja al usuario sin grupo principal asignado.",
+      "B) El sistema deniega la operación informando que no se puede eliminar el grupo primario de un usuario.",
+      "C) El grupo se elimina y el usuario pasa automáticamente a pertenecer al grupo root.",
+      "D) El sistema elimina tanto el grupo como la cuenta de usuario de forma simultánea."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "7. Para consultar de forma rápida en la terminal las sesiones activas de los usuarios, detallando la IP de origen y el comando que están ejecutando, ¿cuál es la herramienta nativa más idónea?",
+    "opciones": [
+      "A) id",
+      "B) w",
+      "C) lastlog",
+      "D) uname"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "8. Si deseas comprobar si los usuarios 'juan' o 'maria' tienen una contraseña asignada o si sus cuentas están bloqueadas, ¿qué comando proporciona un resumen de este estado?",
+    "opciones": [
+      "A) chsh -l usuario",
+      "B) passwd -S usuario",
+      "C) id -G usuario",
+      "D) groups usuario"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "9. ¿Qué comando te permite cambiar el intérprete de comandos por defecto (shell) de un usuario a '/bin/sh' de forma directa?",
+    "opciones": [
+      "A) usermod -s /bin/sh usuario",
+      "B) chage -s /bin/sh usuario",
+      "C) gpasswd -s /bin/sh usuario",
+      "D) groupmod -s /bin/sh usuario"
+    ],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "10. ¿Cuál es el rango numérico estándar de UID que reserva la mayoría de distribuciones Linux modernas para los usuarios comunes o regulares creados en el sistema?",
+    "opciones": [
+      "A) Del UID 1 al UID 499.",
+      "B) A partir del UID 1000 en adelante.",
+      "C) Únicamente los números comprendidos entre el 500 y el 999.",
+      "D) Cualquier número par superior a 0."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "11. Si añades la regla '-w /etc/passwd -p wa -k passwd_changes' al archivo de auditd, ¿qué significan las siglas 'wa' en el parámetro '-p'?",
+    "opciones": [
+      "A) Warning y Alert (avisos de seguridad).",
+      "B) Write y Attribute (escritura y cambios de atributos del archivo).",
+      "C) Watch y Audit (vigilancia e informe general).",
+      "D) Word y Access (búsqueda de cadenas de texto)."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "12. Tras realizar una auditoría con auditd, ¿con qué comando puedes buscar de forma específica los eventos registrados bajo la clave o etiqueta 'passwd_changes'?",
+    "opciones": [
+      "A) aureport -au",
+      "B) ausearch -k passwd_changes",
+      "C) auditctl -l",
+      "D) journalctl -u auditd"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "13. ¿Qué utilidad del paquete inotify-tools permite monitorizar de forma continua un directorio y lanzar alertas inmediatas en la consola al crear o borrar archivos?",
+    "opciones": [
+      "A) inotifywatch",
+      "B) inotifywait -m",
+      "C) ausearch",
+      "D) auditctl"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "14. Al revisar /etc/passwd, encuentras un usuario cuyo shell final está configurado como '/usr/sbin/nologin'. ¿Qué implicación tiene esto?",
+    "opciones": [
+      "A) El usuario tiene acceso exclusivo mediante terminal web.",
+      "B) El usuario no puede iniciar una sesión de terminal interactiva en el sistema.",
+      "C) La cuenta está completamente borrada y lista para su purga en el disco.",
+      "D) El usuario puede acceder pero no se registrarán sus acciones en los logs."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "15. ¿Qué archivo del sistema contiene la configuración por defecto que utiliza 'useradd' para definir variables como la shell inicial (SHELL) o la ruta de las plantillas (SKEL)?",
+    "opciones": [
+      "A) /etc/login.defs",
+      "B) /etc/default/useradd",
+      "C) /etc/skel/.bashrc",
+      "D) /etc/adduser.conf"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "16. ¿Qué parámetro debes pasarle al comando 'chage' si deseas ver de forma detallada y tabulada la información sobre la caducidad y el envejecimiento de la contraseña de un usuario?",
+    "opciones": [
+      "A) -d",
+      "B) -l",
+      "C) -E",
+      "D) -M"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "17. Si ejecutas 'gpasswd -A pedro desarrollo', ¿qué privilegio le estás otorgando al usuario 'pedro' sobre el grupo 'desarrollo'?",
+    "opciones": [
+      "A) Lo conviertes en miembro principal del grupo borrando a los demás.",
+      "B) Lo defines como administrador del grupo, permitiéndole añadir o eliminar miembros secundarios.",
+      "C) Le permites eliminar el archivo /etc/group de forma remota.",
+      "D) Bloqueas su acceso al grupo de manera indefinida."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "18. ¿Qué comando se utiliza para comprobar la lista completa de grupos a los que pertenece el usuario actual en su sesión?",
+    "opciones": [
+      "A) whoami",
+      "B) groups",
+      "C) chsh",
+      "D) auditctl"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "19. ¿Cuál es el propósito del archivo /etc/gshadow en los sistemas GNU/Linux?",
+    "opciones": [
+      "A) Guardar una copia oculta de seguridad del archivo /etc/passwd.",
+      "B) Almacenar las contraseñas cifradas de los grupos y la información de sus administradores.",
+      "C) Controlar los límites de almacenamiento de cuotas de disco por grupo.",
+      "D) Registrar las alertas del comando inotifywait relativas a grupos."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "20. En /etc/login.defs, ¿qué directiva se utiliza para especificar el valor numérico máximo del rango de identificadores que se asignarán a los usuarios regulares?",
+    "opciones": [
+      "A) UID_MIN",
+      "B) UID_MAX",
+      "C) MAX_UID_NUMBER",
+      "D) SYS_UID_MAX"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "21. Al crear un grupo nuevo con 'groupadd profesores', si no especificas ningún parámetro numérico extra, ¿cómo determina el sistema el GID que le asignará automáticamente?",
+    "opciones": [
+      "A) Le asigna el número 0 de forma compartida con el grupo root.",
+      "B) Toma el GID más alto existente en el sistema y le suma 1 de forma secuencial.",
+      "C) Genera un número aleatorio comprendido entre 1 y 500.",
+      "D) El comando falla obligatoriamente exigiéndote introducir el GID de forma manual."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "22. En tus ejercicios prácticos realizaste la acción 'usermod -d /home/profes marta'. Si omitiste usar la opción -m de forma conjunta, ¿qué problema operativo se genera?",
+    "opciones": [
+      "A) El usuario marta no podrá cambiar su contraseña nunca más.",
+      "B) Se modifica la ruta en /etc/passwd pero el contenido y archivos antiguos de marta NO se mueven físicamente a la nueva ubicación.",
+      "C) La cuenta se bloquea automáticamente por seguridad de datos.",
+      "D) El grupo principal del usuario cambia automáticamente a root."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "23. En el archivo /etc/shadow, ¿qué representa el primer campo de cada línea?",
+    "opciones": [
+      "A) El hash de la contraseña cifrada del usuario.",
+      "B) El nombre de usuario o login que identifica la cuenta.",
+      "C) El identificador numérico único (UID) del usuario.",
+      "D) La ruta del shell por defecto que carga el terminal."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "24. Si ejecutas 'userdel -r juan', ¿qué elemento del sistema garantizas que se elimine además del registro de la cuenta en /etc/passwd?",
+    "opciones": [
+      "A) Los procesos en segundo plano que el usuario dejó colgados en el sistema.",
+      "B) Su directorio personal (Home) de forma íntegra junto con sus correos locales.",
+      "C) Todos los grupos secundarios a los que pertenecía el usuario.",
+      "D) El historial de comandos guardado de forma global en /var/log."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "25. En la configuración avanzada de auditd, si quieres ver un informe puramente estadístico resumido de las anomalías o fallos de autenticación de usuarios, ¿qué comando invocas?",
+    "opciones": [
+      "A) auditctl -s",
+      "B) aureport -au",
+      "C) ausearch -m",
+      "D) inotifywatch -r"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "26. Al ejecutar el comando 'id marta', ¿qué información estructurada te devuelve el sistema de forma inmediata en la pantalla?",
+    "opciones": [
+      "A) El historial detallado de las últimas 5 conexiones que ha realizado al sistema.",
+      "B) Su identificador numérico UID, su GID principal y los GID de todos sus grupos suplementarios.",
+      "C) El espacio total ocupado en disco por su directorio /home.",
+      "D) La fecha exacta en la que caducará su contraseña actual."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "27. ¿Qué comando te permite verificar en tiempo real si un usuario está conectado en este preciso instante, mostrando además el tiempo de inactividad de su terminal?",
+    "opciones": [
+      "A) lastlog",
+      "B) w",
+      "C) id",
+      "D) journalctl"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "28. ¿Qué sucede con los archivos ocultos (como .bashrc o .profile) que se encuentran dentro de /etc/skel cuando creas un usuario nuevo con la bandera de creación de home?",
+    "opciones": [
+      "A) Se mueven físicamente desapareciendo por completo de la carpeta /etc/skel.",
+      "B) Se clonan o copian de forma idéntica en el nuevo directorio personal del usuario.",
+      "C) El sistema los ignora por completo a menos que utilices el comando adduser.",
+      "D) Se encriptan usando la contraseña del usuario como clave privada."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "29. Si ejecutas el comando 'gpasswd -d maria asir', ¿qué cambio estás aplicando en la configuración de los grupos?",
+    "opciones": [
+      "A) Estás borrando por completo el grupo llamado 'asir' del sistema.",
+      "B) Estás eliminando al usuario 'maria' del grupo secundario 'asir'.",
+      "C) Estás convirtiendo a 'maria' en la administradora única de 'asir'.",
+      "D) Estás bloqueando temporalmente el acceso de maria a su directorio principal."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "30. En una instalación estándar de Linux, ¿qué usuario del sistema operativo posee por defecto el identificador UID número 0?",
+    "opciones": [
+      "A) El primer usuario regular creado en la instalación.",
+      "B) El usuario administrador root.",
+      "C) El demonio encargado de la gestión de redes (systemd-network).",
+      "D) Ninguno, ese identificador está deshabilitado por motivos de seguridad."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "31. ¿Cuál es el comando interactivo de alto nivel que, a diferencia de useradd, te va guiando paso a paso pidiéndote la contraseña y datos del usuario por pantalla?",
+    "opciones": [
+      "A) usermod",
+      "B) adduser",
+      "C) groupadd",
+      "D) chfn"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "32. Al revisar /etc/passwd observas la línea 'juan:x:1001:1001...'. ¿Qué campo representa el segundo '1001' que aparece justo después del UID?",
+    "opciones": [
+      "A) El identificador numérico de su grupo secundario.",
+      "B) El identificador numérico de su grupo principal o por defecto (GID).",
+      "C) El número máximo de días permitidos para cambiar la contraseña.",
+      "D) El código de la shell restringida asignada."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "33. ¿Qué utilidad del ecosistema inotify-tools se usa para monitorizar de forma pasiva y continua un directorio esperando un evento de modificación para lanzar una alerta?",
+    "opciones": [
+      "A) inotifywatch",
+      "B) inotifywait",
+      "C) ausearch",
+      "D) auditctl"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "34. Si aplicas 'passwd -l marta', ¿qué símbolo añade el sistema al principio del hash de la contraseña en /etc/shadow para bloquear de forma segura el inicio de sesión?",
+    "opciones": [
+      "A) Un asterisco (*)",
+      "B) Un signo de exclamación (!)",
+      "C) Una barra invertida (\\)",
+      "D) Una equis (x)"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "35. En /etc/login.defs, ¿cuál es el propósito de la directiva PASS_MAX_DAYS?",
+    "opciones": [
+      "A) Definir los intentos máximos fallidos de contraseña antes de bloquear el perfil.",
+      "B) Establecer el número máximo de días que una contraseña es válida antes de obligar al usuario a cambiarla.",
+      "C) Indicar el tiempo máximo que una sesión puede permanecer abierta en inactividad.",
+      "D) Fijar los días de aviso previos que se muestran en el terminal antes de expirar."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "36. Si necesitas conocer la lista de todos los terminales y las horas exactas en las que se ha conectado un usuario históricamente en el sistema, ¿qué comando nativo consulta el archivo de logs correspondientes?",
+    "opciones": [
+      "A) who",
+      "B) last",
+      "C) id",
+      "D) groups"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "37. ¿Cuál es el comando utilizado por los usuarios administradores para cambiar la información GECOS (nombre completo, teléfono, etc.) de cualquier cuenta del sistema?",
+    "opciones": [
+      "A) chsh",
+      "B) chfn",
+      "C) chage",
+      "D) passwd"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "38. ¿Qué archivo del sistema almacena las contraseñas cifradas y los miembros de los grupos locales de forma segura en paralelo a /etc/group?",
+    "opciones": [
+      "A) /etc/shadow",
+      "B) /etc/gshadow",
+      "C) /etc/security/groups.conf",
+      "D) /etc/login.defs"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "39. Si ejecutas 'usermod -G goya,asir marta' (sin la opción -a), ¿qué efecto produces en los grupos secundarios de marta?",
+    "opciones": [
+      "A) Se añaden de forma segura manteniendo los grupos antiguos intactos.",
+      "B) Se sobrescribe su lista completa de grupos secundarios, eliminándola de cualquier otro grupo al que perteneciera antes.",
+      "C) Convierte a ambos grupos en los grupos principales del usuario de forma compartida.",
+      "D) Elimina la cuenta de marta de forma automática por inconsistencia de datos."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "40. Si configuras la regla de auditoría avanzada '-w /etc/passwd -p wa -k passwd_changes', ¿qué comando te permite comprobar en cualquier momento que la regla está cargada de forma activa en el demonio?",
+    "opciones": [
+      "A) ausearch -k passwd_changes",
+      "B) auditctl -l",
+      "C) aureport -au",
+      "D) inotifywait -m"
+    ],
+    "respuesta_correcta": "B"
+  }
+]
