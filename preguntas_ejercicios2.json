@@ -1,0 +1,202 @@
+[
+  {
+    "pregunta": "1. Según la Operación 1 del ejercicio práctico, ¿qué configuración específica deben tener los usuarios creados para el 'grupo1'?",
+    "opciones": [
+      "A) Deben configurarse con un espacio de almacenamiento en /home/compartido y acceso interactivo.",
+      "B) Se deben dar de alta en el sistema asegurando que no se les asigne un directorio personal (home) ni un shell de inicio.",
+      "C) Requieren obligatoriamente la asignación del intérprete de comandos /bin/bash y la ruta /home/usuario.",
+      "D) Deben crearse como perfiles temporales cuyas contraseñas expiren de forma diaria en el servidor."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "2. Al dar de alta las cuentas de los 'grupos 2 y 3' en el laboratorio, ¿cuál es el criterio para sus directorios de trabajo?",
+    "opciones": [
+      "A) Se les vincula una ruta genérica compartida en la ubicación /var/users.",
+      "B) Se les asigna como home un directorio dentro de /home que coincida con su nombre de usuario.",
+      "C) Se redirigen todos sus archivos personales hacia el esqueleto maestro alojado en /etc/skel.",
+      "D) No se les dota de espacio físico en disco hasta que realicen su primer inicio de sesión."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "3. En la Operación 1 se te solicita crear al 'usuario7' fijando la fecha exacta '24/12/2017' como expiración de la cuenta y una restricción crítica adicional. ¿Cuál es esa restricción?",
+    "opciones": [
+      "A) No puede pertenecer a ningún grupo secundario o suplementario.",
+      "B) Carece de la posibilidad de renovar o cambiar su contraseña en el sistema.",
+      "C) Su identificador UID debe pertenecer al rango exclusivo de los servicios del sistema.",
+      "D) Se le deniega de forma permanente el acceso remoto mediante el protocolo SSH."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "4. Al configurar al 'usuario8' en la Operación 1, ¿qué condiciones combinadas de temporización y caducidad se deben aplicar sobre su cuenta?",
+    "opciones": [
+      "A) La cuenta expira el 24/12/2017 y dispone de un margen de 10 días de preaviso.",
+      "B) La cuenta le caduca el día 23/11/2017 y se le configuran 5 días de margen para cambiar la contraseña antes de que se deshabilite.",
+      "C) Se programa un bloqueo automatizado a los 30 días de inactividad absoluta en su terminal.",
+      "D) Caduca de forma inmediata al finalizar el año natural a menos que se modifiquen parámetros globales."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "5. De acuerdo con las consultas de la Operación 2, ¿en qué archivo del sistema se deben revisar parámetros como los rangos numéricos de UID/GID máximos y mínimos para usuarios comunes?",
+    "opciones": [
+      "A) /etc/shadow",
+      "B) /etc/login.defs",
+      "C) /etc/default/useradd",
+      "D) /etc/adduser.conf"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "6. En la Operación 3 se requiere que el 'usuario7' forme parte del 'grupo1' de manera adicional a su configuración inicial. ¿Qué tipo de relación de pertenencia se está estableciendo?",
+    "opciones": [
+      "A) Se le define como administrador del grupo1 mediante el comando chfn.",
+      "B) Se añade al usuario al grupo1 tratándolo como un grupo secundario o suplementario.",
+      "C) Se sobrescribe su grupo primario para que comparta el GID exacto de la cuenta root.",
+      "D) Se unifican los permisos de ambos directorios personales dentro del almacenamiento."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "7. ¿Qué acción práctica se ejecuta en la Operación 3 con respecto al 'usuario8' y las estructuras de grupos de tu esquema?",
+    "opciones": [
+      "A) Se le restringe la pertenencia eliminando cualquier rastro de grupos complementarios.",
+      "B) Se hace que el usuario8 pertenezca de forma simultánea a grupo2 y grupo3 de manera suplementaria.",
+      "C) Se le asigna un identificador numérico GID aleatorio comprendido entre el 1 y el 500.",
+      "D) Se le traslada físicamente su home al directorio de almacenamiento de grupo2."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "8. Siguiendo las instrucciones de la Operación 3, tras crear el grupo llamado 'temporal' y añadir a los usuarios indicados (usuario1, usuario3, usuario5 y usuario7), ¿cómo se comprueba textualmente que los miembros fueron indexados?",
+    "opciones": [
+      "A) Consultando las alertas en tiempo real mediante el comando inotifywait.",
+      "B) Revisando el registro final de miembros directamente en la línea correspondiente del archivo /etc/group.",
+      "C) Ejecutando de forma obligatoria el comando estadístico aureport -au.",
+      "D) Comprobando los hashes de seguridad almacenados de forma encriptada en /etc/shadow."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "9. En la Operación 4 se te pide realizar una tarea de seguridad sobre el 'usuario2'. ¿Cuál es esta tarea y cómo se verifica su correcta ejecución?",
+    "opciones": [
+      "A) Se cambia su shell a /bin/sh y se comprueba iniciando sesión de forma remota.",
+      "B) Se bloquea la cuenta de usuario2 y se comprueba revisando que aparezca el carácter de exclamación (!) al inicio de su contraseña en /etc/shadow.",
+      "C) Se purga su carpeta personal de /home y se verifica que el directorio ya no exista.",
+      "D) Se modifica su nombre descriptivo general utilizando la herramienta interactiva adduser."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "10. ¿Qué cambio administrativo avanzado se solicita ejecutar sobre la cuenta de 'usuario3' en la sección de la Operación 4?",
+    "opciones": [
+      "A) Modificar su shell por defecto para restringir el acceso interactivo a la terminal.",
+      "B) Cambiar su identificador numérico único de usuario (UID) por el valor específico 1234.",
+      "C) Convertirlo en administrador de todos los grupos secundarios del esquema.",
+      "D) Sincronizar su contraseña local con la del usuario administrador root."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "11. Durante la Operación 4, modificas el login de acceso del 'usuario4' para que pase a llamarse 'domalonso'. ¿Qué comando de usermod gestiona el renombrado de alias?",
+    "opciones": [
+      "A) usermod -c domalonso jlopez",
+      "B) usermod -l domalonso jlopez",
+      "C) usermod -n domalonso jlopez",
+      "D) usermod -u domalonso jlopez"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "12. En la Operación 5 eliminas el grupo denominado 'temporal'. ¿Qué impacto operativo real tiene esta acción sobre los usuarios que pertenecían a él?",
+    "opciones": [
+      "A) Los usuarios se eliminan de forma colateral y destructiva del archivo /etc/passwd.",
+      "B) El grupo desaparece de la base de datos local, pero las cuentas de usuario siguen existiendo intactas en el sistema.",
+      "C) Sus directorios personales de /home se bloquean impidiendo nuevos accesos de terminal.",
+      "D) El sistema los transfiere automáticamente al grupo principal root de forma obligatoria."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "13. Para cumplir con la Operación 1 de no asignar un shell de inicio a los usuarios del grupo1, ¿cuál es la ruta del shell especial que se debe definir para impedir el acceso interactivo?",
+    "opciones": [
+      "A) /bin/false o /usr/sbin/nologin",
+      "B) /bin/sh",
+      "C) /dev/null",
+      "D) /etc/skel"
+    ],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "14. ¿Qué parámetro o bandera del comando 'useradd' debiste emplear en la Operación 1 para indicarle explícitamente al sistema que NO creara el directorio home de los usuarios del grupo1?",
+    "opciones": [
+      "A) -m",
+      "B) -M",
+      "C) -d",
+      "D) -n"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "15. En la Operación 1, para establecer que la cuenta del 'usuario7' expire en una fecha determinada por calendario, ¿qué opción del comando usermod o useradd se utiliza?",
+    "opciones": [
+      "A) -f",
+      "B) -e",
+      "C) -d",
+      "D) -M"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "16. Al modificar la contraseña del 'usuario1' por '87654321' en la Operación 4, ¿en qué archivo del sistema se almacena de forma oculta y cifrada el hash de esta nueva clave?",
+    "opciones": [
+      "A) /etc/passwd",
+      "B) /etc/shadow",
+      "C) /etc/group",
+      "D) /etc/login.defs"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "17. Para añadir al usuario 'asir777' al grupo 'temporal' en la Operación 3 durante su creación directa, ¿qué bandera de grupo secundario se utiliza en el comando useradd?",
+    "opciones": [
+      "A) -g",
+      "B) -G",
+      "C) -p",
+      "D) -s"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "18. Si un administrador necesita verificar visualmente en formato de tabla el estado de caducidad y los días de inactividad de la cuenta del 'usuario8', ¿qué comando debe ejecutar?",
+    "opciones": [
+      "A) passwd -S usuario8",
+      "B) chage -l usuario8",
+      "C) id usuario8",
+      "D) groups usuario8"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "19. Al cambiar el UID de 'usuario3' a '1234' en la Operación 4, ¿qué acción adicional debe realizar manualmente el administrador con respecto a los archivos antiguos de su propiedad en /home?",
+    "opciones": [
+      "A) Nada, el sistema actualiza automáticamente los permisos de todo el disco duro.",
+      "B) Cambiar el propietario de sus archivos con 'chown' ya que los archivos antiguos mantendrán el UID viejo.",
+      "C) Formatear la partición de usuario para evitar archivos huérfanos.",
+      "D) Bloquear la cuenta con passwd -l hasta que el usuario vuelva a iniciar sesión."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "20. ¿Qué comando se utiliza de forma específica en la Operación 5 para borrar un grupo de la base de datos local del sistema sin alterar los usuarios?",
+    "opciones": [
+      "A) groupmod profesores",
+      "B) groupdel temporal",
+      "C) userdel -r temporal",
+      "D) gpasswd -d temporal"
+    ],
+    "respuesta_correcta": "B"
+  }
+]
