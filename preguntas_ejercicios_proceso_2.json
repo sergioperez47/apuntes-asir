@@ -1,0 +1,202 @@
+[
+  {
+    "pregunta": "1. Según la primera sección del documento, ¿qué modificadores debes aplicar al comando 'ps' para listar todos los procesos de tu propio usuario en formato extendido?",
+    "opciones": [
+      "A) ps -A -N",
+      "B) ps -u (o con opciones de formato extendido como u o -f)",
+      "C) ps --root-only",
+      "D) ps -e | grep root"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "2. ¿Qué filtro o combinación permite listar mediante 'ps' todos aquellos procesos del sistema operativo que NO pertenecen al usuario root?",
+    "opciones": [
+      "A) ps -U root -N (utilizando la bandera -U para el usuario y -N para negar la condición)",
+      "B) ps -aux --only-root",
+      "C) ps -eF root",
+      "D) pidof -v root"
+    ],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "3. Si necesitas conocer con urgencia el número de PID exacto asignado al proceso de tu terminal de comandos 'bash', ¿qué comando directo debes usar?",
+    "opciones": [
+      "A) pstree bash",
+      "B) pidof bash",
+      "C) kill -15 bash",
+      "D) lsof /etc/passwd"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "4. El ejercicio plantea encontrar el PID del proceso 'gnome-terminal' para finalizarlo. Si 'kill' requiere el PID, ¿qué comando automatizado te permite cerrar un programa completo indicando directamente su nombre?",
+    "opciones": [
+      "A) nice",
+      "B) killall",
+      "C) strace",
+      "D) time"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "5. Al ejecutar una tarea de larga duración como 'sleep 500', ¿qué comando estándar de Linux se utiliza junto con su identificador numérico para matarlo de forma directa?",
+    "opciones": [
+      "A) jobs",
+      "B) kill",
+      "C) nohup",
+      "D) renice"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "6. De acuerdo con el orden secuencial de señales de terminación del ejercicio, ¿cuál es el procedimiento correcto si un proceso no responde a una señal amistosa 'kill -15' (SIGTERM)?",
+    "opciones": [
+      "A) Ejecutar un 'sleep 2' y apagar el equipo.",
+      "B) Forzar su finalización inmediata e irrevocable utilizando la señal 'kill -9' (SIGKILL).",
+      "C) Cambiar su prioridad con 'nice -10'.",
+      "D) Rastrearlo de inmediato con el comando 'strace'."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "7. Si deseas cerrar de un solo golpe todas las instancias, pestañas y subprocesos abiertos del navegador Firefox, ¿qué orden es la más rápida y eficiente?",
+    "opciones": [
+      "A) kill -15 firefox",
+      "B) killall firefox",
+      "C) renice 19 firefox",
+      "D) jobs -r firefox"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "8. Deseas arrancar el monitor interactivo 'top' otorgándole desde el principio la menor prioridad posible de CPU. ¿Cómo debes invocarlo?",
+    "opciones": [
+      "A) nice -n 19 top",
+      "B) renice 19 top",
+      "C) top --low-priority",
+      "D) killall -19 top"
+    ],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "9. ¿Qué comando utilizas si necesitas alterar y modificar la prioridad de un proceso que ya se encuentra en ejecución (como por ejemplo, cambiar la cortesía de 'firefox')?",
+    "opciones": [
+      "A) nice",
+      "B) renice",
+      "C) pkill",
+      "D) fuser"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "10. ¿Qué comando utilizas para listar las tareas en segundo plano del sistema que te permite verificar si el comando 'ping' se encuentra corriendo o suspendido?",
+    "opciones": [
+      "A) top",
+      "B) jobs",
+      "C) fg",
+      "D) bg"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "11. Si tienes una herramienta abierta (como el editor nano) suspendida en segundo plano, ¿qué comando la trae de vuelta al primer plano (foreground) de tu consola?",
+    "opciones": [
+      "A) bg",
+      "B) fg",
+      "C) nohup",
+      "D) active"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "12. ¿Cuál es el objetivo primordial de lanzar una aplicación utilizando el comando 'nohup' (por ejemplo, 'nohup firefox &')?",
+    "opciones": [
+      "A) Impedir que el usuario pueda cerrar la ventana de la aplicación de forma manual.",
+      "B) Permitir que el proceso continúe ejecutándose de forma inmune en segundo plano, evitando que se muera si la terminal se cierra o se desconecta la sesión.",
+      "C) Reducir el consumo de memoria RAM a la mitad.",
+      "D) Ejecutar el programa con permisos de root de forma automática."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "13. Dentro del entorno interactivo del comando 'top', ¿qué teclas de acceso rápido te permiten filtrar los procesos por un usuario concreto o cambiar su prioridad (renice) respectivamente?",
+    "opciones": [
+      "A) Teclas 'X' y 'Z'",
+      "B) Teclas 'u' (para filtrar usuario) y 'r' (para renice)",
+      "C) Teclas 'k' y '9'",
+      "D) Teclas 'Ctrl+C' y 'Ctrl+Z'"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "14. ¿Qué comando avanzado e interactivo te permite navegar con las flechas del teclado de forma colorida por los procesos y finalizarlos directamente presionando una tecla de función?",
+    "opciones": [
+      "A) ps -ef",
+      "B) htop",
+      "C) iotop",
+      "D) lsof"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "15. ¿Qué comando alternativo similar a 'killall' se utiliza en el documento para cerrar todos los procesos de 'firefox' o 'gedit'?",
+    "opciones": [
+      "A) fuser",
+      "B) pkill",
+      "C) strace",
+      "D) time"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "16. Si necesitas medir con total precisión el tiempo exacto que tarda un comando (como 'ls') en completar su ejecución en el sistema, ¿qué comando debes anteponerle?",
+    "opciones": [
+      "A) strace",
+      "B) time",
+      "C) sleep",
+      "D) iotop"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "17. Al comparar los resultados temporales de una instrucción de retardo, ¿qué te devolverá exactamente la ejecución de 'time sleep 2'?",
+    "opciones": [
+      "A) Provocará un error crítico en el reloj del kernel del sistema.",
+      "B) Medirá el tiempo de ejecución del retardo, mostrando una duración real en pantalla ligeramente superior a los 2 segundos exactos.",
+      "C) Detendrá de inmediato todos los temporizadores cron del sistema.",
+      "D) Guardará la fecha actual del sistema dentro del archivo /etc/passwd."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "18. ¿Cuál es la utilidad del comando 'strace' según las actividades planteadas en el documento?",
+    "opciones": [
+      "A) Medir las temperaturas físicas de los núcleos del procesador.",
+      "B) Permitir interceptar y registrar detalladamente todas las llamadas al sistema (system calls) y las señales que realiza un proceso.",
+      "C) Limpiar la memoria caché swap del sistema en segundo plano.",
+      "D) Modificar los identificadores únicos GID de los grupos estándar."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "19. Necesitas auditar la seguridad del sistema y averiguar de inmediato qué usuarios o procesos concretos tienen abierto o están interactuando con el archivo '/etc/passwd'. ¿Qué comando experto utilizas?",
+    "opciones": [
+      "A) pstree",
+      "B) lsof",
+      "C) time",
+      "D) nice"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "20. Dentro de las herramientas finales del documento, ¿qué comando se describe como el encargado de monitorizar en tiempo real el uso de la tasa de transferencia de operaciones de lectura y escritura del disco duro (E/S)?",
+    "opciones": [
+      "A) htop",
+      "B) iotop",
+      "C) lsof",
+      "D) fuser"
+    ],
+    "respuesta_correcta": "B"
+  }
+]
