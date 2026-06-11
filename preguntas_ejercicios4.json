@@ -1,0 +1,202 @@
+[
+  {
+    "pregunta": "1. Para crear los tres grupos requeridos en la práctica (Equipo1, Equipo2 y Equipo3) mediante comandos individuales, ¿qué orden se debe ejecutar?",
+    "opciones": [
+      "A) groupmod Equipo1 && groupmod Equipo2 && groupmod Equipo3",
+      "B) groupadd Equipo1 ; groupadd Equipo2 ; groupadd Equipo3",
+      "C) newgrp Equipo1 , Equipo2 , Equipo3",
+      "D) useradd -g Equipo1 -g Equipo2 -g Equipo3"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "2. Al dar de alta al usuario 'proyectoA' con el grupo principal 'Equipo1' y su nombre descriptivo completo, ¿cuál es el comando useradd correcto?",
+    "opciones": [
+      "A) useradd -g Equipo1 -c \"proyecto de desarrollo web\" -m proyectoA",
+      "B) useradd -G Equipo1 -d \"proyecto de desarrollo web\" proyectoA",
+      "C) usermod -g Equipo1 -c \"proyecto de desarrollo web\" proyectoA",
+      "D) useradd -p Equipo1 -f \"proyecto de desarrollo web\" -m proyectoA"
+    ],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "3. El enunciado indica que el usuario 'proyectoB' pertenece al grupo principal 'Equipo2'. ¿Qué bandera de 'useradd' define estrictamente este grupo primario o por defecto?",
+    "opciones": [
+      "A) -G",
+      "B) -g",
+      "C) -p",
+      "D) -k"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "4. Siguiendo el patrón de contraseñas exigido (nombredelusuario_nombredelgrupoprincipal), ¿cuál será la contraseña exacta asignada al usuario 'proyectoB'?",
+    "opciones": [
+      "A) proyectoB_Equipo1",
+      "B) proyectoB_Equipo2",
+      "C) proyectoB_Equipo3",
+      "D) proyecto de carga de datos_Equipo2"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "5. ¿Cuál es la contraseña exacta que le corresponde al usuario 'proyectoC' según la regla de nomenclatura de la práctica?",
+    "opciones": [
+      "A) proyectoC_Equipo1",
+      "B) proyectoC_Equipo2",
+      "C) proyectoC_Equipo3",
+      "D) proyectoC_proyecto de evolutivos"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "6. La práctica exige que el usuario 'proyectoC' comparta el mismo directorio personal de trabajo de 'proyectoA' (/home/proyectoA). ¿Qué comando de creación logra esto de forma directa?",
+    "opciones": [
+      "A) useradd -g Equipo2 -d /home/proyectoA -M proyectoC",
+      "B) useradd -g Equipo2 -d /home/proyectoA proyectoC",
+      "C) useradd -g Equipo2 -m -d /home/proyectoC proyectoA",
+      "D) usermod -g Equipo2 -m -d /home/proyectoA proyectoC"
+    ],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "7. Al usar 'useradd -d /home/proyectoA -M proyectoC', ¿qué función cumple la bandera '-M' (mayúscula) para evitar errores con el directorio de proyectoA?",
+    "opciones": [
+      "A) Fuerza el borrado de cualquier archivo preexistente en la ruta.",
+      "B) Le indica al sistema que NO intente crear ni sobreescribir la carpeta home, ya que esta ya existe y pertenece a proyectoA.",
+      "C) Encripta automáticamente el contenido de la carpeta compartida.",
+      "D) Convierte al usuario en el propietario absoluto del directorio destino."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "8. Una vez creados los tres usuarios, se solicita 'añadir a los tres al grupo denominado Equipo3' como grupo secundario. ¿Qué comando añade a 'proyectoA' manteniendo intacto su grupo primario?",
+    "opciones": [
+      "A) usermod -g Equipo3 proyectoA",
+      "B) usermod -aG Equipo3 proyectoA",
+      "C) groupmod -A proyectoA Equipo3",
+      "D) useradd -G Equipo3 proyectoA"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "9. ¿Qué comando alternativo se puede utilizar para añadir directamente al usuario 'proyectoB' al grupo complementario 'Equipo3'?",
+    "opciones": [
+      "A) gpasswd -a proyectoB Equipo3",
+      "B) gpasswd -d proyectoB Equipo3",
+      "C) chsh -G Equipo3 proyectoB",
+      "D) usermod -g Equipo3 proyectoB"
+    ],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "10. Para comprobar la información descriptiva (GECOS) de los usuarios creados y verificar que aparezca 'proyecto de evolutivos', ¿qué archivo maestro debes examinar?",
+    "opciones": [
+      "A) /etc/shadow",
+      "B) /etc/passwd",
+      "C) /etc/group",
+      "D) /etc/login.defs"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "11. Si revisas la línea de 'Equipo3' dentro del archivo /etc/group al finalizar las asignaciones, ¿qué contenido deberías ver al final de dicha línea?",
+    "opciones": [
+      "A) Únicamente el nombre de proyectoA.",
+      "B) Los tres usuarios separados por comas: proyectoA,proyectoB,proyectoC",
+      "C) Ningún nombre, ya que Equipo3 pasó a ser el grupo principal de todos.",
+      "D) El hash de seguridad cifrado de las contraseñas del grupo."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "12. La práctica pide abrir un terminal para cada usuario y crear un fichero en su /home. Si estás logueado como 'proyectoA' y ejecutas 'touch nota.txt', ¿dónde se guardará físicamente dicho archivo?",
+    "opciones": [
+      "A) /home/proyectoB",
+      "B) /home/proyectoA/nota.txt",
+      "C) /root/nota.txt",
+      "D) /etc/skel/nota.txt"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "13. Si el usuario 'proyectoC' inicia sesión en su terminal e intenta crear el archivo 'ficheroC.txt' dentro de su home compartido (/home/proyectoA), ¿qué problema de permisos se puede encontrar inicialmente si no se ajusta el grupo?",
+    "opciones": [
+      "A) Error de comando no encontrado.",
+      "B) Permiso denegado (Permission denied), porque el directorio pertenece originalmente a proyectoA y su grupo principal Equipo1.",
+      "C) El sistema se cuelga por conflicto de redundancia de almacenamiento.",
+      "D) El archivo se crea pero se borra automáticamente al cerrar la terminal."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "14. Mientras mantienes los terminales abiertos para cada usuario, la práctica te pide comprobar qué usuarios están utilizando el sistema en ese instante. ¿Qué comandos nativos te permiten ver este registro de sesiones activas?",
+    "opciones": [
+      "A) lastlog y id",
+      "B) w y who",
+      "C) auditctl y journalctl",
+      "D) chsh y chfn"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "15. Al ejecutar el comando 'w' en el terminal del administrador para verificar las sesiones de la práctica, ¿qué información clave de los usuarios se lista en la pantalla?",
+    "opciones": [
+      "A) Sus contraseñas encriptadas en formato MD5.",
+      "B) El nombre de usuario, el nombre de la terminal (TTY), la hora de inicio de sesión y el comando o proceso que ejecutan.",
+      "C) Los límites máximos de espacio de almacenamiento en disco asignados.",
+      "D) El historial de todos los grupos eliminados durante el día."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "16. En la última fase del ejercicio se te ordena de forma explícita: 'Cuando termines borra los tres usuarios'. ¿Qué comando elimina al usuario 'proyectoA' borrando también su directorio de trabajo?",
+    "opciones": [
+      "A) userdel proyectoA",
+      "B) userdel -r proyectoA",
+      "C) groupdel proyectoA",
+      "D) usermod -l proyectoA"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "17. Si ejecutas 'userdel -r proyectoC', ¿qué ocurre con el directorio /home/proyectoA que compartía con el primer usuario?",
+    "opciones": [
+      "A) Se borra por completo perdiéndose los datos de proyectoA.",
+      "B) El sistema da un aviso o deniega la eliminación del directorio porque pertenece a otro UID activo (proyectoA), protegiendo la integridad.",
+      "C) Se duplica el directorio en una papelera de reciclaje global del sistema.",
+      "D) Cambia de nombre automáticamente a /home/no_existente."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "18. Para verificar rápidamente desde la terminal (sin usar el entorno gráfico) que los usuarios han sido completamente eliminados del sistema, ¿qué comando de búsqueda puedes aplicar?",
+    "opciones": [
+      "A) grep 'proyecto' /etc/passwd",
+      "B) id Equipo3",
+      "C) ls -l /etc/skel",
+      "D) chage -l root"
+    ],
+    "respuesta_correcta": "A"
+  },
+  {
+    "pregunta": "19. Si tras borrar los usuarios decides limpiar por completo el sistema eliminando también el grupo secundario 'Equipo3', ¿qué comando debes emplear?",
+    "opciones": [
+      "A) userdel Equipo3",
+      "B) groupdel Equipo3",
+      "C) gpasswd -d Equipo3",
+      "D) usermod -X Equipo3"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "20. Al revisar una línea del archivo /etc/passwd referida a los usuarios de la práctica, por ejemplo, 'proyectoA:x:1020:2001:proyecto de desarrollo web:/home/proyectoA:/bin/bash', ¿qué representa el número '2001'?",
+    "opciones": [
+      "A) El identificador único del usuario (UID).",
+      "B) El identificador numérico de su grupo principal o por defecto (GID).",
+      "C) La cantidad de días de validez que le quedan a su contraseña.",
+      "D) El identificador del puerto TCP de red asignado a su sesión de terminal."
+    ],
+    "respuesta_correcta": "B"
+  }
+]
