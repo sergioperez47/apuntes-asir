@@ -1,0 +1,202 @@
+[
+  {
+    "pregunta": "1. Según las siglas descritas en el documento, ¿qué significa exactamente el término 'BIOS'?",
+    "opciones": [
+      "A) Basic Internal Operating System.",
+      "B) Basic Input Output System (Sistema Básico de Entrada y Salida).",
+      "C) Binary Input Organized Software.",
+      "D) Boot Initiator Operating Standard."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "2. ¿A partir de qué año empezó a ser sustituida la BIOS tradicional por el nuevo estándar UEFI?",
+    "opciones": [
+      "A) Desde el año 1995.",
+      "B) Desde el año 2005.",
+      "C) Desde el año 2015.",
+      "D) Desde el año 1981."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "3. ¿Qué empresa multinacional desarrolló originalmente el entorno 'EFI' en la década de los 90 para los procesadores Itanium?",
+    "opciones": [
+      "A) Microsoft",
+      "B) Intel",
+      "C) AMD",
+      "D) IBM"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "4. ¿Cuáles son algunas de las características avanzadas con las que UEFI dota a las placas base más modernas del mercado?",
+    "opciones": [
+      "A) Compresión automática de archivos de usuario y formateo en la nube.",
+      "B) Cifrado, una interfaz de control del hardware mucho más amigable e intuitiva, y mayor velocidad de inicio de la PC.",
+      "C) Eliminación completa del uso de memoria RAM virtual.",
+      "D) Compatibilidad exclusiva con sistemas operativos de código abierto."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "5. De acuerdo con el texto, ¿por qué es fundamental para un administrador de sistemas conocer e identificar tanto el sistema BIOS como el UEFI?",
+    "opciones": [
+      "A) Porque la BIOS controla los discos duros y la UEFI controla las tarjetas de red.",
+      "B) Porque todavía nos encontraremos con ordenadores antiguos que siguen utilizando BIOS, mientras que los equipos nuevos ya usan UEFI.",
+      "C) Porque la BIOS solo funciona con Linux y la UEFI con Windows.",
+      "D) Porque pronto se unificarán en un único software llamado Panther."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "6. En sistemas Windows, ¿cuál es el primer paso indicado para comprobar el entorno de arranque mediante los archivos de registro?",
+    "opciones": [
+      "A) Abrir el Administrador de tareas y buscar el proceso explorer.exe.",
+      "B) Ir a la ruta de carpetas C:\\Windows\\Panther.",
+      "C) Ejecutar el comando chkdsk desde la consola de recuperación.",
+      "D) Formatear la partición del sistema operativo."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "7. Dentro de la carpeta 'Panther' en Windows, ¿cómo se llama el archivo de texto específico que debemos abrir para buscar el tipo de arranque?",
+    "opciones": [
+      "A) biosact.txt",
+      "B) setupact.log",
+      "C) eufi_setup.inf",
+      "D) bootenv.ini"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "8. ¿Qué combinación de teclas se menciona en el documento para abrir el cuadro de búsqueda dentro del Bloc de notas en Windows?",
+    "opciones": [
+      "A) Ctrl+F",
+      "B) Ctrl+B",
+      "C) Alt+S",
+      "D) Win+R"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "9. ¿Qué frase de texto exacta se debe introducir en el cuadro de búsqueda del archivo de registro de Windows para localizar el entorno de arranque?",
+    "opciones": [
+      "A) \"Mode BIOS htp\"",
+      "B) \"Detected boot Environment\"",
+      "C) \"EFI Firmware Directory\"",
+      "D) \"Panther Setup Active\""
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "10. Si el buscador de Windows localiza la línea 'Callback_BootEnvironmentDetect: Detected boot environment: BIOS', ¿qué significa?",
+    "opciones": [
+      "A) Que el ordenador no tiene ningún sistema operativo instalado.",
+      "B) Que el sistema está utilizando el gestor de arranque BIOS tradicional.",
+      "C) Que la placa base tiene un fallo crítico de hardware.",
+      "D) Que la BIOS ha sido emulada por un software de terceros."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "11. Si el archivo de registro en Windows muestra 'Callback_BootEnvironmentDetect: Detected boot environment: UEFI', ¿qué entorno utiliza el equipo?",
+    "opciones": [
+      "A) BIOS Heredado.",
+      "B) UEFI.",
+      "C) Arranque dual híbrido.",
+      "D) Kernel Linux virtualizado."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "12. ¿Qué alternativa de atajo por teclado se propone en el documento en caso de que no encuentres la carpeta 'Panther' en tu sistema Windows?",
+    "opciones": [
+      "A) Pulsar Ctrl+Alt+Del para reiniciar.",
+      "B) Presionar la combinación de teclas Win+R para abrir el cuadro 'Ejecutar'.",
+      "C) Pulsar Shift+F10 en el escritorio.",
+      "D) Desconectar el cable de alimentación de la PC."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "13. ¿Qué comando exacto debes escribir en el cuadro 'Ejecutar' de Windows para abrir el servicio de Información del Sistema?",
+    "opciones": [
+      "A) setupact.log",
+      "B) MSInfo32",
+      "C) sysinfo.exe",
+      "D) devmgmt.msc"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "14. Al utilizar la herramienta de Información del Sistema (MSInfo32), ¿qué término aparecerá en el apartado 'Modo de BIOS' si el ordenador está usando BIOS?",
+    "opciones": [
+      "A) Antiguo",
+      "B) Heredado",
+      "C) Tradicional",
+      "D) Desactivado"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "15. Si la PC tiene configurada una interfaz UEFI moderna, ¿qué texto exacto se mostrará en el campo 'Modo de BIOS' al revisar MSInfo32?",
+    "opciones": [
+      "A) Heredado",
+      "B) UEFI",
+      "C) EFI Intel 90",
+      "D) Activado"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "16. En los sistemas operativos GNU/Linux, ¿cómo podemos comprobar de forma directa si el Kernel está utilizando UEFI?",
+    "opciones": [
+      "A) Buscando el archivo setupact.log en el directorio /root.",
+      "B) Comprobando que existe una ruta específica en el directorio /sys/.",
+      "C) Ejecutando obligatoriamente el comando MSInfo32 desde la terminal.",
+      "D) Revisando las propiedades del entorno gráfico de Ubuntu."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "17. ¿Cuál es la ruta absoluta exacta que debes verificar en GNU/Linux para confirmar la presencia de los ficheros de interacción con la UEFI?",
+    "opciones": [
+      "A) /etc/firmware/bios/",
+      "B) /sys/firmware/efi/",
+      "C) /var/log/panther/",
+      "D) /sys/kernel/debug/"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "18. ¿Qué contienen los ficheros ubicados en la ruta '/sys/firmware/efi/' de un sistema Linux?",
+    "opciones": [
+      "A) Las copias de seguridad de las contraseñas de los usuarios.",
+      "B) Los ficheros que está utilizando el Kernel de Linux para interactuar con la UEFI.",
+      "C) El historial de los últimos reinicios y apagados del hardware.",
+      "D) Los drivers de instalación de las tarjetas gráficas Nvidia o AMD."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "19. ¿Cuál es el nombre original completo que tenía la tecnología UEFI antes de extenderse a toda la industria informática?",
+    "opciones": [
+      "A) Basic Input Output System (BIOS).",
+      "B) EFI (Extensible Firmware Interface).",
+      "C) MSInfo32 Interface System.",
+      "D) Panther Boot Environment."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "20. Al final del documento se muestra una palabra en solitario debajo de la ruta de firmware en Linux. ¿Qué distribución o sistema operativo de ejemplo se menciona de forma implícita?",
+    "opciones": [
+      "A) RedHat",
+      "B) ubuntu",
+      "C) Fedora",
+      "D) Debian"
+    ],
+    "respuesta_correcta": "B"
+  }
+]
