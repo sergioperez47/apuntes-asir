@@ -50,5 +50,153 @@
     "respuesta_correcta": "B"
   },
   {
-    "pregunta": "6. Estás ejecutando una tarea en la terminal y necesitas cambiar su prioridad en caliente/vivo. ¿Qué comando utilizas especificando el nuevo valor y su PID?",
-    "opciones":
+    "pregunta": "6. Estás ejecutando una tarea en la terminal y necesitas cambiar su prioridad en caliente/vivo. ¿Qué comando utilizas especificando el nuevo valor de cortesía y su número de PID?",
+    "opciones": [
+      "A) nice",
+      "B) renice",
+      "C) pkill",
+      "D) chpriority"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "7. De acuerdo con las pautas de finalización de procesos del documento, ¿cuál es la forma o señal reglamentaria para terminar un proceso de la manera 'más correcta' posible?",
+    "opciones": [
+      "A) kill -9 (SIGKILL)",
+      "B) kill -15 (SIGTERM)",
+      "C) kill -19 (SIGSTOP)",
+      "D) kill -1 (SIGHUP)"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "8. Deseas abrir el editor de texto 'vi' para ver un archivo del sistema, asegurándote de que el microprocesador le asigne la máxima prioridad de ejecución desde su arranque. ¿Cómo debes invocarlo?",
+    "opciones": [
+      "A) nice -n 19 vi",
+      "B) nice -n -20 vi (requiere privilegios de root)",
+      "C) renice -20 vi",
+      "D) vi --top-priority"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "9. ¿Qué comando avanzado permite visualizar en una estructura de árbol ramificada la jerarquía de procesos, facilitando la identificación del PID de un proceso hijo y de su proceso padre (PPID)?",
+    "opciones": [
+      "A) top",
+      "B) pstree",
+      "C) jobs",
+      "D) ps -aux"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "10. ¿Qué herramienta interactiva en tiempo real te permite listar los procesos, ordenar o modificar la prioridad del editor 'vi' mediante menús y, finalmente, destruirlo con una señal interna?",
+    "opciones": [
+      "A) grep",
+      "B) top",
+      "C) pstree",
+      "D) ls"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "11. Si ejecutas la orden 'firefox &' desde tu consola de comandos, ¿qué significación tiene la inclusión del carácter especial ampersand (&) al final del nombre?",
+    "opciones": [
+      "A) Fuerza a la aplicación a ejecutarse con permisos de administrador.",
+      "B) Envía el programa al segundo plano (background) para que la terminal quede libre de inmediato.",
+      "C) Cierra de forma automática todas las pestañas previas del navegador.",
+      "D) Redirige la salida de texto a un archivo oculto del sistema."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "12. Al lanzar un comando en segundo plano, la consola de Linux te devuelve un indicador numérico inicial entre corchetes (ej. [1] 4325). ¿A qué hace referencia el número '1'?",
+    "opciones": [
+      "A) Al nivel de prioridad nice asignado por el sistema.",
+      "B) Al número de trabajo (job ID) asignado en esa sesión de terminal.",
+      "C) Al número de usuarios que están viendo el proceso.",
+      "D) Al número de núcleos de CPU que consumirá la tarea."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "13. ¿Qué comando utilizas si necesitas guardar un listado con todos los archivos .gif encontrados en tu sistema operativo volcándolos de forma directa en un archivo de texto llamado 'todoslosgif'?",
+    "opciones": [
+      "A) find / -name \"*.gif\" | kill",
+      "B) find / -name \"*.gif\" > todoslosgif",
+      "C) jobs -l *.gif",
+      "D) top -b *.gif"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "14. ¿Qué comando utilizas para monitorizar, auditar y listar la tabla de todos los trabajos que se encuentran corriendo o suspendidos en el segundo plano de tu terminal actual?",
+    "opciones": [
+      "A) ps -ef",
+      "B) jobs",
+      "C) fg",
+      "D) bg"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "15. Tienes una tarea suspendida o ejecutándose en segundo plano bajo el identificador de trabajo número 1. ¿Qué comando debes teclear si deseas traerla de vuelta al primer plano (foreground) de tu pantalla?",
+    "opciones": [
+      "A) bg %1",
+      "B) fg %1",
+      "C) renice %1",
+      "D) kill -9 %1"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "16. ¿Qué ocurre si un proceso lanzado en segundo plano termina por completo su ejecución natural y luego introduces el comando 'jobs' en la terminal?",
+    "opciones": [
+      "A) Permanecerá en la lista para siempre con el estado de bloqueado.",
+      "B) Aparecerá brevemente con el estado 'Done' (Terminado) y luego desaparecerá por completo de la lista de trabajos activos.",
+      "C) Provocará un error crítico en el intérprete de comandos bash.",
+      "D) Pasará a convertirse automáticamente en un demonio permanente de root."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "17. Estás ejecutando un comando en primer plano que ha bloqueado la introducción de texto de tu terminal. ¿Qué combinación de teclas debes presionar para pausarlo y enviarlo al segundo plano?",
+    "opciones": [
+      "A) Ctrl + C",
+      "B) Ctrl + Z",
+      "C) Ctrl + Alt + Del",
+      "D) Ctrl + X"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "18. Tienes un proceso pausado en la lista de trabajos y quieres que reanude su ejecución pero manteniéndose en el segundo plano (background). ¿Qué comando aplicas?",
+    "opciones": [
+      "A) fg",
+      "B) bg",
+      "C) nice",
+      "D) stop"
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "19. En la sección de scripts de tus apuntes se automatiza la captura del PID de Firefox mediante 'PID_AUX=$(ps -e | grep firefox | cut -d \" \" -f2)'. ¿Qué función cumple el comando 'cut' en esa línea?",
+    "opciones": [
+      "A) Elimina el archivo ejecutable de Firefox del disco duro.",
+      "B) Corta y extrae la columna específica que contiene el número de PID del texto de salida.",
+      "C) Detiene el proceso de forma inmediata sin guardar cambios.",
+      "D) Modifica los permisos de lectura del script shell."
+    ],
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "20. ¿Qué es un proceso 'zombie' en Linux de acuerdo con las problemáticas nocturnas descritas al final de las actividades prácticas?",
+    "opciones": [
+      "A) Un proceso que consume el 100% de los recursos de la memoria RAM de forma continua.",
+      "B) Un proceso que ha terminado su ejecución pero sigue figurando en la tabla de procesos porque su padre no ha leído su estado de salida.",
+      "C) Un comando que se ejecuta de forma oculta sin un identificador PID asociado.",
+      "D) Un script que se borra a sí mismo tras realizar una copia de seguridad."
+    ],
+    "respuesta_correcta": "B"
+  }
+]
