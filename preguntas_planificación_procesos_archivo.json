@@ -179,12 +179,24 @@
     ],
     "respuesta_correcta": "B"
   },
-  {
-    "pregunta": "19. ¿Cuál es el comportamiento por defecto del comando 'watch' al indicarle una orden, como en 'watch date'?",
+{
+    "pregunta": "19. ¿Cuál es el comportamiento por defecto del comando 'watch' al indicarle una orden, como por ejemplo en 'watch date'?",
     "opciones": [
-      "A) Ejecuta el comando una sola vez y borra el historial.",
-      "B) Permite ejecutar un comando especificado a intervalos regulares, que por defecto son cada 2 segundos.",
-      "C) Mide el tiempo exacto que tarda en completarse un proceso.",
-      "D) Envía el comando al segundo plano de forma independiente."
+      "A) Ejecuta el comando una sola vez y borra inmediatamente el historial de la pantalla.",
+      "B) Permite ejecutar un comando especificado a intervalos regulares de tiempo, que por defecto están establecidos cada 2 segundos.",
+      "C) Mide los microsegundos exactos que tarda en completarse un proceso del sistema.",
+      "D) Envía el comando seleccionado al segundo plano de la consola de forma independiente."
     ],
-    "
+    "respuesta_correcta": "B"
+  },
+  {
+    "pregunta": "20. Al combinar modificadores en el comando 'watch' (por ejemplo, 'watch -d -n 5 date'), ¿qué función específica cumple la bandera o parámetro '-d'?",
+    "opciones": [
+      "A) Desinstala de forma irreversible el temporizador del demonio cron.",
+      "B) Resalta visualmente las diferencias y cambios producidos entre las sucesivas ejecuciones del comando.",
+      "C) Duplica el consumo de CPU para acelerar la respuesta de la terminal.",
+      "D) Envía un informe de diagnóstico directamente a la ruta /var/log/syslog."
+    ],
+    "respuesta_correcta": "B"
+  }
+]
